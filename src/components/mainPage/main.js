@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-
+import NewestItems from './newestItems';
 class Main extends Component {
   
 
@@ -22,7 +22,9 @@ class Main extends Component {
     }
 
     render (){
-        return (<div style={styles.containerStyle} className = "d-flex justify-content-center align-items-center flex-column bd-highlight ">
+        return (<div >
+           
+            <div style={styles.containerStyle} className = " d-flex justify-content-center align-items-center flex-column bd-highlight ">
         <div className="m-2">
         <h1> lost your shit ? </h1>
          <h3> you may find it here </h3>
@@ -33,6 +35,8 @@ class Main extends Component {
     <button className="btn btn-outline-secondary" type="button">Search</button>
         </div>
           </div>
+        </div >
+       <NewestItems />
         </div>)
     }
 
