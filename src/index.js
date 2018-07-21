@@ -9,6 +9,8 @@ import reducers from './reducers/index';
 import {Router} from 'react-router';
 import { browserHistory } from 'react-router';
 import routes from './routes';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 const store = createStore(reducers);
 
 ReactDOM.render(
