@@ -5,13 +5,15 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware } from 'redux';
-import reducers from './reducers/index'
-
+import reducers from './reducers/index';
+import {Router} from 'react-router';
+import { browserHistory } from 'react-router';
+import routes from './routes';
 const store = createStore(reducers);
 
 ReactDOM.render(
 <Provider store={store} >
-<App />
+<Router history={browserHistory} routes={routes}  />
 </Provider>
 , document.getElementById('root'));
 registerServiceWorker();
