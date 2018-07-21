@@ -9,7 +9,7 @@ class App extends Component {
       <button className='m-2 btn btn-primary ' >  LOGIN </button> 
       <button  className='m-2 btn btn-primary '> SIGNUP </button> 
       </div>
-        {this.props.children}
+        <div >{this.props.children}</div>
       </div>
     );
   }
