@@ -5,6 +5,10 @@ class App extends Component {
   render() {
     return (
       <div >
+      <div style = {styles.headerStyle} className = 'd-flex flex-row-reverse' >
+      <button className='m-2 btn btn-primary ' >  LOGIN </button> 
+      <button  className='m-2 btn btn-primary '> SIGNUP </button> 
+      </div>
         {this.props.children}
       </div>
     );
@@ -13,7 +17,7 @@ class App extends Component {
 
 const styles = {
   headerStyle: {
-
+    paddingRight:'1%',
   }
 }
 
