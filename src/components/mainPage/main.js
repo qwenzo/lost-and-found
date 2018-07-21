@@ -5,7 +5,7 @@ class Main extends Component {
 
     constructor(props){
      super(props)
-     this.state = {clientHeighth:document.documentElement.clientHeight};
+     this.state = {clientHeighth:document.documentElement.clientHeight,searchText:''};
     }
 
 
@@ -21,6 +21,10 @@ class Main extends Component {
       
     }
 
+    onSearchTextChange(event){
+      this.setState({searchText:event.target.value});
+    }
+
     render (){
         return (<div >
            
@@ -29,13 +33,15 @@ class Main extends Component {
         <h1> lost your shit ? </h1>
          <h3> you may find it here </h3>
          </div>
+         
          <div id="searchBox" style={styles.searchBoxStyle} className="input-group ">
-         <input type="text" className="form-control" placeholder="Search a lost item"  />
+         <input onChangeCapture={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text" className="form-control" placeholder="Search a lost item"  />
          <div className="input-group-append">
     <button className="btn btn-outline-secondary" type="button">Search</button>
         </div>
           </div>
         </div >
+       
        <NewestItems />
         </div>)
     }
@@ -45,9 +51,12 @@ class Main extends Component {
 
 const styles = {
     containerStyle: {
-        height:'500px'
+        height:'450px'
     },
     searchBoxStyle: {
+    },
+    briefResultsStyle:{
+      zIndex:'1'
     }
   }
 

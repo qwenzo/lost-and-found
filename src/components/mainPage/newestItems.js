@@ -18,9 +18,9 @@ class NewestItems extends Component {
      render(){
          return(
              <div className = "d-flex justify-content-center">
-             <div  style={styles.containerStyle} className = " shadow-lg bg-white rounded ">
-             <h5 className = "d-flex justify-content-center"> last 5 items </h5>
-             <div id="itemsContainer" className=" d-flex"> <ItemCard />
+             <div    className = " shadow-lg bg-white  ">
+             <h5 className = "d-flex justify-content-center rounded-top"> last 5 items </h5>
+             <div style={styles.containerStyle} id="itemsContainer" className=" d-flex"> <ItemCard />
              <ItemCard /> <ItemCard /> <ItemCard /> <ItemCard />
              </div>
              </div>
@@ -31,7 +31,7 @@ class NewestItems extends Component {
 
 const styles = {
     containerStyle :{
-       
+   
     },
 }
 
