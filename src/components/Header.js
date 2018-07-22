@@ -22,7 +22,7 @@ class Header extends Component {
     renderSearchBox(){
      return(
         <div id="searchBoxHeader" style={styles.searchBoxStyle} className="input-group float-right w-25 h-25 col-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+        <input type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
       </div>
      );
     }

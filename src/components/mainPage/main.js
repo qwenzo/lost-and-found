@@ -42,7 +42,7 @@ class Main extends Component {
           </div>
         </div >
        
-     {/* <NewestItems /> */}
+      <NewestItems /> 
         </div>)
     }
 

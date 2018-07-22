@@ -10,7 +10,7 @@ class ItemCard extends Component {
                     <h6>Last Seen At:B1</h6>
                     
                 </div>
-                <div style={styles.TagContainerStyle} className="d-flex "> 
+                <div style={styles.TagContainerStyle} className="d-flex  flex-wrap flex-row"> 
                   <Tag text="B1" />
                   <Tag text="Lenvo" />
                   <Tag text="Laptop" />  
@@ -34,7 +34,7 @@ const styles = {
        
     },
     TagContainerStyle :{
-        width: 'calc(100% * (1/4) - 10px - 1px)'
+       marginRigh:'5px'
     }
 }
 
