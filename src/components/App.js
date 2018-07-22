@@ -13,9 +13,7 @@ class App extends Component {
 }
 
 const styles = {
-  headerStyle: {
-    paddingRight:'1%',
-  }
+ 
 }
 
 export default App;

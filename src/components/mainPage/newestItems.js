@@ -5,12 +5,12 @@ class NewestItems extends Component {
     componentDidMount() {
         //  window.addEventListener('resize', this.resizeScreen.bind(this));
        const clientHeighth=document.documentElement.clientHeight;
-          if(clientHeighth<900) {
+          if(clientHeighth>900) {
           //  document.getElementById("itemsContainer").classList-="flex-column";
             //  document.getElementById("itemsContainer").classList+="flex-row";
           }
           else{
-            // document.getElementById("itemsContainer").classList+="flex-column";
+            //document.getElementById("itemsContainer").classList+="flex-column";
           }
           
         
