@@ -3,10 +3,12 @@ import App from './components/App';
 import React from 'react';
 import Main from './components/mainPage/main';
 import SearchView from './components/Search';
+import SingleItem from './components/SingleItem';
 const routes =  
     <Route path = "/" component= {App} >
     <IndexRoute component = {Main} />
-    <Route path="/Search" component={SearchView} />
+    <Route path="/search" component={SearchView} />
+    <Route path="/item" component={SingleItem} />
     </Route>;
 
 
