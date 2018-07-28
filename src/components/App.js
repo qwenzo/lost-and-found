@@ -6,14 +6,16 @@ class App extends Component {
     return (
       <div >
         <Header />
-        <div >{this.props.children}</div>
+        <div style={styles.backgroundStyle} >{this.props.children}</div>
       </div>
     );
   }
 }
 
 const styles = {
- 
+    containerStyle:{
+     
+    }
 }
 
 export default App;

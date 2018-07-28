@@ -24,7 +24,7 @@ const styles = {
       
     },
     containerStyle:{
-        //backgroundColor:"#D7DBDD"
+         backgroundColor:"#F4F6F7"//backgroundColor:"#D7DBDD"
     }
 }
 
