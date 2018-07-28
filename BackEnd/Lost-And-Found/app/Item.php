@@ -16,4 +16,8 @@ class Item extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag','items_tags','item_id','tag_id');
     }
+
+    public function images(){
+        return $this->hasMany('App\Image','item_id','id');
+    }
 }

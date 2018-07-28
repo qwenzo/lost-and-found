@@ -19,9 +19,8 @@ class CreateItemsTable extends Migration
             $table->string('Place');
             $table->text('Description');
             $table->boolean('Found');// 1 found 0 lost
-            $table->binary('Image') ;
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }
