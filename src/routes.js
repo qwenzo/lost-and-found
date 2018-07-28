@@ -10,7 +10,7 @@ const routes =
     <IndexRoute component = {Main} />
     <Route path="/search" component={SearchView} />
     <Route path="/item" component={SingleItem} />
-    <Route path="/submitItem" component={ItemForm} />
+    <Route path="/item/post" component={ItemForm} />
     </Route>;
 
 
