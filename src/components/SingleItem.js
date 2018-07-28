@@ -5,6 +5,11 @@ import whatsAppLogo from '../assets/WAlogo.png';
 import imagesIcon from '../assets/photos2-512.png';
 import Contact from './Contact';
 import Details from './Details';
+import { Carousel } from 'react-responsive-carousel';
+import  'react-responsive-carousel/lib/styles/carousel.min.css';
+
+
+
 class SingleItem extends Component {
     componentDidMount() {
     
@@ -13,6 +18,7 @@ class SingleItem extends Component {
       }
      render(){
          return(
+             
              <div style={styles.containerStyle} className=" justify-content-center align-items-center ">
              <div style={styles.itemBoxStyle} className ="d-flex shadow-sm rounded ">
                 <div className="m-2 d-flex flex-row-reverse">
@@ -20,8 +26,20 @@ class SingleItem extends Component {
                  // <img src={imagesIcon} height="24" width="24" />
                 // </div>
             }
-                  <img style={styles.imageStyle} className=" d-flex align-self-center" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg" alt="Trulli" width="650" height="500" />
-                
+                <Carousel width={650}  showArrows={true} showThumbs={false}>
+                <div>
+                <img style={styles.imageStyle}
+                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+                <div>
+                <img style={styles.imageStyle}
+                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+            </Carousel>
                   
                   </div>
                   <div className="d-flex flex-column " >
