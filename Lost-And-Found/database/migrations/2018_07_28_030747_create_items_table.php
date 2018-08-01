@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('Place');
             $table->text('Description');
             $table->boolean('Found');// 1 found 0 lost
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });

@@ -15,8 +15,8 @@ class CreateItemsTagsTable extends Migration
     {
         Schema::create('items_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('item_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->integer('item_id')->unsigned()->index();
+            $table->integer('tag_id')->unsigned()->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');;
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');;
             $table->timestamps();
