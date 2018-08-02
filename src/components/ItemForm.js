@@ -1,13 +1,16 @@
 import React,{Component} from 'react';
 import {reduxForm,Field} from 'redux-form';
 import {connect} from 'react-redux';
-import { DropdownList,Multiselect} from 'react-widgets'
+import { DropdownList,Multiselect} from 'react-widgets';
+import Dropzone from 'react-dropzone';
 
 class ItemForm extends Component{
-    state ={viewSecondList:false,images:[],renderImages:false}
+    state ={viewSecondList:false,images:[],renderImages:false,files:[]}
+
     handleSubmitting(data){
         const Building = data.Building+'.'+data.BuildingFloor
         console.log({...data,Building:Building});
+        console.log(this.state.images);
     }
     render(){
         const {handleSubmit} = this.props;
@@ -16,7 +19,7 @@ class ItemForm extends Component{
         <div className=" d-flex flex-column ">
             <div>TST</div>
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
-            <form onSubmit={handleSubmit(this.handleSubmitting)} className="p-5">
+            <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
             <Field 
               name="lost"
@@ -26,7 +29,10 @@ class ItemForm extends Component{
             />{' '} 
                 <div className=" shadow-sm p-2 m-1" style={styles.lostOrFound} >I want to register an item</div>
             </div>
-            <input type="file" onChange={this.fileChangedHandler} multiple="multiple"/>
+            <input  ref="file" 
+        type="file" 
+        name="user[image]" 
+        multiple="true" onChange={this.fileChangedHandler} />
             <button onClick={this.uploadHandler}>Upload!</button> 
             <img src = {this.state.img}/>   
             <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
@@ -51,34 +57,42 @@ class ItemForm extends Component{
         );
     }
 
-    fileChangedHandler = (event) => {
-        const files = event.target.files;
-        for(var i=0; i<files.length;i++){
-       
-        var reader = new FileReader();
-        
-    
-        reader.onloadend = () => {
-            this.setState( {
-                images: this.state.images.concat(reader.result)
-              })
-              console.log(reader.result);
-        }
-
-        reader.readAsDataURL(files[i]);
-
+    handleDropImages = (files)=>{
+        this.setState({
+            images: files
+        })
+        console.log(files)
+        this.setState({renderImages:true});
     }
 
-    this.setState({renderImages:true});
-    
+    fileChangedHandler = (event) => {
+        var files = event.target.files;
+            for(var i=0; i<files.length;i++){
+            const reader = new FileReader();
+            reader.onloadend= async () => {
+                this.setState({
+                    images: [...this.state.images,reader.result]
+                })
+              }
+              
+            // console.log(this.state.images);
+            reader.readAsDataURL(files[i]);
+
+        }
+        files =Array.from(FileList);
+        //console.log(files);
+        this.setState({files:files});
+        //console.log(this.state.files);
+        this.setState({renderImages:true});
       }
+
     renderImages(){
        return this.state.images.map(
             (data)=>{
-                return <img className="m-2" height='200' width='200' src ={data}  />
+              //  console.log(data);
+                return <img key={data} className="m-1" height='200' width='200' src ={data}  />
             }
         );
-        
     }
 
     onClickBuildingList(){
@@ -125,7 +139,7 @@ class ItemForm extends Component{
     };
 
     renderFloorDropDownList ({input,data, meta:{touched,error,warn} }) {
-        data = ["000","100","200","300"]
+        data = ["000","100","200","300"];
      return(<div> <DropdownList   {...input}
      filter data={data}
         onChange={input.onChange} />
@@ -185,7 +199,7 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
 
 const renderChecker = ({input,label,meta:{touched,error,warn}}) =>{
     return (
-        <a   ><div  onClick={this.stuff} className="shadow-sm p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
+        <a  href="#" ><div  onClick={this.stuff} className="shadow-sm p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
     );
 }
 
