@@ -17,7 +17,14 @@ class ItemForm extends Component{
         const {containerStyle,imagesContainerStyle} =styles;
         return(
         <div className=" d-flex flex-column ">
-            <div>TST</div>
+            <div className="justify-self-center align-self-center d-flex shadow" style={styles.previewImageContainer}>
+            <button  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
+            <div style={styles.previewImage}>
+            <img 
+                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli"  />
+            </div>
+            </div>
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
@@ -69,7 +76,7 @@ class ItemForm extends Component{
         var files = event.target.files;
             for(var i=0; i<files.length;i++){
             const reader = new FileReader();
-            reader.onloadend= async () => {
+            reader.onloadend=  () => {
                 this.setState({
                     images: [...this.state.images,reader.result]
                 })
@@ -90,7 +97,9 @@ class ItemForm extends Component{
        return this.state.images.map(
             (data)=>{
               //  console.log(data);
-                return <img key={data} className="m-1" height='200' width='200' src ={data}  />
+                return <img  style={styles.imageStyle} onClick={()=>{
+                    console.log("lol");
+                }} key={data} className="m-1" height='200' width='200' src ={data}  />
             }
         );
     }
@@ -231,7 +240,31 @@ const styles={
     imagesContainerStyle:{
         border: '1px solid #eee',
         marginTop:'5%'
+    },
+    imageStyle:{
+        cursor:'pointer'
+    },
+    previewImageContainer :{
+        position: 'absolute',
+        zIndex:'999 ',
+        backgroundColor:"#FFFFFF",
+        border: '1px solid #eee',
+       // marginBottom:'5%',
+        //margin:"0 auto",
+        //marginTop:"5%",
+        //marginLeft:"15%",
+        //marginRight:"15%"
+      
+    },
+    previewImage:{
+        margin:"0 auto",
+        //width:"400px"
+    },
+    closeImage:{
+        position: 'absolute',
+        zIndex:'1000 ',
     }
+    
 }
 
  ItemForm = connect (null,null) (ItemForm)
