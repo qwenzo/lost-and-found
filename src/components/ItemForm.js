@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {reduxForm,Field} from 'redux-form';
 import {connect} from 'react-redux';
 import { DropdownList,Multiselect} from 'react-widgets';
-import Dropzone from 'react-dropzone';
+import Image from './Image';
 
 class ItemForm extends Component{
     state ={viewSecondList:false,images:[],renderImages:false,files:[]}
@@ -17,14 +17,7 @@ class ItemForm extends Component{
         const {containerStyle,imagesContainerStyle} =styles;
         return(
         <div className=" d-flex flex-column ">
-            <div className="justify-self-center align-self-center d-flex shadow" style={styles.previewImageContainer}>
-            <button  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
-            <div style={styles.previewImage}>
-            <img 
-                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli"  />
-            </div>
-            </div>
+            
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
@@ -36,15 +29,17 @@ class ItemForm extends Component{
             />{' '} 
                 <div className=" shadow-sm p-2 m-1" style={styles.lostOrFound} >I want to register an item</div>
             </div>
-            <input  ref="file" 
+            <label>
+            <input 
         type="file" 
         name="user[image]" 
         multiple="true" onChange={this.fileChangedHandler} />
-            <button onClick={this.uploadHandler}>Upload!</button> 
-            <img src = {this.state.img}/>   
-            <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
-                {this.state.renderImages ?this.renderImages():''}
-             </div>
+         </label>
+           
+                {this.state.renderImages ? <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
+                {this.renderImages()}
+                </div>:''}
+            
                 <div className="form-group " >
                     <Field  type="text" className="" label="Name" name="Name" component={renderInputField}/>
                 </div>
@@ -94,14 +89,14 @@ class ItemForm extends Component{
       }
 
     renderImages(){
-       return this.state.images.map(
+       return (
+           
+        this.state.images.map(
             (data)=>{
               //  console.log(data);
-                return <img  style={styles.imageStyle} onClick={()=>{
-                    console.log("lol");
-                }} key={data} className="m-1" height='200' width='200' src ={data}  />
+                return <Image  key={data} className="m-1" height='200' width='200' source ={data}  />
             }
-        );
+        ))
     }
 
     onClickBuildingList(){
@@ -114,7 +109,7 @@ class ItemForm extends Component{
         );
     }
 
-    renderTags ({ input, data, valueField, textField }) {
+    renderTags ({ input, data, valueField, textField,label }) {
          data = ['blu','red','7rnksh'];
          const TagsComponent =({ item }) => (
             <span style={tagStyle}>
@@ -124,13 +119,17 @@ class ItemForm extends Component{
           const tagStyle={
             backgroundColor:'red'
           }
-       return( <Multiselect {...input}
+       return(<div>
+        <label>{label}</label>
+        <Multiselect {...input}
             onBlur={() => input.onBlur()}
             value={input.value || []} // requires value to be an array
             data={data}
             valueField={valueField}
             textField={textField}
-        />)
+        />
+        </div>
+        )
     }
 
 
@@ -218,7 +217,6 @@ const validate = (values) =>{
         errors.Building="Building is required";
     }
     if(!values.Name){
-        console.log("yes");
         errors.Name="Name is Required";
     }
     return errors;
@@ -243,26 +241,6 @@ const styles={
     },
     imageStyle:{
         cursor:'pointer'
-    },
-    previewImageContainer :{
-        position: 'absolute',
-        zIndex:'999 ',
-        backgroundColor:"#FFFFFF",
-        border: '1px solid #eee',
-       // marginBottom:'5%',
-        //margin:"0 auto",
-        //marginTop:"5%",
-        //marginLeft:"15%",
-        //marginRight:"15%"
-      
-    },
-    previewImage:{
-        margin:"0 auto",
-        //width:"400px"
-    },
-    closeImage:{
-        position: 'absolute',
-        zIndex:'1000 ',
     }
     
 }
