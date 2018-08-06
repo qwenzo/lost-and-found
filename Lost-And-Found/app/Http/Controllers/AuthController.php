@@ -49,7 +49,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth()->logout();//invalidate the token
 
         return response()->json(['message' => 'Successfully logged out']);
     }
