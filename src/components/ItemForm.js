@@ -47,6 +47,10 @@ class ItemForm extends Component{
                     <Field type="text" className="" label="Tags" name="Tags" component={this.renderTags}/>
                 </div>
 
+                <div className="form-group " >
+                    <Field type="text" className="" label="Description" name="desc" component={this.renderFieldtextArea}/>
+                </div>
+
                 <div className="d-flex flex-row">
                 <Field className="col-sm" name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} ></Field> 
                 { this.state.viewSecondList ? <Field className="col-sm" name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
@@ -84,7 +88,6 @@ class ItemForm extends Component{
         files =Array.from(FileList);
         //console.log(files);
         this.setState({files:files});
-        //console.log(this.state.files);
         this.setState({renderImages:true});
       }
 
@@ -184,6 +187,23 @@ class ItemForm extends Component{
     
         return data;
     }
+
+    renderFieldtextArea = (
+        {
+          input,
+          label,
+          meta:{error,touched}  
+        }
+    ) =>{
+     return(
+         <div>
+             <label>{label}</label>
+             <textarea className={`form-control ${touched && error ? ' is-invalid':''}` } {...input} />
+             {touched &&
+            ((error && <span className=" invalid-feedback">{error}</span>) )}
+             </div>
+     )
+    };
     
     
 
@@ -205,6 +225,7 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
 };
 
 
+
 const renderChecker = ({input,label,meta:{touched,error,warn}}) =>{
     return (
         <a  href="#" ><div  onClick={this.stuff} className="shadow-sm p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
@@ -218,6 +239,10 @@ const validate = (values) =>{
     }
     if(!values.Name){
         errors.Name="Name is Required";
+    }
+    if(!values.desc){
+        errors.desc="Description is Required";
+
     }
     return errors;
 }
