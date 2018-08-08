@@ -5,7 +5,7 @@ import { DropdownList,Multiselect} from 'react-widgets';
 import Image from './Image';
 
 class ItemForm extends Component{
-    state ={viewSecondList:false,images:[],renderImages:false,files:[]}
+    state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null}
 
     handleSubmitting(data){
         const Building = data.Building+'.'+data.BuildingFloor
@@ -21,13 +21,49 @@ class ItemForm extends Component{
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
-            <Field 
-              name="lost"
-              component={renderChecker}
-              type="radio"
-              value="lost"
-            />{' '} 
-                <div className=" shadow-sm p-2 m-1" style={styles.lostOrFound} >I want to register an item</div>
+                {/*  <Field 
+                    name="lost"
+                    component={renderChecker}
+                    type="radio"
+                    value="lost"
+                    />{' '}  */}
+                    <div className=" p-2 m-1"
+                        onClick = { (e)=>{
+                            if(styles.lostCheckerStyle.backgroundColor===undefined){
+                                styles.lostCheckerStyle={... styles.lostCheckerStyle,backgroundColor:'#ECF0F1'};
+                                styles.foundCheckerStyle={... styles.foundCheckerStyle,backgroundColor:undefined};
+                                this.setState({found:true});
+
+                            }
+                            else{
+                                styles.lostCheckerStyle={... styles.lostCheckerStyle,backgroundColor:undefined}; 
+                                styles.foundCheckerStyle={... styles.foundCheckerStyle,backgroundColor:'#ECF0F1'};
+                                this.setState({found:false});
+                            }
+                            
+                        
+
+                    }}
+                        onMouseOver ={this.handleHover} 
+                        onMouseLeave = {this.handleMouseLeaving}
+                    style={styles.lostCheckerStyle} >I've lost an item</div>
+
+                        <div  onClick = { (e)=>{
+                            if(styles.foundCheckerStyle.backgroundColor===undefined){
+                                styles.foundCheckerStyle={... styles.foundCheckerStyle,backgroundColor:'#ECF0F1'};
+                                styles.lostCheckerStyle={... styles.lostCheckerStyle,backgroundColor:undefined};
+                                this.setState({found:false});
+
+                            }
+                            else{
+                                styles.foundCheckerStyle={... styles.foundCheckerStyle,backgroundColor:undefined}; 
+                                styles.lostCheckerStyle={... styles.lostCheckerStyle,backgroundColor:'#ECF0F1'};
+                                this.setState({found:true});
+                            }
+                    }}
+                    onMouseOver ={this.handleHover} 
+                    onMouseLeave = {this.handleMouseLeaving}
+                 className="p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label>
             <input 
@@ -61,6 +97,15 @@ class ItemForm extends Component{
             </div>
         </div>
         );
+    }
+
+    handleHover = (e) => {
+      e.target.className+=' shadow-sm';
+    }
+
+    handleMouseLeaving = (e) => {
+        //e.target.className-='shadow-sm';
+        e.target.className = 'p-2 m-1'
     }
 
     handleDropImages = (files)=>{
@@ -257,8 +302,15 @@ const styles={
     inputStyle:{
         flex:1
     },
-    lostOrFound:{
+    lostCheckerStyle:{
         border: '1px solid #eee',
+        cursor:'pointer',
+        userSelect: 'none'
+    },
+    foundCheckerStyle:{
+        border: '1px solid #eee',
+        cursor:'pointer',
+        userSelect: 'none'
     },
     imagesContainerStyle:{
         border: '1px solid #eee',
