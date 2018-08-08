@@ -3,6 +3,7 @@ import {reduxForm,Field} from 'redux-form';
 import {connect} from 'react-redux';
 import { DropdownList,Multiselect} from 'react-widgets';
 import Image from './Image';
+import Button from './Button';
 
 class ItemForm extends Component{
     state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null}
@@ -17,7 +18,7 @@ class ItemForm extends Component{
         const {containerStyle,imagesContainerStyle} =styles;
         return(
         <div className=" d-flex flex-column ">
-            
+           
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
@@ -93,7 +94,9 @@ class ItemForm extends Component{
                     </div>
                    
                 <button type="submit" className="btn btn-primary">Submit</button>
+                <Button  className="d-flex align-self-start " text='test'/>
              </form>
+             
             </div>
         </div>
         );
