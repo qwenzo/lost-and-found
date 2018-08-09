@@ -28,11 +28,12 @@ class ItemForm extends Component{
                     type="radio"
                     value="lost"
                     />{' '}  */}
-                    <div className=" p-2 m-1"
+                    <div className="shadow-sm p-2 m-1"
                         onClick = { (e)=>{
                             if(styles.lostCheckerStyle.backgroundColor===undefined){
                                 styles.lostCheckerStyle={... styles.lostCheckerStyle,backgroundColor:'#ECF0F1'};
                                 styles.foundCheckerStyle={... styles.foundCheckerStyle,backgroundColor:undefined};
+                                e.target.className="p-2 m-1";
                                 this.setState({found:true});
 
                             }
@@ -64,7 +65,7 @@ class ItemForm extends Component{
                     }}
                     onMouseOver ={this.handleHover} 
                     onMouseLeave = {this.handleMouseLeaving}
-                 className="p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
+                 className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label>
             <input 
@@ -172,7 +173,7 @@ class ItemForm extends Component{
           }
        return(<div>
         <label>{label}</label>
-        <Multiselect {...input}
+        <Multiselect  {...input}
             onBlur={() => input.onBlur()}
             value={input.value || []} // requires value to be an array
             data={data}
@@ -264,7 +265,15 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
        return <div > 
             <label>{label}</label>
             <div >
-            <input {...input} type="text"  className={`form-control ${touched && error ? ' is-invalid':''}` } placeholder={label}   />
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <div className="d-flex flex-row-reverse" > 
+            <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` } placeholder={label}   />
+            <div style={{zIndex:'1',position:'absolute',paddingRight:'0%'}} className="  align-self-center d-flex">
+            
+                <i className="p-2 shadow-sm fa fa-search align-self-center"></i>
+            </div>
+            </div>
             {error && touched ?<span className="invalid-feedback">
          {error}
       </span> : ''}
@@ -276,7 +285,7 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
 
 const renderChecker = ({input,label,meta:{touched,error,warn}}) =>{
     return (
-        <a  href="#" ><div  onClick={this.stuff} className="shadow-sm p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
+        <a  href="#" ><div  onClick={this.stuff} className=" shadow-md p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
     );
 }
 
@@ -321,6 +330,13 @@ const styles={
     },
     imageStyle:{
         cursor:'pointer'
+    },
+    test:{
+        outline:'none',
+        borderStyle:'none',
+        border: '1px solid #eee',
+        borderRadius:'2px 2px 2px 2px',
+       // backgroundColor:'#ECF0F1'
     }
     
 }
