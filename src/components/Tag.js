@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Tag = (props) =>{
+    //add margin mb-5
     return(
-        <div style={styles.TagStyle} className = "m-1 shadow-sm p-1 mb-5 bg-white  "> {props.text} </div>
+        <div style={styles.TagStyle} className = "m-1 shadow-sm p-1  bg-white  "> {props.text} </div>
     );
 }
 

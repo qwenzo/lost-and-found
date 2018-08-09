@@ -5,6 +5,8 @@ import { DropdownList,Multiselect} from 'react-widgets';
 import Image from './Image';
 import Button from './Button';
 import axios from 'axios';
+import Tag from './Tag';
+import InputField from './InputField';
 
 var  headers = {
     'Access-Control-Allow-Origin': '*',
@@ -17,9 +19,26 @@ var  headers = {
    
 
 class ItemForm extends Component{
-    state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null}
+    state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null , textCursorPos:0}
 
+    componentDidMount(){
+        var items = document.getElementById('tagsContainer');
+        console.log(items.offsetWidth);
+        console.log(items);
+        var size =window.getComputedStyle(items).width;
+        console.log(size);
+        
+        this.setState({textCursorPos:size+''});
+       styles.test = {...styles.test,height:items.offsetHeight+'px'}
+        var i=0;
+        for(i=0; i <items.size;i++){
+            console.log(items[i]);
+        }
+        console.log('test');
+    }
     handleSubmitting(data){
+        var items = document.getElementById('tagsContainer');
+        console.log(items.offsetWidth);
        
       const req =  axios({ method: 'put', url: 'https://mylostfound.herokuapp.com/api/items/3',data:{name:'hjkhyuytytk',place:'jhkhjktytyuyj',description:'jghtyutujghj'}, headers }).then(
             (e) =>{
@@ -293,12 +312,29 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
             <div >
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                <div className="d-flex flex-row-reverse" > 
-            <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` } placeholder={label}   />
-            <div style={{zIndex:'1',position:'absolute',paddingRight:'0%'}} className="  align-self-center d-flex">
-            
-                <i className="p-2 shadow-sm fa fa-search align-self-center"></i>
+                <div className="d-flex flex-row" > 
+            <input {...input} autoSave={'false'} autoComplete={'false'} type="text" style={styles.test} className={` w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   />
+            <div id="tagsContainer" style={{zIndex:'1',position:'absolute',paddingRight:'0%'}} className="d-flex flex-wrap flex-row justify-content-center align-items-center  align-self-center">
+                <Tag text='test x'  className="p-2 justfy-content-center align-self-center mx-auto" />
+                <Tag text='Food x'  className="p-2 justfy-content-center" />
+                <Tag text='and x'  className="p-2 justfy-content-center" />
+                <Tag text='Stuff x'  className="p-2 justfy-content-center align-self-center mx-auto" />
+                <Tag text='loly x'  className="p-2 justfy-content-center" />
+                <Tag text='lolly123 x'  className="p-2 justfy-content-center" />
+                <Tag text='7rnksh x'  className="p-2 justfy-content-center align-self-center mx-auto" />
+                {/* <i id="tag" className="p-2 shadow-sm fa fa-search align-self-center"></i>
+                <i id ="tag" className="p-2 shadow-sm fa fa-search align-self-center"></i> */}
+                <InputField />
             </div>
+           
+            </div>
+            <div style={{zIndex:'1',position:'absolute'}} className='w-100 d-flex flex-stretch shadow-sm'>
+                    lol
+                </div>
+            
+             <div className="d-flex flex-row" > 
+           {/*  <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   /> */}
+           
             </div>
             {error && touched ?<span className="invalid-feedback">
          {error}
@@ -333,9 +369,10 @@ const validate = (values) =>{
 const styles={
     containerStyle:{
         border: '1px solid #ddd',
-        marginLeft:'25%',
+         marginLeft:'25%',
         marginRight:'25%',
-        marginTop:'3%'
+        marginTop:'3%', 
+        borderRadius:'5px 5px 5px 5px'
     },
     inputStyle:{
         flex:1
@@ -360,8 +397,11 @@ const styles={
     test:{
         outline:'none',
         borderStyle:'none',
-        border: '1px solid #eee',
-        borderRadius:'2px 2px 2px 2px',
+        border: '1px solid red',
+        borderRadius:'5px 5px 5px 5px',
+        paddingLeft:'5%',
+        textIndent:'50px',
+        height:'660px'
        // backgroundColor:'#ECF0F1'
     }
     
