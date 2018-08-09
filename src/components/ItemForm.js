@@ -4,11 +4,38 @@ import {connect} from 'react-redux';
 import { DropdownList,Multiselect} from 'react-widgets';
 import Image from './Image';
 import Button from './Button';
+import axios from 'axios';
+
+var  headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Accept-Version': 1,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers':' Origin, Content-Type, X-Auth-Token',
+    'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9teWxvc3Rmb3VuZC5oZXJva3VhcHAuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTMzODI0MDU3LCJleHAiOjE1MzM4Mjc2NTcsIm5iZiI6MTUzMzgyNDA1NywianRpIjoic1ZFalRXZ08zZlVCNDR6aSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.sKbdWU7uKtp-u0rCzeqR0joRWEI2O7x6HF9fkA0HtX4'}` }
+   
 
 class ItemForm extends Component{
     state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null}
 
     handleSubmitting(data){
+       
+      const req =  axios({ method: 'put', url: 'https://mylostfound.herokuapp.com/api/items/3',data:{name:'hjkhyuytytk',place:'jhkhjktytyuyj',description:'jghtyutujghj'}, headers }).then(
+            (e) =>{
+                console.log(e);
+                console.log("lol");
+            }
+        ).catch((error)=>{
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+              }
+        }).then(() =>{
+            console.log(req)
+        })
+       // console.log(req);
         const Building = data.Building+'.'+data.BuildingFloor
         console.log({...data,Building:Building});
         console.log(this.state.images);
@@ -18,7 +45,6 @@ class ItemForm extends Component{
         const {containerStyle,imagesContainerStyle} =styles;
         return(
         <div className=" d-flex flex-column ">
-           
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
@@ -306,7 +332,7 @@ const validate = (values) =>{
 
 const styles={
     containerStyle:{
-        border: '1px solid #eee',
+        border: '1px solid #ddd',
         marginLeft:'25%',
         marginRight:'25%',
         marginTop:'3%'
