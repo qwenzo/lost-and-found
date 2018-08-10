@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 
-class InputField extends Component{
+class TextareaField extends Component{
     state = {isInvalidViewText:false}
 
     render(){
@@ -8,7 +8,7 @@ class InputField extends Component{
         {(isInvalidCond) ? styles.inputStyle = {...styles.inputStyle,border:'1px solid #dc3545'}:styles.inputStyle = {...styles.inputStyle,border:'1px solid #ddd'}}
         return(
             <div className="d-flex flex-column" > 
-            <input {...input||''} placeholder={placeholder||''} value={value} onChangeCapture={this.isInvalid && onTextChange} onPointerCancel={()=>{console.log('test')}}  onClickCapture={(e)=>{
+            <textarea {...input||''} placeholder={placeholder||''} value={value} onChangeCapture={this.isInvalid && onTextChange}  onClickCapture={(e)=>{
                 e.target.className = 'w-100 p-1'
             }} autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`  p-1 shadow-sm `}    />
           {this.state.isInvalidViewText ? <span style={styles.invalidTextStyle}>testy</span>:''}
@@ -34,5 +34,5 @@ const styles = {
     }
 }
 
-export default InputField;
+export default TextareaField;
 

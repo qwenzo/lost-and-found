@@ -7,6 +7,7 @@ import Button from './Button';
 import axios from 'axios';
 import Tag from './Tag';
 import InputField from './InputField';
+import TextareaField from './textareaField'
 
 var  headers = {
     'Access-Control-Allow-Origin': '*',
@@ -113,10 +114,8 @@ class ItemForm extends Component{
                  className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label>
-            <input 
-        type="file" 
-        name="user[image]" 
-        multiple="true" onChange={this.fileChangedHandler} />
+            <Button htmlFor='files'  className="d-flex align-self-end" img={<i class="fa fa-upload"></i>}/>
+            <input id="files" type="file" name="user[image]" style={{visibility:'hidden'}}multiple="true" onChange={this.fileChangedHandler} />
          </label>
            
                 {this.state.renderImages ? <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
@@ -292,9 +291,7 @@ class ItemForm extends Component{
      return(
          <div>
              <label>{label}</label>
-             <textarea className={`form-control ${touched && error ? ' is-invalid':''}` } {...input} />
-             {touched &&
-            ((error && <span className=" invalid-feedback">{error}</span>) )}
+             <TextareaField input={input} isInvalidCond={touched && error}/>
              </div>
      )
     };
@@ -310,10 +307,9 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
        return <div > 
             <label>{label}</label>
             <div >
-            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                 <div className="d-flex flex-row" > 
-            <input {...input} autoSave={'false'} autoComplete={'false'} type="text" style={styles.test} className={` w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   />
+             
+           {/*  <input {...input} autoSave={'false'} autoComplete={'false'} type="text" style={styles.test} className={` w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   /> */}
             <div id="tagsContainer" style={{zIndex:'1',position:'absolute',paddingRight:'0%'}} className="d-flex flex-wrap flex-row justify-content-center align-items-center  align-self-center">
                 {/* <Tag text='test x'  className="p-2 justfy-content-center align-self-center mx-auto" />
                 <Tag text='Food x'  className="p-2 justfy-content-center" />
@@ -331,14 +327,12 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
           {/*   <div style={{zIndex:'1',position:'absolute'}} className='w-100 d-flex flex-stretch shadow-sm'>
                     lol
                 </div> */}
-                <InputField input={input} placeholder='hey' isInvalidCond={touched && error}/>
+                 <InputField input={input} placeholder='hey' isInvalidCond={touched && error}/> 
              <div className="d-flex flex-row" > 
            {/*  <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   /> */}
            
             </div>
-            {error && touched ?<span className="invalid-feedback">
-         {error}
-      </span> : ''}
+         
             </div>
         </div>
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Button = ({text}) =>{
+const Button = ({text,img}) =>{
     return(
         <div style={styles.containerStyle} className=' align-self-start d-flex'>
           <div style={styles.btnStyle} className='p-2 shadow-sm'>
-          {text}
+          {text?text:img?img:''}
           </div>
            
         </div>

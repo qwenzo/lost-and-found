@@ -6,7 +6,10 @@ class Image extends Component {
     render(){
        const {source,onClick,height,width} = this.props;
        return (
+           
        <div className=" d-flex flex-column ">
+         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
           {this.state.showPreviewImage ? <div className="justify-self-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
             
             <div onClickCapture={this.onImageClose} className="align-items-center d-flex">
@@ -16,7 +19,10 @@ class Image extends Component {
                     alt="Trulli"  /> 
             </div>
        </div>:'' }
+       <div className="d-flex flex-row-reverse">
+           <div className=" p-2 d-flex align-self-start" style={styles.closeSmallImage}><i style={styles.closeImageIcon} className=" shadow-sm fa fa-times"></i> </div>
        <img onClickCapture={this.omImageClick} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  />
+       </div>
        </div>
     
     )
@@ -32,7 +38,8 @@ class Image extends Component {
 
 const styles = {
     imageStyle:{
-        cursor:'pointer'
+        cursor:'pointer',
+        border: '1px solid #ddd'
     },
     previewImageContainer :{
         position: 'absolute',
@@ -60,6 +67,15 @@ const styles = {
     closeImage:{
         position: 'absolute',
         zIndex:'1000 ',
+    },
+    closeSmallImage:{
+        position: 'absolute',
+        zIndex:'1 ', 
+       
+    },
+    closeImageIcon:{
+        color:'#616A6B',
+        //border: '1px solid #ddd',
     }
 }
 
