@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Button = ({text,img}) =>{
+const Button = ({text,img,borderRadius}) =>{
+
+      
     return(
         <div style={styles.containerStyle} className=' align-self-start d-flex'>
           <div style={styles.btnStyle} className='p-2 shadow-sm'>
