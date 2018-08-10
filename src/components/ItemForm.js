@@ -331,7 +331,7 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
           {/*   <div style={{zIndex:'1',position:'absolute'}} className='w-100 d-flex flex-stretch shadow-sm'>
                     lol
                 </div> */}
-                <InputField input={input} placeholder='hey'/>
+                <InputField input={input} placeholder='hey' isInvalidCond={touched && error}/>
              <div className="d-flex flex-row" > 
            {/*  <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   /> */}
            
