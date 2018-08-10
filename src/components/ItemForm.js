@@ -315,23 +315,23 @@ const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
                 <div className="d-flex flex-row" > 
             <input {...input} autoSave={'false'} autoComplete={'false'} type="text" style={styles.test} className={` w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   />
             <div id="tagsContainer" style={{zIndex:'1',position:'absolute',paddingRight:'0%'}} className="d-flex flex-wrap flex-row justify-content-center align-items-center  align-self-center">
-                <Tag text='test x'  className="p-2 justfy-content-center align-self-center mx-auto" />
+                {/* <Tag text='test x'  className="p-2 justfy-content-center align-self-center mx-auto" />
                 <Tag text='Food x'  className="p-2 justfy-content-center" />
                 <Tag text='and x'  className="p-2 justfy-content-center" />
                 <Tag text='Stuff x'  className="p-2 justfy-content-center align-self-center mx-auto" />
                 <Tag text='loly x'  className="p-2 justfy-content-center" />
                 <Tag text='lolly123 x'  className="p-2 justfy-content-center" />
-                <Tag text='7rnksh x'  className="p-2 justfy-content-center align-self-center mx-auto" />
+                <Tag text='7rnksh x'  className="p-2 justfy-content-center align-self-center mx-auto" /> */}
                 {/* <i id="tag" className="p-2 shadow-sm fa fa-search align-self-center"></i>
                 <i id ="tag" className="p-2 shadow-sm fa fa-search align-self-center"></i> */}
-                <InputField />
+                
             </div>
-           
-            </div>
-            <div style={{zIndex:'1',position:'absolute'}} className='w-100 d-flex flex-stretch shadow-sm'>
-                    lol
-                </div>
             
+            </div>
+          {/*   <div style={{zIndex:'1',position:'absolute'}} className='w-100 d-flex flex-stretch shadow-sm'>
+                    lol
+                </div> */}
+                <InputField input={input} placeholder='hey'/>
              <div className="d-flex flex-row" > 
            {/*  <input {...input} type="text" style={styles.test} className={`w-100 p-1 shadow-sm  ${touched && error ? ' is-invalid':''}` }  placeholder={label}   /> */}
            
@@ -401,7 +401,7 @@ const styles={
         borderRadius:'5px 5px 5px 5px',
         paddingLeft:'5%',
         textIndent:'50px',
-        height:'660px'
+        //height:'660px'
        // backgroundColor:'#ECF0F1'
     }
     
