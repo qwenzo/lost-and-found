@@ -217,7 +217,7 @@ class ItemForm extends Component{
           }
        return(<div>
         <label>{label}</label>
-        <Multiselect  {...input}
+        <Multiselect className="shadow-sm" {...input}
             onBlur={() => input.onBlur()}
             value={input.value || []} // requires value to be an array
             data={data}
@@ -290,7 +290,7 @@ class ItemForm extends Component{
     ) =>{
      return(
          <div>
-             <label>{label}</label>
+             <label style={styles.textLabelStyle}>{label}</label>
              <TextareaField input={input} isInvalidCond={touched && error}/>
              </div>
      )
@@ -366,7 +366,7 @@ const styles={
          marginLeft:'25%',
         marginRight:'25%',
         marginTop:'3%', 
-        borderRadius:'5px 5px 5px 5px'
+        borderRadius:'50px 50px 5px 5px'
     },
     inputStyle:{
         flex:1
@@ -397,6 +397,9 @@ const styles={
         textIndent:'50px',
         //height:'660px'
        // backgroundColor:'#ECF0F1'
+    },
+    textLabelStyle:{
+        font: '400px'
     }
     
 }

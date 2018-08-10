@@ -14,7 +14,8 @@ const Button = ({text,img}) =>{
 const styles = {
     btnStyle:{
         border: '1px solid #eee ',
-        cursor:'pointer'
+        cursor:'pointer',
+        borderRadius:'4px 4px 4px 4px',
 
     },
     containerStyle:{
