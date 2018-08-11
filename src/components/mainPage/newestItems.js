@@ -20,7 +20,7 @@ class NewestItems extends Component {
              <div className = "d-flex justify-content-center">
              <div    className = " shadow-lg bg-white  ">
              <h5 className = "d-flex justify-content-center rounded-top"> last 5 items </h5>
-             <div style={styles.containerStyle} id="itemsContainer" className=" d-flex"> <ItemCard />
+             <div style={styles.containerStyle} id="itemsContainer" className=" d-flex flex-wrap justify-content-center align-items-center"> <ItemCard />
              <ItemCard /> <ItemCard /> <ItemCard /> <ItemCard />
              </div>
              </div>

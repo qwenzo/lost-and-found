@@ -364,9 +364,10 @@ const validate = (values) =>{
 const styles={
     containerStyle:{
         border: '1px solid #ddd',
-         marginLeft:'25%',
-        marginRight:'25%',
-        marginTop:'3%', 
+         marginLeft:'30%',
+        marginRight:'30%',
+        marginTop:'3%',
+        marginBottom:'3%',
         borderRadius:'50px 50px 5px 5px',
         overflow:'hidden'
     },

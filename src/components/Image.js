@@ -7,15 +7,19 @@ class Image extends Component {
        const {source,onClick,height,width} = this.props;
        return (
            
-       <div className=" d-flex flex-column ">
+       <div onClickCapture={(e)=>{
+         console.log(e.target.nodeName);
+       {e.target.nodeName!=='IMG'? this.setState({showPreviewImage:false}):''}
+
+       }}className=" d-flex flex-column ">
          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-          {this.state.showPreviewImage ? <div className="justify-self-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
-            
-            <div onClickCapture={this.onImageClose} className="align-items-center d-flex">
+          {this.state.showPreviewImage ? <div className="justify-self-center align-items-center justify-content-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
+          <style>{'body { background-color: #F8F9F9}'}</style>
+            <div  className=" d-flex">
             <button onClick={this.onImageClose}  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
              <img  style={styles.previewImage}
-                   className="d-flex justify-self-center align-self-center" src={source}
+                   className=" align-self-center " src={source}
                     alt="Trulli"  /> 
             </div>
        </div>:'' }
@@ -47,7 +51,7 @@ const styles = {
         backgroundColor:"#FFFFFF",
         border: '1px solid #eee',
        // marginBottom:'5%',
-         margin:"0 auto",
+        
         bottom:0,
         top:0,
         left:0,
@@ -59,10 +63,10 @@ const styles = {
       
     },
     previewImage:{
-       // margin:"0 auto",
+        margin:'0 auto',
         width: '100%',
-        height: 'auto'
-        //width:"400px"
+       // marginLeft:'100%',
+       height:'auto'
     },
     closeImage:{
         position: 'absolute',
