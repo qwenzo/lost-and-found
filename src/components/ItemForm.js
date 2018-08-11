@@ -64,7 +64,7 @@ class ItemForm extends Component{
         <div className=" d-flex flex-column ">
               <style>{'body { background-color: #F8F9F9}'}</style>
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
-            <form style={{backgroundColor:'#FFFF'}} onSubmit={handleSubmit(this.handleSubmitting.bind(this))} className="p-5">
+            <form style={{backgroundColor:'#FFFF'}} /* onSubmit={handleSubmit(this.handleSubmitting.bind(this))} */ className="p-5">
             <div className="align-items-center d-flex flex-row justify-content-center">
                 {/*  <Field 
                     name="lost"
@@ -112,7 +112,7 @@ class ItemForm extends Component{
                  className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label>
-            <Button htmlFor='files' borderRadius='100'  className="d-flex align-self-end" img={<i class="fa fa-upload"></i>}/>
+            <Button htmlFor='files' borderRadius='100'  className="d-flex align-self-end" img={<i className="fa fa-upload"></i>}/>
             <input id="files" type="file" name="user[image]" style={{visibility:'hidden'}}multiple="true" onChange={this.fileChangedHandler} />
          </label>
            
@@ -132,12 +132,15 @@ class ItemForm extends Component{
                 </div>
 
                 <div className="d-flex flex-row">
-                <Field className="col-sm" name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} ></Field> 
+                <Field className="col-sm" name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} label='Last Seen At' />
                 { this.state.viewSecondList ? <Field className="col-sm" name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
                     </div>
                    
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Button  /* color='#4286f4' fontColor='#FFFFF' */  className="d-flex align-self-start " text='Submit'/>
+               {/*  <button  className="btn btn-primary">Submit</button> */}
+               <div style={styles.submitBtnStyle}>
+               <Button  onClick={handleSubmit(this.handleSubmitting.bind(this))} /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/>
+               </div>
+              
              </form>
              
             </div>
@@ -197,11 +200,6 @@ class ItemForm extends Component{
         this.setState({viewSecondList:true});
     }
 
-     renderChecker({input,label,meta:{touched,error,warn}}) {
-        return (
-            <a   ><div  onClick={this.stuff} className="shadow-sm p-2 m-1" style={styles.lostOrFound} {...input} >I've lost an item</div></a>
-        );
-    }
 
     renderTags ({ input, data, valueField, textField,label }) {
          data = ['blu','red','7rnksh'];
@@ -227,9 +225,11 @@ class ItemForm extends Component{
     }
 
 
-     renderBuildingDropdownList ({ input, data, valueField, textField , meta:{touched,error,warn} }) {
+     renderBuildingDropdownList ({ input, data, valueField, textField ,label, meta:{touched,error,warn} }) {
         data = this.buildingData();
-     return( <div><DropdownList  style={{overflow:'visible'}}   {...input}
+     return( <div>
+           <label>{label}</label>
+         <DropdownList  style={{overflow:'visible'}}   {...input}
      filter data={data}
         valueField={valueField}
         textField={textField}
@@ -402,6 +402,9 @@ const styles={
     },
     textLabelStyle:{
         font: '400px'
+    },
+    submitBtnStyle:{
+      marginTop:'5%'
     }
     
 }
