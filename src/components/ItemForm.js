@@ -43,13 +43,10 @@ class ItemForm extends Component{
        
       const req =  axios({ method: 'put', url: 'https://mylostfound.herokuapp.com/api/items/3',data:{name:'hjkhyuytytk',place:'jhkhjktytyuyj',description:'jghtyutujghj'}, headers }).then(
             (e) =>{
-                console.log(e);
-                console.log("lol");
+        
             }
         ).catch((error)=>{
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
                 console.log(error.response.data);
               }
         }).then(() =>{
@@ -140,7 +137,7 @@ class ItemForm extends Component{
                     </div>
                    
                 <button type="submit" className="btn btn-primary">Submit</button>
-                <Button   className="d-flex align-self-start " text='test'/>
+                <Button  /* color='#4286f4' fontColor='#FFFFF' */  className="d-flex align-self-start " text='Submit'/>
              </form>
              
             </div>
@@ -232,7 +229,7 @@ class ItemForm extends Component{
 
      renderBuildingDropdownList ({ input, data, valueField, textField , meta:{touched,error,warn} }) {
         data = this.buildingData();
-     return( <div><DropdownList   {...input}
+     return( <div><DropdownList  style={{overflow:'visible'}}   {...input}
      filter data={data}
         valueField={valueField}
         textField={textField}
@@ -245,7 +242,7 @@ class ItemForm extends Component{
 
     renderFloorDropDownList ({input,data, meta:{touched,error,warn} }) {
         data = ["000","100","200","300"];
-     return(<div> <DropdownList   {...input}
+     return(<div> <DropdownList style={{overflow:'visible'}}  {...input}
      filter data={data}
         onChange={input.onChange} />
         {error && touched ?<span className="invalid-feedback">
@@ -369,7 +366,9 @@ const styles={
         marginTop:'3%',
         marginBottom:'3%',
         borderRadius:'50px 50px 5px 5px',
-        overflow:'hidden'
+        overflow: 'hidden',
+        //whiteSpace: 'nowrap'
+       //display:'inline-block'
     },
     inputStyle:{
         flex:1
