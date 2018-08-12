@@ -10,7 +10,7 @@ class TextareaField extends Component{
             <div className="d-flex flex-column" > 
             <textarea {...input||''} placeholder={placeholder||''} value={value} onChangeCapture={this.isInvalid && onTextChange}  onClickCapture={(e)=>{
                 e.target.className = 'w-100 p-1'
-            }} autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`  p-1 shadow-sm `}    />
+            }} autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`  p-1  `}    />
           {this.state.isInvalidViewText ? <span style={styles.invalidTextStyle}>testy</span>:''}
           {isInvalidCond ? <span style={styles.invalidTextStyle}>{isInvalidCond}</span>:''}
             </div>

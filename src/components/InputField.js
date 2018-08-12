@@ -4,14 +4,17 @@ class InputField extends Component{
     state = {isInvalidViewText:false}
 
     render(){
-        const {value,onTextChange,input,placeholder,isInvalidCond, height} = this.props;
+        const {value,onTextChange,input,placeholder,isInvalidCond, height,row,element} = this.props;
         {(height) ? styles.inputStyle = {...styles.inputStyle,height:height}:styles.inputStyle = {...styles.inputStyle,height:'30px'}}
         {(isInvalidCond) ? styles.inputStyle = {...styles.inputStyle,border:'1px solid #dc3545'}:styles.inputStyle = {...styles.inputStyle,border:'1px solid #ddd'}}
         return(
             <div className="d-flex flex-column " > 
+            <div  className={`d-flex ${row} `}>
             <input {...input||''} placeholder={placeholder||''} value={value} onChangeCapture={ onTextChange} onPointerCancel={()=>{console.log('test')}}  /* onClickCapture={(e)=>{
                 e.target.className = 'w-100 p-1'
-            }} */ autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`d-flex  shadow-sm `}    />
+            }} */ autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`align-self-stretch w-100 d-flex  `}    />
+            <div style={{zIndex:'5',position:'absolute',}} className="d-flex ">{element}</div>
+            </div>
           {this.state.isInvalidViewText ? <span style={styles.invalidTextStyle}>testy</span>:''}
           {isInvalidCond ? <span style={styles.invalidTextStyle}>{isInvalidCond}</span>:''}
             </div>

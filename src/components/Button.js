@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({text,img,borderRadius,color,fontColor,onClick,className}) =>{
     return(
-        <div className={className}>
+        <div>
         <div onClickCapture={onClick}  style={styles.containerStyle} className={` align-self-start d-flex`}>
           <div onMouseDownCapture={
               (e)=>{
@@ -18,7 +18,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className}) =>{
             }   
           }
           style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className=' shadow-sm'>
-          {text?<font color={fontColor}>{text}</font>:img?img:''}
+          {text?<font face={'system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'} color={fontColor}>{text}</font>:img?img:''}
           </div>
            
         </div>
@@ -41,7 +41,7 @@ const styles = {
 
     },
     containerStyle:{
-        width:'0px'
+      
     }
 }
 

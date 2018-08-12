@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes  from 'prop-types';
+import Button from './Button';
+import InputField from './InputField';
 class Header extends Component {
 
     static contextTypes ={
@@ -21,8 +23,10 @@ class Header extends Component {
 
     renderSearchBox(){
      return(
-        <div id="searchBoxHeader" style={styles.searchBoxStyle} className="input-group float-right w-25 h-25 col-3">
-        <input type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+        <div id="searchBoxHeader" style={styles.searchBoxStyle} className="shadow-sm  w-25">
+        <InputField element={
+             <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
+         } row='flex-row-reverse' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
       </div>
      );
     }
@@ -30,13 +34,14 @@ class Header extends Component {
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-        <div style = {styles.headerStyle} className="row rounded">
-            {pathname=="/" ? '' : this.renderSearchBox()}      
-      <div className = 'd-flex flex-row-reverse float-left col' >
-      <button className='m-2 btn btn-primary ' >  LOGIN </button> 
-      <button  className='m-2 btn btn-primary '> SIGNUP </button> 
-     
-      </div>
+        <div style = {styles.headerStyle} className=" align-items-center row d-flex">
+        
+        {pathname=="/" ? '' : this.renderSearchBox()}  
+      <div className='d-flex flex-row-reverse col-sm'>
+      <Button className='' text='LOGIN'/> 
+      <Button  className=''  text='heeeeeeeeeeeey'/>
+      <Button  className=' '  text='heeeeeeeeeeeey'/>
+      </div>  
       </div>
     );
   }
@@ -45,15 +50,15 @@ class Header extends Component {
 const styles = {
   headerStyle: {
     border: '1px solid #eee',
-    marginTop:'1%',
-    marginLeft:'1%',
-    marginRight:'1%'
+    backgroundColor:'#FFFF',
+    paddingTop:'0.5%',
+    paddingBottom:'0.5%',
+  
   },
   searchBoxStyle:{
-      marginLeft:'1%',
-      marginTop:'8px'
-
+    
   }
+ 
 }
 
 /*

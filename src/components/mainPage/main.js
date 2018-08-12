@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import NewestItems from './newestItems';
 import InputField from '../InputField';
+import Button from '../Button';
 class Main extends Component {
   
 
@@ -36,7 +37,9 @@ class Main extends Component {
          </div>
         
          <div id="searchBox" style={styles.searchBoxStyle} className=" align-self-center ">
-         <InputField height='35px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text" className="d-flex justify-content-center align-self-center" placeholder="Search a lost item"  />    
+         <InputField element={
+             <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
+         } row='flex-row-reverse' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text" className="d-flex justify-content-center align-self-center" placeholder="Search a lost item"  />    
         {/*  <div className="input-group-append">
     <button className="btn btn-outline-secondary" type="button">Search</button>
         </div> */}

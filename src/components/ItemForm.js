@@ -112,7 +112,7 @@ class ItemForm extends Component{
                  className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label>
-            <Button htmlFor='files' borderRadius='100'  className="d-flex align-self-end" img={<i className="fa fa-upload"></i>}/>
+            <Button htmlFor='files'   className="d-flex flex-wrap align-self-end" img={<i className="fa fa-upload"></i>}/>
             <input id="files" type="file" name="user[image]" style={{visibility:'hidden'}}multiple="true" onChange={this.fileChangedHandler} />
          </label>
            
@@ -131,14 +131,15 @@ class ItemForm extends Component{
                     <Field type="text" className="" label="Description" name="desc" component={this.renderFieldtextArea}/>
                 </div>
 
-                <div className="d-flex flex-row">
-                <Field className="col-sm" name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} label='Last Seen At' />
-                { this.state.viewSecondList ? <Field className="col-sm" name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
+                <div className=" d-flex flex-row">
+                <Field  name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} label='Last Seen At' />
+                { this.state.viewSecondList ? <Field name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
                     </div>
                    
                {/*  <button  className="btn btn-primary">Submit</button> */}
                <div style={styles.submitBtnStyle}>
                <Button  onClick={handleSubmit(this.handleSubmitting.bind(this))} /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/>
+               
                </div>
               
              </form>
@@ -201,7 +202,7 @@ class ItemForm extends Component{
     }
 
 
-    renderTags ({ input, data, valueField, textField,label }) {
+    renderTags ({ input, data, valueField, textField,label,meta:{touched,error,warn} }) {
          data = ['blu','red','7rnksh'];
          const TagsComponent =({ item }) => (
             <span style={tagStyle}>
@@ -211,15 +212,19 @@ class ItemForm extends Component{
           const tagStyle={
             backgroundColor:'red'
           }
+        {(error && touched) ?  {border:'1px solid #dc3545'}:{border:'1px solid #ddd'}}
        return(<div>
-        <label>{label}</label>
-        <Multiselect className="shadow-sm" {...input}
+        <label style={styles.textLabelStyle}>{label}</label>
+        <Multiselect style={{overflow:'visible', borderStyle:'none',}} {...input}
             onBlur={() => input.onBlur()}
             value={input.value || []} // requires value to be an array
             data={data}
             valueField={valueField}
             textField={textField}
         />
+         {error && touched ?<span style={styles.invalidTextStyle} >
+         {error}
+      </span> : ''}
         </div>
         )
     }
@@ -228,8 +233,8 @@ class ItemForm extends Component{
      renderBuildingDropdownList ({ input, data, valueField, textField ,label, meta:{touched,error,warn} }) {
         data = this.buildingData();
      return( <div>
-           <label>{label}</label>
-         <DropdownList  style={{overflow:'visible'}}   {...input}
+           <label style={styles.textLabelStyle}>{label}</label>
+         <DropdownList  style={{overflow:'visible', borderStyle:'none'}}   {...input}
      filter data={data}
         valueField={valueField}
         textField={textField}
@@ -303,7 +308,7 @@ class ItemForm extends Component{
 
 const renderInputField = ({input,label,meta:{touched,error,warn}}) =>{
        return <div > 
-            <label>{label}</label>
+            <label style={styles.textLabelStyle}>{label}</label>
             <div >
                 <div className="d-flex flex-row" > 
              
@@ -355,6 +360,14 @@ const validate = (values) =>{
         errors.desc="Description is Required";
 
     }
+    if(!values.Tags){
+        errors.Tags = "Tags Are Required";
+    }
+    
+  /*   if(values.Tags.size<1){
+        errors.Tags = "you should add atleast one tag";
+    } */
+    console.log(errors);
     return errors;
 }
 
@@ -365,7 +378,7 @@ const styles={
         marginRight:'30%',
         marginTop:'3%',
         marginBottom:'3%',
-        borderRadius:'50px 50px 5px 5px',
+        borderRadius:'5px 5px 5px 5px',
         overflow: 'hidden',
         //whiteSpace: 'nowrap'
        //display:'inline-block'
@@ -401,10 +414,18 @@ const styles={
        // backgroundColor:'#ECF0F1'
     },
     textLabelStyle:{
-        font: '400px'
+        fontWeight: 'bold',
+        fontFamily: 'system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'
     },
     submitBtnStyle:{
       marginTop:'5%'
+    },
+    labelStyle:{
+       
+    },
+    invalidTextStyle:{
+        fontSize: '80%',
+        color: '#dc3545'
     }
     
 }
