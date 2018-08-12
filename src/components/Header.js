@@ -5,17 +5,17 @@ import InputField from './InputField';
 class Header extends Component {
 
     static contextTypes ={
-      router:PropTypes .object
+      router:PropTypes.object
     }
     // console.log(this.context.router.location.pathname);
 
     componentDidMount() {
         //  window.addEventListener('resize', this.resizeScreen.bind(this));
           if(document.documentElement.clientHeight>900) {
-          //   document.getElementById("searchBoxHeader").classList+="m-5 w-25";
+           // document.getElementById("searchBoxHeader").classList+="w-25";
           }
           else{
-           //   document.getElementById("searchBoxHeader").classList-="w-25";
+              document.getElementById("searchBoxHeader").classList+="w-100";
           }
           
         
@@ -34,13 +34,12 @@ class Header extends Component {
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-        <div style = {styles.headerStyle} className=" align-items-center row d-flex">
+        <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
         
         {pathname=="/" ? '' : this.renderSearchBox()}  
-      <div className='d-flex flex-row-reverse col-sm'>
-      <Button className='' text='LOGIN'/> 
-      <Button  className=''  text='heeeeeeeeeeeey'/>
-      <Button  className=' '  text='heeeeeeeeeeeey'/>
+      <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+      <Button style={styles.buttonsStyle} className='m-2' text='LOGIN'/> 
+      <Button style={styles.buttonsStyle} className='m-2'  text='SIGNUP'/>
       </div>  
       </div>
     );
@@ -48,16 +47,23 @@ class Header extends Component {
 }
 
 const styles = {
-  headerStyle: {
-    border: '1px solid #eee',
-    backgroundColor:'#FFFF',
-    paddingTop:'0.5%',
-    paddingBottom:'0.5%',
-  
-  },
-  searchBoxStyle:{
+    headerStyle: {
+      border: '1px solid #eee',
+      backgroundColor:'#FFFF',
+      paddingTop:'0.5%',
+      paddingBottom:'0.5%',
     
-  }
+    },
+    searchBoxStyle:{
+      marginLeft:'2%'
+    },
+    buttonsBoxContainer:{
+      marginRight:'1%',
+    
+    },
+    buttonsStyle:{
+    margin:'5%'
+    }
  
 }
 

@@ -111,9 +111,9 @@ class ItemForm extends Component{
                     onMouseLeave = {this.handleMouseLeaving}
                  className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
-            <label>
+            <label className='m-2' >
             <Button htmlFor='files'   className="d-flex flex-wrap align-self-end" img={<i className="fa fa-upload"></i>}/>
-            <input id="files" type="file" name="user[image]" style={{visibility:'hidden'}}multiple="true" onChange={this.fileChangedHandler} />
+            <input id="files" type="file" name="user[image]" style={{visibility:'hidden',float:'left'}}multiple="true" onChange={this.fileChangedHandler} />
          </label>
            
                 {this.state.renderImages ? <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
@@ -132,8 +132,8 @@ class ItemForm extends Component{
                 </div>
 
                 <div className=" d-flex flex-row">
-                <Field  name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} label='Last Seen At' />
-                { this.state.viewSecondList ? <Field name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
+                <Field className='d-flex'  name="Building" onChange={this.onClickBuildingList.bind(this)} component={this.renderBuildingDropdownList.bind(this)} label='Last Seen At' />
+                { this.state.viewSecondList ? <Field className='d-flex' name="BuildingFloor" component={this.renderFloorDropDownList} /> : ''} 
                     </div>
                    
                {/*  <button  className="btn btn-primary">Submit</button> */}
@@ -192,7 +192,7 @@ class ItemForm extends Component{
         this.state.images.map(
             (data)=>{
               //  console.log(data);
-                return <Image  key={data} className="m-1" height='200' width='200' source ={data}  />
+                return <Image onDelete={this.onDelete} key={data} className="m-1" height='200' width='200' source ={data}  />
             }
         ))
     }
@@ -300,6 +300,18 @@ class ItemForm extends Component{
     };
     
     
+    onDelete = (source) => {
+        var i;
+        const images = this.state.images;
+        for( i=0; i < images.length;i++){
+            if(this.state.images[i]===source){
+                this.state.images.splice(i, 1);
+            }
+        }
+        console.log(this.state.images);
+    }
+
+  
 
 }
 
@@ -379,7 +391,7 @@ const styles={
         marginTop:'3%',
         marginBottom:'3%',
         borderRadius:'5px 5px 5px 5px',
-        overflow: 'hidden',
+      // overflow: 'hidden',
         //whiteSpace: 'nowrap'
        //display:'inline-block'
     },

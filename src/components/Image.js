@@ -1,34 +1,34 @@
 import React,{Component} from 'react'
 
 class Image extends Component {
-    state = {showPreviewImage:false}
+    state = {showPreviewImage:false,show:true}
 
     render(){
-       const {source,onClick,height,width} = this.props;
-       return (
-           
-       <div onClickCapture={(e)=>{
-         console.log(e.target.nodeName);
-       {e.target.nodeName!=='IMG'? this.setState({showPreviewImage:false}):''}
+       const {source,onClick,height,width,onDelete} = this.props;
+       let comp = this.state.show ?   <div id={`image${source}`} ref='Image' onClickCapture={(e)=>{
+      {e.target.nodeName!=='IMG'? this.setState({showPreviewImage:false}):''}
 
-       }}className=" d-flex flex-column ">
-         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-          {this.state.showPreviewImage ? <div className="justify-self-center align-items-center justify-content-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
-          <style>{'body { background-color: #F8F9F9}'}</style>
-            <div  className=" d-flex">
-            <button onClick={this.onImageClose}  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
-             <img  style={styles.previewImage}
-                   className=" align-self-center " src={source}
-                    alt="Trulli"  /> 
-            </div>
-       </div>:'' }
-       <div className="d-flex flex-row-reverse">
-           <div className=" p-2 d-flex align-self-start" style={styles.closeSmallImage}><i style={styles.closeImageIcon} className=" shadow-sm fa fa-times"></i> </div>
-       <img onClickCapture={this.omImageClick} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  />
-       </div>
-       </div>
-    
+      }}className=" d-flex flex-column ">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+         {this.state.showPreviewImage ? <div className="justify-self-center align-items-center justify-content-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
+         <style>{'body { background-color: #F8F9F9}'}</style>
+           <div  className=" d-flex">
+           <button onClick={this.onImageClose}  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
+            <img  style={styles.previewImage}
+                  className=" align-self-center " src={source}
+                   alt="Trulli"  /> 
+           </div>
+      </div>:'' }
+      <div className="d-flex flex-row-reverse">
+          <div className=" p-2 d-flex align-self-start" style={styles.closeSmallImage}><i onClickCapture={(e) =>{this.setState({show:false});onDelete(source)}
+       
+       } style={styles.closeImageIcon} className=" shadow-sm fa fa-times"></i> </div>
+      <img  onClickCapture={this.omImageClick} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  />
+      </div>
+      </div> : null
+       return (
+        <div>  {comp} </div>
     )
     }
 
