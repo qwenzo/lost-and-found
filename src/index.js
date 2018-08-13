@@ -10,6 +10,9 @@ import {Router} from 'react-router';
 import { browserHistory } from 'react-router';
 import routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'react-widgets/dist/css/react-widgets.css';
+
+
 
 const store = createStore(reducers);
 
