@@ -64,9 +64,10 @@ const styles = {
     },
     previewImage:{
         margin:'0 auto',
-        width: '100%',
+        //width: '50%',
        // marginLeft:'100%',
-       height:'auto'
+      // height:'50%',
+       flex:'1'
     },
     closeImage:{
         position: 'absolute',

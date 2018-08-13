@@ -60,6 +60,7 @@ const styles = {
     },
     containerStyle:{
       float:'left',
+      overflow:'hidden'
       
     }
 }
