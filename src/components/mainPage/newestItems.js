@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import ItemCard from './itemCard';
+import Image from '../Image'
+import { Carousel } from 'react-responsive-carousel';
 
 class NewestItems extends Component {
     componentDidMount() {

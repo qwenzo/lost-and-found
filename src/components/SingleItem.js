@@ -7,6 +7,7 @@ import Contact from './Contact';
 import Details from './Details';
 import { Carousel } from 'react-responsive-carousel';
 import  'react-responsive-carousel/lib/styles/carousel.min.css';
+import Image from './Image';
 
 
 
@@ -26,7 +27,8 @@ class SingleItem extends Component {
                  // <img src={imagesIcon} height="24" width="24" />
                 // </div>
             }
-                <Carousel width={650}  showArrows={true} showThumbs={false}>
+           { /*  <Image  width={'650px'} images={["http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg","http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"]} />  */}
+               {/*  <Carousel width={650}  showArrows={true} showThumbs={false}>
                 <div>
                 <img style={styles.imageStyle}
                    className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
@@ -39,7 +41,22 @@ class SingleItem extends Component {
                     alt="Trulli" width="650" height="500" />
                    
                 </div>
-            </Carousel>
+            </Carousel> */}
+             {  <Carousel width={650}  showArrows={true} showThumbs={false}>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+            </Carousel> }
+
                   
                   </div>
                   <div className="d-flex flex-column " >

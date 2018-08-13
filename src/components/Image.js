@@ -1,10 +1,10 @@
 import React,{Component} from 'react'
-
+import { Carousel } from 'react-responsive-carousel';
 class Image extends Component {
     state = {showPreviewImage:false,show:true}
 
     render(){
-       const {source,onClick,height,width,onDelete,isDeleteable} = this.props;
+       const {source,onClick,height,width,onDelete,isDeleteable,images} = this.props;
        let comp = this.state.show ?   <div id={`image${source}`} ref='Image' onClickCapture={(e)=>{
       {e.target.nodeName!=='IMG'? this.setState({showPreviewImage:false}):''}
 
@@ -23,7 +23,8 @@ class Image extends Component {
       <div className="d-flex flex-row-reverse">
          {isDeleteable?<div className=" p-2 d-flex align-self-start" style={styles.closeSmallImage}><i onClickCapture={(e) =>{this.setState({show:false});onDelete(source)}}
           style={styles.closeImageIcon} className=" shadow-sm fa fa-times"></i> </div>:null} 
-      <img  onClickCapture={this.omImageClick} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  />
+          {images?'this.renderImages':<div onClickCapture={this.omImageClick}> <img  onClickCapture={() => {this.omImageClick;onClick}} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  /></div> }
+    
       </div>
       </div> : null
        return (
@@ -37,6 +38,22 @@ class Image extends Component {
     onImageClose= () =>{
         this.setState({showPreviewImage:false});
     }
+
+    /* renderImages = () =>{
+     return(
+        <Carousel width={this.props.width}  showArrows={true} showThumbs={false}>
+        { this.props.images.map(
+            (image) =>{
+              return(
+                <div>
+                <img  onClickCapture={this.omImageClick} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={this.props.height} width={this.props.width} src ={image}  />
+                </div>
+              )  
+            }
+        )}
+        </Carousel>
+     ) 
+    } */
 }
 
 const styles = {
@@ -46,7 +63,7 @@ const styles = {
     },
     previewImageContainer :{
         position: 'absolute',
-        zIndex:'999 ',
+        zIndex:'10',
         backgroundColor:"#FFFFFF",
         border: '1px solid #eee',
        // marginBottom:'5%',

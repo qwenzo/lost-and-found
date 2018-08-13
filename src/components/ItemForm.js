@@ -167,6 +167,7 @@ class ItemForm extends Component{
     }
 
     fileChangedHandler = (event) => {
+        this.setState({showImageError:false});
         var files = event.target.files;
         const files2 =  Array.from(files);
         console.log(files);

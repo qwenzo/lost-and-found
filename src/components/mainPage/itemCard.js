@@ -1,10 +1,25 @@
 import React,{Component} from 'react'
 import Tag from '../Tag'
+import Image from '../Image'
+import { Carousel } from 'react-responsive-carousel';
 class ItemCard extends Component {
      render(){
          return(
              <div style ={styles.containerStyle} className = " shadow bg-white ">
-                <img src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg" alt="Trulli" width="250" height="200" />
+                  <Carousel width={'250px'} height={'200px'} showArrows={true} showThumbs={false}>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="250" height="200" />
+                   
+                </div>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="250" height="200" />
+                   
+                </div>
+            </Carousel> 
                 <div>
                     <h6>Name:Laptop Lenevo</h6>
                     <h6>Last Seen At:B1</h6>
