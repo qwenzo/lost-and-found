@@ -20,7 +20,7 @@ var  headers = {
    
 
 class ItemForm extends Component{
-    state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null , textCursorPos:0}
+    state ={viewSecondList:false,images:[],renderImages:false,files:[],found:null , textCursorPos:0,showImageError:false}
 
     componentDidMount(){
         var items = document.getElementById('tagsContainer');
@@ -115,9 +115,9 @@ class ItemForm extends Component{
             <Button htmlFor='files'   className="d-flex flex-wrap align-self-end" img={<i className="fa fa-upload"></i>}/>
             <input id="files" type="file" name="user[image]" style={{visibility:'hidden',float:'left'}}multiple="true" onChange={this.fileChangedHandler} />
          </label>
-           
+                    
                 {this.state.renderImages ? <div style={imagesContainerStyle} className=" p-1 shadow-sm  d-flex flex-row flex-wrap">
-                {this.renderImages()}
+                {this.state.showImageError?<div className='d-flex align-self-center justify-content-center'>err</div>:this.renderImages()}
                 </div>:''}
             
                 <div className="form-group " >
@@ -168,31 +168,34 @@ class ItemForm extends Component{
 
     fileChangedHandler = (event) => {
         var files = event.target.files;
-            for(var i=0; i<files.length;i++){
-            const reader = new FileReader();
-            reader.onloadend=  () => {
-                this.setState({
-                    images: [...this.state.images,reader.result]
-                })
-              }
-              
-            // console.log(this.state.images);
-            reader.readAsDataURL(files[i]);
-
-        }
-        files =Array.from(FileList);
-        //console.log(files);
-        this.setState({files:files});
+        const files2 =  Array.from(files);
+        console.log(files);
+        Array.from(files).forEach(
+            file => {
+                const reader = new FileReader();
+                reader.onloadend=  () => {
+                    this.setState({
+                        images: [...this.state.images,{source:reader.result,file:file}]
+                    })
+                  }
+                  
+                
+                reader.readAsDataURL(file);
+            }
+        );
         this.setState({renderImages:true});
+       
       }
 
     renderImages(){
+        console.log( this.state.images.length+" "+this.state.renderImages);
+       
        return (
            
         this.state.images.map(
             (data)=>{
               //  console.log(data);
-                return <Image isDeleteable={true} onDelete={this.onDelete} key={data} className="m-1" height='200' width='200' source ={data}  />
+                return <Image isDeleteable={true} onDelete={this.onDelete} key={data.source} className="m-1" height='200' width='200' source ={data.source}  />
             }
         ))
     }
@@ -301,12 +304,18 @@ class ItemForm extends Component{
     
     
     onDelete = (source) => {
+      
+       
         var i;
         const images = this.state.images;
         for( i=0; i < images.length;i++){
-            if(this.state.images[i]===source){
+            if(this.state.images[i].source===source){
                 this.state.images.splice(i, 1);
             }
+        }
+        console.log(this.state.images.length);
+        if(this.state.images.length===0){
+            this.setState({showImageError:true});
         }
         console.log(this.state.images);
     }
