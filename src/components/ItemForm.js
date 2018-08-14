@@ -138,7 +138,7 @@ class ItemForm extends Component{
                    
                {/*  <button  className="btn btn-primary">Submit</button> */}
                <div style={styles.submitBtnStyle}>
-               <Button  onClick={handleSubmit(this.handleSubmitting.bind(this))} /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/>
+               <Button hasborder={true}  onClick={handleSubmit(this.handleSubmitting.bind(this))} /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/>
                
                </div>
               

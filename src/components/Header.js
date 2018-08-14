@@ -62,7 +62,7 @@ const styles = {
     
     },
     buttonsStyle:{
-    margin:'5%'
+    margin:'5% !important'
     }
  
 }
