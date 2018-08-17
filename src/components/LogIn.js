@@ -9,7 +9,7 @@ class LogIn extends Component{
         return(
             <form style={containerStyle} className=" shadow-sm">
                 <div style={usernameContainerStyle}  className="shadow-sm">
-                <InputField onTextChange={this.onUsernameTextChange.bind(this)} row={'row-reverse'} element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+                <InputField onTextChange={this.onUsernameTextChange.bind(this)} row={'row-reverse'} element={ <Button hasborder={false} style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
          } row='flex-row-reverse' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
          
                 </div>
@@ -18,7 +18,7 @@ class LogIn extends Component{
          
                 </div>
                 <div  >
-               <Button style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
+               <Button key='55' style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
                </div>
             </form>
         )
