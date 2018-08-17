@@ -10,6 +10,10 @@ class Main extends Component {
      this.state = {clientHeighth:document.documentElement.clientHeight,searchText:''};
     }
 
+    componentWillMount(){
+        console.log(localStorage);
+    }
+
 
     componentDidMount() {
        // window.addEventListener('resize', this.resizeScreen.bind(this));

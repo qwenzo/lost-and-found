@@ -24,10 +24,22 @@ class LogIn extends Component{
          
                 </div>
                 <div  >
-               <Button onClick={() => this.props.LogInUser({username:this.state.username,password:this.state.password})} style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
+               <Button onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
                </div>
             </form>
         )
+    }
+
+    onClickHandle = () =>{
+     // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
+      const promise = this.props.LogInUser({email:this.state.username,password:this.state.password}).payload;
+      promise.then( (e)=>localStorage.setItem('token', e.data.access_token)).catch(
+            (e)=>{
+                if (e.response) {
+                    console.log(e.response.data);
+                  }
+            }
+        ) 
     }
     
 

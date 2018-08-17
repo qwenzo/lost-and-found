@@ -1,13 +1,17 @@
 import axios from 'axios';
 
 export const LOGIN_TYPE = 'LOGIN';
-const URL = '';
+const MAIN_URL = 'https://mylostfound.herokuapp.com/api';
+
 
 
 export function LogInUser(data){
-    console.log(data);
+    const URL = MAIN_URL+'/auth/login';
+    const req = axios.post(URL,data);
+  
+   
     return{
         type:LOGIN_TYPE,
-        payload:'test'
+        payload:req
     }
 }
