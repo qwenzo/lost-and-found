@@ -5,16 +5,16 @@ import Button from './Button';
 class LogIn extends Component{
     state={username:'',password:''}
     render() {
-        const {containerStyle,emailNoteStyle,emailContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
+        const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
             <form style={containerStyle} className=" shadow-sm">
-                <div style={emailContainerStyle}  className="shadow-sm">
-                <InputField row={'row-reverse'} element={ <Button style={emailNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
-         } row='flex-row-reverse' height='40px'  type="text" className="d-flex " placeholder="Email"  /> 
+                <div style={usernameContainerStyle}  className="shadow-sm">
+                <InputField onTextChange={this.onUsernameTextChange.bind(this)} row={'row-reverse'} element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+         } row='flex-row-reverse' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
          
                 </div>
                 <div style={passwordContainerStyle} className="shadow-sm">
-                <InputField height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
+                <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
          
                 </div>
                 <div  >
@@ -23,6 +23,14 @@ class LogIn extends Component{
             </form>
         )
     }
+
+    onUsernameTextChange(event){
+        this.setState({username:event.target.value});
+      }
+
+      onPasswordTextChange(event){
+        this.setState({password:event.target.value});
+      }
       
     
 }
@@ -36,10 +44,10 @@ const style={
         marginRight:'35%',
         padding:'2%'
     },
-    emailNoteStyle:{
+    usernameNoteStyle:{
         borderLeft: '1px solid #ddd',
     },
-    emailContainerStyle:{
+    usernameContainerStyle:{
       //  marginTop:'10%'
     },
     passwordContainerStyle:{
