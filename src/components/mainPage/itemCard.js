@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 class ItemCard extends Component {
      render(){
          return(
-             <div style ={styles.containerStyle} className = " shadow-sm bg-white ">
+             <div style ={styles.containerStyle} className = "shadow-sm  ">
                   <Carousel width={'250px'} height={'200px'} showArrows={true} showThumbs={false}>
                 <div>
                 <Image style={styles.imageStyle}
@@ -31,7 +31,7 @@ class ItemCard extends Component {
                   <Tag text="Laptop" />  
                       
                  </div>
-                 <div className="d-flex flex-row align-items-end shadow-lg bg-white  justify-content-center">
+                 <div className="d-flex flex-row align-items-end  bg-white  justify-content-center">
                     <div className="  p-2 ">More Details</div>
                     <div ></div>
                      <div className="  p-2 " >REPORT</div>

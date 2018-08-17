@@ -24,9 +24,9 @@ class Header extends Component {
     renderSearchBox(){
      return(
         <div id="searchBoxHeader" style={styles.searchBoxStyle} className="shadow-sm  w-25">
-        <InputField element={
+        <InputField style={{ border: '1px solid #ddd'}} className='shadow-sm' element={
              <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
-         } row='flex-row-reverse' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
+         } row='flex-row' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
       </div>
      );
     }
