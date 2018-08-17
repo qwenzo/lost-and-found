@@ -55,7 +55,8 @@ class Main extends Component {
 
 const styles = {
     containerStyle: {
-        height:'450px'
+        height:'450px',
+        position:'relative',
     },
     searchBoxStyle: {
     },

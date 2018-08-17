@@ -62,12 +62,13 @@ const styles = {
         border: '1px solid #ddd'
     },
     previewImageContainer :{
-        position: 'absolute',
-        zIndex:'10',
+        position: 'fixed',
+        zIndex:'99',
         backgroundColor:"#FFFFFF",
         border: '1px solid #eee',
        // marginBottom:'5%',
-        
+       width: '100%',
+       height: '100%',
         bottom:0,
         top:0,
         left:0,
