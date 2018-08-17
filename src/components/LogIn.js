@@ -5,9 +5,9 @@ import Button from './Button';
 class LogIn extends Component{
     state={username:'',password:''}
     render() {
-        const {containerStyle,emailNoteStyle,emailContainerStyle,passwordContainerStyle} = style;
+        const {containerStyle,emailNoteStyle,emailContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
-            <div style={containerStyle} className=" shadow-sm">
+            <form style={containerStyle} className=" shadow-sm">
                 <div style={emailContainerStyle}  className="shadow-sm">
                 <InputField row={'row-reverse'} element={ <Button style={emailNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
          } row='flex-row-reverse' height='40px'  type="text" className="d-flex " placeholder="Email"  /> 
@@ -17,7 +17,10 @@ class LogIn extends Component{
                 <InputField height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
          
                 </div>
-            </div>
+                <div  >
+               <Button style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
+               </div>
+            </form>
         )
     }
       
@@ -31,7 +34,6 @@ const style={
         marginBottom:'3%',
         marginLeft:'35%',
         marginRight:'35%',
-        borderRadius:'5px 5px 5px 5px',
         padding:'2%'
     },
     emailNoteStyle:{
@@ -43,7 +45,10 @@ const style={
     passwordContainerStyle:{
         marginTop:'8%'
 
-    }
+    },
+    submitBtnStyle:{
+        marginTop:'5%'
+      },
 }
 
 export default LogIn;
