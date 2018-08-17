@@ -5,7 +5,7 @@ export const LOGIN = 'LOGIN';
 const URL = '';
 
 
-export function LogIn(){
+export function LogIn(data){
     return{
         type:LOGIN,
         payload:'test'
