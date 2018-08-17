@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder}) =>{
+const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style}) =>{
     {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee '}:'' }
     return(
-        <div className={className}>
+        <div style={style} className={className}>
         <div onClickCapture={onClick}  style={styles.containerStyle} className={` align-self-start d-flex flex-wrap`}>
           <div
           onTouchStart = {
@@ -54,7 +54,6 @@ const styles = {
         paddingRight: '0.7rem ',
         paddingBottom: '0.5rem ',
         paddingLeft: '0.7rem ',
-        textTransform: 'uppercase',
         fontWeight: '700',
         fontSize:'18'
        
