@@ -1,10 +1,15 @@
 import React , {Component} from 'react';
 import InputField from './InputField';
 import Button from './Button';
-import {LogIn} from '../actions/index'
+import {LogInUser} from '../actions/index'
+import {connect} from 'react-redux';
 
 class LogIn extends Component{
     state={username:'',password:''}
+
+    componentWillMount(){
+       // console.log();
+    }
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
@@ -19,11 +24,12 @@ class LogIn extends Component{
          
                 </div>
                 <div  >
-               <Button onClick={this.props.LogIn(username,password)} style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
+               <Button onClick={() => this.props.LogInUser({username:this.state.username,password:this.state.password})} style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
                </div>
             </form>
         )
     }
+    
 
     onUsernameTextChange(event){
         this.setState({username:event.target.value});
@@ -64,4 +70,4 @@ const style={
 
 
 
-export default connect(null,{LogIn})(LogIn);
+export default connect(null,{LogInUser})(LogIn);

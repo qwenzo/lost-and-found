@@ -1,13 +1,13 @@
 import axios from 'axios';
-import LogIn from '../components/LogIn';
 
-export const LOGIN = 'LOGIN';
+export const LOGIN_TYPE = 'LOGIN';
 const URL = '';
 
 
-export function LogIn(data){
+export function LogInUser(data){
+    console.log(data);
     return{
-        type:LOGIN,
+        type:LOGIN_TYPE,
         payload:'test'
     }
 }
