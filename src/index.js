@@ -14,10 +14,11 @@ import 'react-widgets/dist/css/react-widgets.css';
 
   const  isAuth = () => {
      const token = localStorage.getItem('token');
-     console.log(token!==null);
+     console.log(token!='');
     if(token!==null ){
         return true;
     } 
+    return false;
 } 
 
 export default isAuth;

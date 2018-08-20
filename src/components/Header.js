@@ -3,6 +3,7 @@ import PropTypes  from 'prop-types';
 import Button from './Button';
 import InputField from './InputField';
 import isAuth from '../index';
+import {Link} from 'react-router';
 class Header extends Component {
     state = {loggedin:false};
     static contextTypes ={
@@ -43,7 +44,7 @@ class Header extends Component {
         
         {pathname=="/" ? '' : this.renderSearchBox()}  
       {!this.state.loggedin?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-      <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> 
+     <Link to="/login"> <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> </Link>
       <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
       </div>: <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
       <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/>
@@ -53,7 +54,9 @@ class Header extends Component {
   }
 
   logout = () =>{
-    localStorage.setItem('token',null);
+    localStorage.clear();
+    console.log(localStorage.getItem('token'));
+    isAuth() ;
     this.setState({loggedin:false});
   }
 }

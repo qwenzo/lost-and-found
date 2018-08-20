@@ -9,7 +9,7 @@ import LogIn from './components/LogIn';
 import isAth from '../src/index'
 
 function requireAuth(e) {
-     if (!isAth()) {
+     if (isAth()) {
         browserHistory.push("/");
     
     } 
