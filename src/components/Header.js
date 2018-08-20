@@ -25,7 +25,7 @@ class Header extends Component {
      return(
         <div id="searchBoxHeader" style={styles.searchBoxStyle} className="shadow-sm  w-25">
         <InputField style={{ border: '1px solid #ddd'}} className='shadow-sm' element={
-             <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
+             <Button hasborder={true} clickable={true} className='d-flex' style={{border: '1px solid #eee'}} text='Search'/>
          } row='flex-row' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
       </div>
      );
@@ -38,8 +38,8 @@ class Header extends Component {
         
         {pathname=="/" ? '' : this.renderSearchBox()}  
       <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-      <Button style={styles.buttonsStyle} className='m-2' text='LOGIN'/> 
-      <Button style={styles.buttonsStyle} className='m-2'  text='SIGNUP'/>
+      <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> 
+      <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
       </div>  
       </div>
     );
@@ -62,7 +62,7 @@ const styles = {
     
     },
     buttonsStyle:{
-    margin:'5% !important'
+    margin:'5% !important',
     }
  
 }

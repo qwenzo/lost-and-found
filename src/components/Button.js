@@ -2,17 +2,17 @@ import React from 'react';
 
 const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor}) =>{
 
-  {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:styles.btnStyle } 
+/*   {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:styles.btnStyle={... styles.btnStyle,border: '',borderRadius:''} }  */
   {clickable ? styles.btnStyle={... styles.btnStyle,cursor:'pointer'}:styles.btnStyle={... styles.btnStyle,cursor:' '}}
   let  colorStyle = color ? color : '';
     return(
         <div style={style} className={className}>
-        <div onClickCapture={onClick}  style={styles.containerStyle} className={`${className} align-self-start d-flex flex-wrap`}>
+        <div onClickCapture={onClick}  style={styles.containerStyle} className={`align-self-start d-flex flex-wrap`}>
           <div
            onTouchStart = {
             (e)=>{
              if(hasborder && clickable){
-              e.currentTarget.className='';
+              e.currentTarget.className=`${className}`;
               /* styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'} */
               e.currentTarget.style.backgroundColor=onClickDownColor; 
              }
@@ -30,7 +30,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
            onMouseDownCapture={
               (e)=>{
                 if(hasborder&& clickable){
-                e.currentTarget.className='';
+                e.currentTarget.className=`${className}`;
                 e.currentTarget.style.backgroundColor=onClickDownColor;
                 }
               }   
@@ -47,7 +47,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           }
           }
          
-          style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className=' '>
+          style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className={` ${className} `}>
           {text?<font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
           </div>
            

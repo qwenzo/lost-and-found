@@ -23,8 +23,8 @@ class LogIn extends Component{
                 <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
          
                 </div>
-                <div>
-             {   <Button className="shadow-sm" onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
+                <div style={submitBtnStyle}>
+             {   <Button className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
             </form>
         )
@@ -77,7 +77,7 @@ const style={
 
     },
     submitBtnStyle:{
-        marginTop:'5%',
+       marginTop:'5%'
         
       },
 }
