@@ -43,7 +43,7 @@ class Header extends Component {
         <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
         
         {pathname=="/" ? '' : this.renderSearchBox()}  
-      {!this.state.loggedin?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+      {!isAuth()?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
      <Link to="/login"> <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> </Link>
       <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
       </div>: <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
@@ -55,8 +55,6 @@ class Header extends Component {
 
   logout = () =>{
     localStorage.clear();
-    console.log(localStorage.getItem('token'));
-    isAuth() ;
     this.setState({loggedin:false});
   }
 }

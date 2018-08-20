@@ -15,7 +15,7 @@ class LogIn extends Component{
     }
 
     componentWillMount(){
-       // isAuth()
+       console.log('test');
     }
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
