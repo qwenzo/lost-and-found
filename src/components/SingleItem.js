@@ -5,9 +5,10 @@ import whatsAppLogo from '../assets/WAlogo.png';
 import imagesIcon from '../assets/photos2-512.png';
 import Contact from './Contact';
 import Details from './Details';
-import { Carousel } from 'react-responsive-carousel';
+/* import { Carousel } from 'react-responsive-carousel'; */
 import  'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from './Image';
+import Carousel from './Carousel';
 import ReactCSSTransitionGroup from 'react-transition-group'; // ES6
 
 
@@ -19,78 +20,42 @@ class SingleItem extends Component {
         
       }
 
+      
       handleRight = (e) =>{
         const {viewPort} = this.refs;
-        viewPort.scrollLeft = viewPort.scrollLeft+ 650+(3.75*2);
+       var newPos= viewPort.scrollLeft+ 650+(+7.5);
+      // viewPort.scrollLeft = newPos;
+      /*  scrollTo(viewPort,newPos,200); */
+      viewPort.scroll({
+        top: 0, 
+        left: newPos, 
+        behavior: 'smooth' 
+      });
      }
      handleLeft = (e) =>{
+        console.log(this.refs.test.clientHeight );
         const {viewPort} = this.refs;
-        viewPort.scrollLeft = viewPort.scrollLeft- 650+(3.75*2);
+        var newPos = viewPort.scrollLeft- 650+(-7.5);
+       // scrollTo(viewPort,newPos,200);
+
+       viewPort.scroll({
+        top: 0, 
+        left: newPos, 
+        behavior: 'smooth' 
+      });
      }
      render(){
          let items = ['lol','loljjj'];
-
+        
         
          return(
-         
-             <div style={styles.containerStyle} className=" justify-content-center align-items-center ">
-
+        <div style={styles.containerStyle} className=" justify-content-center align-items-center ">
              <div style={styles.itemBoxStyle} className ="d-flex shadow-sm rounded ">
-             
-             
-                <div className="m-2 d-flex flex-row-reverse">
+                <div className=" d-flex flex-row-reverse">
                 
-                {//<div className="d-flex align-self-end rounded flex-wrap" style ={styles.NumberOfImagesStyle}> 3 
-                 // <img src={imagesIcon} height="24" width="24" />
-                // </div>
-            }
-           { /*  <Image  width={'650px'} images={["http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg","http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"]} />  */}
-               {/*  <Carousel width={650}  showArrows={true} showThumbs={false}>
+            <Carousel paddingWidth={7.5} width={650}>
                 <div>
-                <img style={styles.imageStyle}
-                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" />
-                   
-                </div>
-                <div>
-                <img style={styles.imageStyle}
-                   className="" src="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" />
-                   
-                </div>
-            </Carousel> */}
-           {/*  <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-  <div className="carousel-inner">
-    <div className="carousel-item active">
-    <Image style={styles.imageStyle}
-                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" />
-    </div>
-    <div className="carousel-item">
-    <Image style={styles.imageStyle}
-                   className="" source="https://imgur.com/gallery/9myWgdg"
-                    alt="se2" width="650" height="500" />
-    </div>
-    <div className="carousel-item">
-    <Image style={styles.imageStyle}
-                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="se3" width="650" height="500" />
-    </div>
-  </div>
-  <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="sr-only">Previous</span>
-  </a>
-  <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="sr-only">Next</span>
-  </a>
-</div> */}
-            
-
-            <div ref='viewPort' className="d-flex flex-row" style={styles.ImageContainerStyle}>
-            <div>
-                <Image style={styles.imageStyle}
+            <Image ref='test' style={styles.imageStyle}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" />
                    
@@ -113,33 +78,8 @@ class SingleItem extends Component {
                     alt="Trulli" width="650" height="500" />
                    
                 </div>
-            </div>
-            {/*  <Image style={styles.imageStyle}
-                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" /> */}
-             {  /*  <Carousel onClickItem={
-                 (e)=>{
-                    console.log(e);
-                 }
-             } style={{position:'relative'}} width={650}  showArrows={true} showThumbs={false}>
-                <div>
-                <Image style={styles.imageStyle}
-                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" />
-                   
-                </div>
-                <div>
-                <Image style={styles.imageStyle}
-                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="650" height="500" />
-                   
-                </div>
-            </Carousel>  */ }
-
-                  
+                </Carousel>                 
                   </div>
-                  <button onClickCapture={this.handleLeft}>lefty</button>
-                  <button onClickCapture={this.handleRight}>click</button>
                   <div className="d-flex flex-column " >
                         <div style={styles.TagContainerStyle} className=" d-flex flex-wrap flex-row-reverse"> 
                             <Tag text="B1" />
@@ -178,6 +118,8 @@ class SingleItem extends Component {
              </div>
          )
      }
+
+     
 }
 
 const styles = {
@@ -221,14 +163,43 @@ const styles = {
       
     },
     ImageContainerStyle:{
+        padding:0,
         whiteSpace:'nowrap',
         overflowY:'hidden',
         overflowX:'hidden',
         width:"650px",
-        'WbkitScrollbar':'display:none'
 
     }
 }
+
+function scrollTo (element, to, duration)   {
+    var start = element.scrollLeft,
+        change = to - start,
+        increment = 20;
+
+    var animateScroll = function(elapsedTime) {        
+        elapsedTime += increment;
+        var position = easeInOut(elapsedTime, start, change, duration);                        
+        element.scrollLeft = position; 
+        if (elapsedTime < duration) {
+            setTimeout(function() {
+                animateScroll(elapsedTime);
+            }, increment);
+        }
+    };
+
+    animateScroll(0);
+}
+
+function easeInOut (currentTime, start, change, duration) {
+    currentTime /= duration / 2;
+    if (currentTime < 1) {
+        return change / 2 * currentTime * currentTime + start;
+    }
+    currentTime -= 1;
+    return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+}
+
 
 
 export default SingleItem;

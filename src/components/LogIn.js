@@ -13,9 +13,9 @@ class LogIn extends Component{
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
-            <form style={containerStyle} className=" container shadow-sm">
+            <form style={containerStyle} className=" shadow-sm">
                 <div style={usernameContainerStyle}  className="shadow-sm">
-                <InputField onTextChange={this.onUsernameTextChange.bind(this)}  element={ <Button hasborder={false} style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+                <InputField onTextChange={this.onUsernameTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
          
                 </div>
@@ -24,7 +24,7 @@ class LogIn extends Component{
          
                 </div>
                 <div  >
-             {   <Button className="shadow-sm d-flex align-self-end" onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true} onClickDownColor='#0b51c1'   color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
+             {   <Button className="shadow-sm d-flex align-self-end" onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
             </form>
         )
@@ -56,11 +56,10 @@ class LogIn extends Component{
 
 const style={
     containerStyle:{
-        border: '1px solid #ddd',
-      /*   marginTop:'10%',
+         marginTop:'10%',
         marginBottom:'3%',
         marginLeft:'35%',
-        marginRight:'35%', */
+        marginRight:'35%', 
         padding:'2%'
     },
     usernameNoteStyle:{

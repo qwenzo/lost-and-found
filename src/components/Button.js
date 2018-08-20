@@ -2,7 +2,8 @@ import React from 'react';
 
 const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor}) =>{
 
-  {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:null } 
+  {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:styles.btnStyle } 
+  {clickable ? styles.btnStyle={... styles.btnStyle,cursor:'pointer'}:styles.btnStyle={... styles.btnStyle,cursor:' '}}
   let  colorStyle = color ? color : '';
     return(
         <div style={style} className={className}>
@@ -10,7 +11,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           <div
            onTouchStart = {
             (e)=>{
-             if(hasborder){
+             if(hasborder && clickable){
               e.currentTarget.className='';
               /* styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'} */
               e.currentTarget.style.backgroundColor=onClickDownColor; 
@@ -20,7 +21,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           onTouchEnd = {
             
             (e)=>{
-              if(hasborder){
+              if(hasborder && clickable){
                // e.currentTarget.className=' shadow-sm';
                 e.currentTarget.style.backgroundColor=colorStyle;
               }   
@@ -28,7 +29,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           } 
            onMouseDownCapture={
               (e)=>{
-                if(hasborder){
+                if(hasborder&& clickable){
                 e.currentTarget.className='';
                 e.currentTarget.style.backgroundColor=onClickDownColor;
                 }
@@ -36,7 +37,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           }
           onMouseUpCapture={
             (e)=>{
-              if(hasborder){
+              if(hasborder&& clickable){
              // e.currentTarget.className=' shadow-sm';
            
                {styles.btnStyle={... styles.btnStyle,backgroundColor:colorStyle}} 
@@ -46,7 +47,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           }
           }
          
-          style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor,}} className=' '>
+          style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className=' '>
           {text?<font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
           </div>
            
@@ -59,7 +60,6 @@ const styles = {
     btnStyle:{
       //  border: '1px solid #eee ',
         cursor:'pointer',
-        fontColor:'blue',
         userSelect: 'none',
         paddingTop: '0.5rem ',
         paddingRight: '0.7rem ',
