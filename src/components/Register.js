@@ -7,7 +7,7 @@ import isAuth from '../index';
 import _ from 'lodash';
 import ProbTypes from 'prop-types';
 
-class LogIn extends Component{
+class Register extends Component{
     state={username:'',password:''}
 
     static contextTypes={
@@ -101,4 +101,4 @@ const style={
 
 
 
-export default connect(null,{LogInUser})(LogIn);
+export default connect(null,{LogInUser})(Register);

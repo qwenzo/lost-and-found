@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const LOGIN_TYPE = 'LOGIN';
 const MAIN_URL = 'https://mylostfound.herokuapp.com/api';
+const token = localStorage.getItem('token');
 
 
 

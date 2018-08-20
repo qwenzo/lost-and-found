@@ -22,7 +22,7 @@ class Carousel extends Component{
       /*  scrollTo(viewPort,newPos,200); */
       viewPort.scroll({
         top: 0, 
-        left: newPos, 
+        left: newPos,
         behavior: 'smooth' 
       });
      }
@@ -33,7 +33,7 @@ class Carousel extends Component{
 
        viewPort.scroll({
         top: 0, 
-        left: newPos, 
+        left: newPos,
         behavior: 'smooth' 
       });
      }

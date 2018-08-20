@@ -15,6 +15,7 @@ import 'react-widgets/dist/css/react-widgets.css';
   const  isAuth = () => {
      const token = localStorage.getItem('token');
      console.log(token);
+     console.log(token!=null);
     if(token!==null ){
         return true;
     } 
