@@ -1,14 +1,13 @@
 import React , {Component} from 'react';
 import InputField from './InputField';
 import Button from './Button';
-import {LogInUser} from '../actions/index'
+import {Register} from '../actions/index'
 import {connect} from 'react-redux';
 import isAuth from '../index';
-import _ from 'lodash';
 import ProbTypes from 'prop-types';
 
-class Register extends Component{
-    state={username:'',password:''}
+class RegisterComp extends Component{
+    state={username:'',password:'',email:'',mobile:''}
 
     static contextTypes={
         router:ProbTypes.object
@@ -21,14 +20,23 @@ class Register extends Component{
         return(
             <form style={containerStyle} className="">
                 <div style={usernameContainerStyle}  className="shadow-sm">
-                <InputField onTextChange={this.onUsernameTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
-         } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
+                    <InputField onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+                } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.email} placeholder="Email"  /> 
          
                 </div>
                 <div style={passwordContainerStyle} className="shadow-sm">
-                <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
+                    <InputField onTextChange={this.onUsernameTextChange.bind(this)} value={this.state.username} height='40px'  type="text" className="d-flex " placeholder="Username"  /> 
          
                 </div>
+                <div style={passwordContainerStyle} className="shadow-sm">
+                 <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
+         
+                </div>
+                <div style={passwordContainerStyle} className="shadow-sm">
+                 <InputField onTextChange={this.onMobileTextChange.bind(this)} value={this.state.mobile} height='40px'  type="text" className="d-flex " placeholder="Mobile"  /> 
+         
+                </div>
+              
                 <div style={submitBtnStyle}>
              {   <Button className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
@@ -38,14 +46,8 @@ class Register extends Component{
 
     onClickHandle = () =>{
      // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
-      const promise = this.props.LogInUser({email:this.state.username,password:this.state.password}).payload;
+      const promise = this.props.Register({username:this.state.username,password:this.state.password,email:this.state.email,mob:this.state.mobile}).payload;
       promise.then( (e)=>{console.log(e);
-        localStorage.setItem('token', e.data.access_token);
-        _.delay(
-            ()=>{
-                this.context.router.push('/')
-            },1000
-        )
     }
     
     ).catch(
@@ -64,6 +66,14 @@ class Register extends Component{
 
       onPasswordTextChange(event){
         this.setState({password:event.target.value});
+      }
+
+      onEmailTextChange(event){
+        this.setState({email:event.target.value});
+      }
+
+      onMobileTextChange(event){
+        this.setState({mobile:event.target.value});
       }
       
     
@@ -101,4 +111,4 @@ const style={
 
 
 
-export default connect(null,{LogInUser})(Register);
+export default connect(null,{Register})(RegisterComp);

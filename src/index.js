@@ -16,7 +16,7 @@ import 'react-widgets/dist/css/react-widgets.css';
      const token = localStorage.getItem('token');
      console.log(token);
      console.log(token!=null);
-    if(token!==null ){
+    if(token!==null && token!==undefined ){
         return true;
     } 
     return false;

@@ -7,7 +7,7 @@ import SingleItem from './components/SingleItem';
 import ItemForm from './components/ItemForm';
 import LogIn from './components/LogIn';
 import isAth from '../src/index';
-import Register from './components/Register'
+import RegisterComp from './components/Register'
 
 function requireAuth(e) {
      if (isAth()) {
@@ -22,7 +22,7 @@ const routes =
     <Route path="/item" component={SingleItem} />
     <Route path="/item/post" component={ItemForm} />
     <Route path="/login" component={LogIn} onEnter={(e)=>{requireAuth(e)}}  />
-    <Route path="/signup" component={Register} onEnter={(e)=>{requireAuth(e)}}  />
+    <Route path="/signup" component={RegisterComp} onEnter={(e)=>{requireAuth(e)}}  />
     </Route>;
 
 
