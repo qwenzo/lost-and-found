@@ -15,8 +15,6 @@ import ReactCSSTransitionGroup from 'react-transition-group'; // ES6
 
 class SingleItem extends Component {
     componentDidMount() {
-    
-          
         
       }
 

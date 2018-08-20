@@ -18,10 +18,10 @@ class Main extends Component {
     componentDidMount() {
        // window.addEventListener('resize', this.resizeScreen.bind(this));
         if(this.state.clientHeighth>900) {
-         document.getElementById("searchBox").classList+="w-50";
+       //  document.getElementById("searchBox").classList+="w-50";
         }
         else{
-            document.getElementById("searchBox").classList+="w-75";
+          //  document.getElementById("searchBox").classList+="w-75";
         }
         
       

@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import PropTypes  from 'prop-types';
 import Button from './Button';
 import InputField from './InputField';
+import isAuth from '../index';
 class Header extends Component {
-
+    state = {loggedin:false};
     static contextTypes ={
       router:PropTypes.object
     }
     // console.log(this.context.router.location.pathname);
 
+    componentWillMount(){
+     isAuth() ?  this.setState({loggedin:true}):this.setState({loggedin:false})
+    }
     componentDidMount() {
         //  window.addEventListener('resize', this.resizeScreen.bind(this));
           if(document.documentElement.clientHeight>900) {
            // document.getElementById("searchBoxHeader").classList+="w-25";
           }
           else{
-              document.getElementById("searchBoxHeader").classList+="w-100";
+            //  document.getElementById("searchBoxHeader").classList+="w-100";
           }
           
         
       }
+
 
     renderSearchBox(){
      return(
@@ -37,12 +42,19 @@ class Header extends Component {
         <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
         
         {pathname=="/" ? '' : this.renderSearchBox()}  
-      <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+      {!this.state.loggedin?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
       <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> 
       <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
-      </div>  
+      </div>: <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+      <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/>
+      </div> }  
       </div>
     );
+  }
+
+  logout = () =>{
+    localStorage.setItem('token',null);
+    this.setState({loggedin:false});
   }
 }
 

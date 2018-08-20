@@ -12,7 +12,15 @@ import routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'react-widgets/dist/css/react-widgets.css';
 
+  const  isAuth = () => {
+     const token = localStorage.getItem('token');
+     console.log(token!==null);
+    if(token!==null ){
+        return true;
+    } 
+} 
 
+export default isAuth;
 
 const store = createStore(reducers);
 

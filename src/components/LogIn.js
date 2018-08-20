@@ -3,12 +3,19 @@ import InputField from './InputField';
 import Button from './Button';
 import {LogInUser} from '../actions/index'
 import {connect} from 'react-redux';
+import isAuth from '../index';
+import _ from 'lodash';
+import ProbTypes from 'prop-types';
 
 class LogIn extends Component{
     state={username:'',password:''}
 
+    static contextTypes={
+        router:ProbTypes.object
+    }
+
     componentWillMount(){
-       // console.log();
+       // isAuth()
     }
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
@@ -33,7 +40,16 @@ class LogIn extends Component{
     onClickHandle = () =>{
      // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
       const promise = this.props.LogInUser({email:this.state.username,password:this.state.password}).payload;
-      promise.then( (e)=>localStorage.setItem('token', e.data.access_token)).catch(
+      promise.then( (e)=>{console.log(e);
+        localStorage.setItem('token', e.data.access_token);
+        _.delay(
+            ()=>{
+                this.context.router.push('/')
+            },1000
+        )
+    }
+    
+    ).catch(
             (e)=>{
                 if (e.response) {
                     console.log(e.response.data);
