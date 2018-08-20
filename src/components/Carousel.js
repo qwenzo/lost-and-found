@@ -16,12 +16,8 @@ class Carousel extends Component{
     }
 
     handleRight = (e) =>{
-        console.log(this.props.width);
-       
         const {viewPort} = this.refs;
-        console.log(viewPort);
-        console.log(this.props.paddingWidth);
-       var newPos= viewPort.scrollLeft+ this.props.width+(+this.props.paddingWidth);
+       var newPos= viewPort.scrollLeft+ this.props.width+(+this.props.paddingWidth?this.props.paddingWidth:0);
       // viewPort.scrollLeft = newPos;
       /*  scrollTo(viewPort,newPos,200); */
       viewPort.scroll({
@@ -32,7 +28,7 @@ class Carousel extends Component{
      }
      handleLeft = (e) =>{
         const {viewPort} = this.refs;
-        var newPos = viewPort.scrollLeft- this.props.width+(-this.props.paddingWidth);
+        var newPos = viewPort.scrollLeft- this.props.width+(-this.props.paddingWidth?this.props.paddingWidth:0);
        // scrollTo(viewPort,newPos,200);
 
        viewPort.scroll({
@@ -53,5 +49,36 @@ const styles={
         width:"650px",
     }
 }
+
+function scrollTo (element, to, duration)   {
+    var start = element.scrollLeft,
+        change = to - start,
+        increment = 20;
+
+    var animateScroll = function(elapsedTime) {        
+        elapsedTime += increment;
+        var position = easeInOut(elapsedTime, start, change, duration);                        
+        element.scrollLeft = position; 
+        if (elapsedTime < duration) {
+            setTimeout(function() {
+                animateScroll(elapsedTime);
+            }, increment);
+        }
+    };
+
+    animateScroll(0);
+}
+
+function easeInOut (currentTime, start, change, duration) {
+    currentTime /= duration / 2;
+    if (currentTime < 1) {
+        return change / 2 * currentTime * currentTime + start;
+    }
+    currentTime -= 1;
+    return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+}
+
+
+
 
 export default Carousel;

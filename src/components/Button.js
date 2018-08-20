@@ -7,7 +7,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
   let  colorStyle = color ? color : '';
     return(
         <div style={style} className={className}>
-        <div onClickCapture={onClick}  style={styles.containerStyle} className={` align-self-start d-flex flex-wrap`}>
+        <div onClickCapture={onClick}  style={styles.containerStyle} className={`${className} align-self-start d-flex flex-wrap`}>
           <div
            onTouchStart = {
             (e)=>{

@@ -1,12 +1,12 @@
 import React,{Component} from 'react'
 import Tag from '../Tag'
 import Image from '../Image'
-import { Carousel } from 'react-responsive-carousel';
+import  Carousel  from '../Carousel';
 class ItemCard extends Component {
      render(){
          return(
              <div style ={styles.containerStyle} className = "shadow-sm  ">
-                  <Carousel width={'250px'} height={'200px'} showArrows={true} showThumbs={false}>
+                  <Carousel width={250} paddingWidth={7.5}>
                 <div>
                 <Image style={styles.imageStyle}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
@@ -32,9 +32,9 @@ class ItemCard extends Component {
                       
                  </div>
                  <div className="d-flex flex-row align-items-end  bg-white  justify-content-center">
-                    <div className="  p-2 ">More Details</div>
+                    <div className=" p-2 ">More Details</div>
                     <div ></div>
-                     <div className="  p-2 " >REPORT</div>
+                     <div className=" p-2 " >REPORT</div>
             </div>
              </div>
              
