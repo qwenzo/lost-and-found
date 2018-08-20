@@ -1,18 +1,19 @@
 import React from 'react';
 
-const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style}) =>{
- 
-  {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:'' } 
+const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor}) =>{
+
+  {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:null } 
+  let  colorStyle = color ? color : '';
     return(
         <div style={style} className={className}>
         <div onClickCapture={onClick}  style={styles.containerStyle} className={` align-self-start d-flex flex-wrap`}>
           <div
-          onTouchStart = {
+           onTouchStart = {
             (e)=>{
              if(hasborder){
               e.currentTarget.className='';
-              styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'}
-              e.currentTarget.style.backgroundColor='#CACFD2'; 
+              /* styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'} */
+              e.currentTarget.style.backgroundColor=onClickDownColor; 
              }
                }   
           }
@@ -21,17 +22,15 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             (e)=>{
               if(hasborder){
                // e.currentTarget.className=' shadow-sm';
-                {styles.btnStyle={... styles.btnStyle,backgroundColor:'red'}}
-                e.currentTarget.style.backgroundColor='';
+                e.currentTarget.style.backgroundColor=colorStyle;
               }   
             }
-          }
+          } 
            onMouseDownCapture={
               (e)=>{
                 if(hasborder){
                 e.currentTarget.className='';
-                styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'}
-                e.currentTarget.style.backgroundColor='#CACFD2';
+                e.currentTarget.style.backgroundColor=onClickDownColor;
                 }
               }   
           }
@@ -39,8 +38,10 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             (e)=>{
               if(hasborder){
              // e.currentTarget.className=' shadow-sm';
-              {styles.btnStyle={... styles.btnStyle,backgroundColor:'red'}}
-              e.currentTarget.style.backgroundColor='';
+           
+               {styles.btnStyle={... styles.btnStyle,backgroundColor:colorStyle}} 
+              e.currentTarget.style.backgroundColor=colorStyle;
+
             }   
           }
           }
@@ -60,7 +61,6 @@ const styles = {
         cursor:'pointer',
         fontColor:'blue',
         userSelect: 'none',
-        backgroundColor:'',
         paddingTop: '0.5rem ',
         paddingRight: '0.7rem ',
         paddingBottom: '0.5rem ',

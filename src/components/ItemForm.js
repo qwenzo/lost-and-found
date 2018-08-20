@@ -90,8 +90,8 @@ class ItemForm extends Component{
                         
 
                     }}
-                        onMouseOver ={this.handleHover} 
-                        onMouseLeave = {this.handleMouseLeaving}
+                        onFocusCapture ={()=>{console.log('work');this.handleHover}} 
+                        /* onMouseLeave = {this.handleMouseLeaving} */
                     style={styles.lostCheckerStyle} >I've lost an item</div>
 
                         <div  onClick = { (e)=>{
@@ -107,8 +107,8 @@ class ItemForm extends Component{
                                 this.setState({found:true});
                             }
                     }}
-                    onMouseOver ={this.handleHover} 
-                    onMouseLeave = {this.handleMouseLeaving}
+                    onFocusCapture ={this.handleHover} 
+                    /* onMouseLeave = {this.handleMouseLeaving} */
                  className="shadow-sm p-2 m-1" style={styles.foundCheckerStyle} >I want to register an item</div>
             </div>
             <label className='m-2' >

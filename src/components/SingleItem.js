@@ -18,8 +18,19 @@ class SingleItem extends Component {
           
         
       }
+
+      handleRight = (e) =>{
+        const {viewPort} = this.refs;
+        viewPort.scrollLeft = viewPort.scrollLeft+ 650+(3.75*2);
+     }
+     handleLeft = (e) =>{
+        const {viewPort} = this.refs;
+        viewPort.scrollLeft = viewPort.scrollLeft- 650+(3.75*2);
+     }
      render(){
          let items = ['lol','loljjj'];
+
+        
          return(
          
              <div style={styles.containerStyle} className=" justify-content-center align-items-center ">
@@ -75,10 +86,38 @@ class SingleItem extends Component {
     <span className="sr-only">Next</span>
   </a>
 </div> */}
+            
+
+            <div ref='viewPort' className="d-flex flex-row" style={styles.ImageContainerStyle}>
+            <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+                <div>
+                <Image style={styles.imageStyle}
+                   className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
+                    alt="Trulli" width="650" height="500" />
+                   
+                </div>
+            </div>
             {/*  <Image style={styles.imageStyle}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" /> */}
-             {   <Carousel onClickItem={
+             {  /*  <Carousel onClickItem={
                  (e)=>{
                     console.log(e);
                  }
@@ -95,10 +134,12 @@ class SingleItem extends Component {
                     alt="Trulli" width="650" height="500" />
                    
                 </div>
-            </Carousel>  }
+            </Carousel>  */ }
 
                   
                   </div>
+                  <button onClickCapture={this.handleLeft}>lefty</button>
+                  <button onClickCapture={this.handleRight}>click</button>
                   <div className="d-flex flex-column " >
                         <div style={styles.TagContainerStyle} className=" d-flex flex-wrap flex-row-reverse"> 
                             <Tag text="B1" />
@@ -178,6 +219,14 @@ const styles = {
         border: '1px solid #eee',
         marginBottom:'5%'
       
+    },
+    ImageContainerStyle:{
+        whiteSpace:'nowrap',
+        overflowY:'hidden',
+        overflowX:'hidden',
+        width:"650px",
+        'WbkitScrollbar':'display:none'
+
     }
 }
 

@@ -10,7 +10,7 @@ class InputField extends Component{
         return(
             <div style={style} className={`d-flex flex-column ${className}`} > 
             <div  className={`d-flex ${row} `}>
-            <input {...input||''} placeholder={placeholder||''} value={value} onChangeCapture={ onTextChange} onPointerCancel={()=>{console.log('test')}}  /* onClickCapture={(e)=>{
+            <input onFocusCapture={()=> console.log('work')} {...input||''} placeholder={placeholder||''} value={value}  onChangeCapture={ onTextChange} onPointerCancel={()=>{console.log('test')}}  /* onClickCapture={(e)=>{
                 e.target.className = 'w-100 p-1'
             }} */ autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`align-self-stretch w-100 d-flex  `}    />
             <div style={{/* zIndex:'5',position:'absolute', */}} className="d-flex ">{element}</div>
@@ -21,6 +21,7 @@ class InputField extends Component{
         )
     }
 
+   
 }
 
 const styles = {

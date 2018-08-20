@@ -13,10 +13,10 @@ class LogIn extends Component{
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
-            <form style={containerStyle} className=" shadow-sm">
+            <form style={containerStyle} className=" container shadow-sm">
                 <div style={usernameContainerStyle}  className="shadow-sm">
-                <InputField onTextChange={this.onUsernameTextChange.bind(this)} row={'row-reverse'} element={ <Button hasborder={false} style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
-         } row='flex-row-reverse' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
+                <InputField onTextChange={this.onUsernameTextChange.bind(this)}  element={ <Button hasborder={false} style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+         } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
          
                 </div>
                 <div style={passwordContainerStyle} className="shadow-sm">
@@ -24,7 +24,7 @@ class LogIn extends Component{
          
                 </div>
                 <div  >
-               <Button onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true}  /* color='#4286f4' fontColor='#FFFFF' */  className=" d-flex d-flex align-self-start " text='Submit'/> 
+             {   <Button className="shadow-sm d-flex align-self-end" onClick={this.onClickHandle} style={submitBtnStyle} hasborder={true} onClickDownColor='#0b51c1'   color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
             </form>
         )
@@ -57,10 +57,10 @@ class LogIn extends Component{
 const style={
     containerStyle:{
         border: '1px solid #ddd',
-        marginTop:'10%',
+      /*   marginTop:'10%',
         marginBottom:'3%',
         marginLeft:'35%',
-        marginRight:'35%',
+        marginRight:'35%', */
         padding:'2%'
     },
     usernameNoteStyle:{
