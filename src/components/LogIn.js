@@ -54,10 +54,9 @@ class LogIn extends Component{
                if(e.response.data.errors){
                 this.setState({otherErrors:false});
                 if (e.response.data.errors.email) {
-                    this.setState({emailError:true})
                     this.setState({emailError:true,emailErrorMsg:e.response.data.errors.email[0]})
                    }
-                   else if (e.response.data.errors.password) {
+                    if (e.response.data.errors.password) {
                      this.setState({passwordError:true,passwordErrorMsg:e.response.data.errors.password[0]})
                    }
                }

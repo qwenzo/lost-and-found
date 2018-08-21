@@ -7,7 +7,19 @@ import isAuth from '../index';
 import ProbTypes from 'prop-types';
 
 class RegisterComp extends Component{
-    state={username:'',password:'',email:'',mobile:''}
+    state={username:'',password:'',email:'',mobile:'',
+    emailError:false,
+    mobileError:false,
+    usernameError:false,
+    emailErrorMsg:'',
+    usernameErrorMsg:'',
+    mobileErrorMsg:'',
+    passwordError:false,
+    passwordErrorMsg:'',
+    loading:false,
+    submitisClickable:true,
+    otherErrors:false,
+    otherErrorsMsg:''}
 
     static contextTypes={
         router:ProbTypes.object
@@ -16,29 +28,19 @@ class RegisterComp extends Component{
     componentWillMount(){
     }
     render() {
-        const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
+        const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
         return(
             <form style={containerStyle} className="">
-                <div style={usernameContainerStyle}  className="shadow-sm">
-                    <InputField onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
+
+                    <InputField  style={usernameContainerStyle}  className="shadow-sm" invalidText={this.state.emailErrorMsg} isInvalidCond={this.state.emailError} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
                 } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.email} placeholder="Email"  /> 
-         
-                </div>
-                <div style={passwordContainerStyle} className="shadow-sm">
-                    <InputField onTextChange={this.onUsernameTextChange.bind(this)} value={this.state.username} height='40px'  type="text" className="d-flex " placeholder="Username"  /> 
-         
-                </div>
-                <div style={passwordContainerStyle} className="shadow-sm">
-                 <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
-         
-                </div>
-                <div style={passwordContainerStyle} className="shadow-sm">
-                 <InputField onTextChange={this.onMobileTextChange.bind(this)} value={this.state.mobile} height='40px'  type="text" className="d-flex " placeholder="Mobile"  /> 
-         
-                </div>
-              
+
+                <InputField style={passwordContainerStyle} className="shadow-sm" invalidText={this.state.usernameErrorMsg} isInvalidCond={this.state.usernameError} onTextChange={this.onUsernameTextChange.bind(this)} value={this.state.username} height='40px'  type="text"placeholder="Username"  /> 
+                 <InputField style={passwordContainerStyle} className="shadow-sm" invalidText={this.state.passwordErrorMsg} isInvalidCond={this.state.passwordError} onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text"  placeholder="Password"  /> 
+                 <InputField style={passwordContainerStyle} className="shadow-sm" invalidText={this.state.mobileErrorMsg} isInvalidCond={this.state.mobileError} onTextChange={this.onMobileTextChange.bind(this)} value={this.state.mobile} height='40px'  type="text"  placeholder="Mobile"  /> 
+                 { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
                 <div style={submitBtnStyle}>
-             {   <Button className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
+             {   <Button isLoading={this.state.loading} className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='SIGNUP'/>  }
                </div>
             </form>
         )
@@ -47,15 +49,47 @@ class RegisterComp extends Component{
     onClickHandle = () =>{
      // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
       const promise = this.props.Register({username:this.state.username,password:this.state.password,email:this.state.email,mob:this.state.mobile}).payload;
-      promise.then( (e)=>{console.log(e);
-    }
+      this.setState({loading:true,submitisClickable:false});
+      promise.then( 
+          (e)=>{
+           this.setState({otherErrorsMsg:e.data,otherErrors:true});
+            }
     
     ).catch(
             (e)=>{
-                if (e.response) {
-                    console.log(e.response.data);
-                  }
+                console.log(e.response);
+                if(e.response.data.errors){
+                    this.setState({otherErrors:false});
+                    if (e.response.data.errors.email) {
+                        this.setState({emailError:true,emailErrorMsg:e.response.data.errors.email[0]})
+                       }
+                        if (e.response.data.errors.password) {
+                         this.setState({passwordError:true,passwordErrorMsg:e.response.data.errors.password[0]})
+                       }
+                        if(e.response.data.errors.username){
+                        this.setState({usernameError:true,usernameErrorMsg:e.response.data.errors.username[0]})
+                       }
+                        if(e.response.data.errors.mob){
+                        this.setState({mobileError:true,mobileErrorMsg:e.response.data.errors.mob[0]})
+                       }
+                   }
+                   else{
+                    console.log(e.response);
+                    this.setState({emailError:false,passwordError:false,usernameError:false,mobileError:false});
+                    if(e.response.data.error){
+                      this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data.error});
+                    }
+                    else{
+                      this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data});
+                    }
+                
+                }
             }
+        )
+    .then(
+        ()=>{
+            this.setState({loading:false,submitisClickable:true});
+        }
         ) 
     }
     
@@ -105,6 +139,10 @@ const style={
        marginTop:'5%'
         
       },
+      errorStyle:{
+        color: '#dc3545',
+        fontFamily:'Lato, Calibri, Arial, sans-serif'
+      }
 }
 
 
