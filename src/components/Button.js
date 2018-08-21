@@ -1,6 +1,9 @@
 import React from 'react';
+import Loading from '../assets/Rolling-1s-200px.gif'
 
-const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor}) =>{
+
+
+const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor,isLoading}) =>{
 
 /*   {hasborder? styles.btnStyle={... styles.btnStyle,border: '1px solid #eee ',borderRadius:'5px 5px 5px 5px'}:styles.btnStyle={... styles.btnStyle,border: '',borderRadius:''} }  */
   {clickable ? styles.btnStyle={... styles.btnStyle,cursor:'pointer'}:styles.btnStyle={... styles.btnStyle,cursor:' '}}
@@ -48,7 +51,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
           }
          
           style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className={` ${className} `}>
-          {text?<font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
+          {text?isLoading ?<i style={{fontSize:'24px',color:'#FFFF'}} className="fa fa-cog fa-pulse"></i> : <font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
           </div>
            
         </div>

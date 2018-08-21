@@ -8,7 +8,7 @@ import _ from 'lodash';
 import ProbTypes from 'prop-types';
 
 class LogIn extends Component{
-    state={username:'',password:''}
+    state={email:'',password:'',emailError:false,emailErrorMsg:'',passwordError:false,passwordErrorMsg:false,loading:false,submitisClickable:true}
 
     static contextTypes={
         router:ProbTypes.object
@@ -20,17 +20,16 @@ class LogIn extends Component{
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle} = style;
         return(
             <form style={containerStyle} className="">
-                <div style={usernameContainerStyle}  className="shadow-sm">
-                <InputField onTextChange={this.onUsernameTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
-         } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.username} placeholder="Username"  /> 
-         
-                </div>
-                <div style={passwordContainerStyle} className="shadow-sm">
-                <InputField onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text" className="d-flex " placeholder="Password"  /> 
-         
-                </div>
+                <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.state.emailError} invalidText={this.state.emailErrorMsg} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
+         } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
+                <InputField 
+                style={passwordContainerStyle }
+                onTextChange={this.onPasswordTextChange.bind(this)} 
+                value={this.state.password} height='40px' type="text" className="shadow-sm" placeholder="Password"
+                isInvalidCond={this.state.passwordError} invalidText={this.state.passwordErrorMsg}
+                /> 
                 <div style={submitBtnStyle}>
-             {   <Button className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={true}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
+             {   <Button isLoading={this.state.loading} className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
             </form>
         )
@@ -38,7 +37,8 @@ class LogIn extends Component{
 
     onClickHandle = () =>{
      // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
-      const promise = this.props.LogInUser({email:this.state.username,password:this.state.password}).payload;
+     this.setState({loading:true,submitisClickable:false});
+      const promise = this.props.LogInUser({email:this.state.email,password:this.state.password}).payload;
       promise.then( (e)=>{console.log(e);
         localStorage.setItem('token', e.data.access_token);
         _.delay(
@@ -50,16 +50,32 @@ class LogIn extends Component{
     
     ).catch(
             (e)=>{
-                if (e.response) {
-                    console.log(e.response.data);
+               if(e.response.data.errors){
+                if (e.response.data.errors.email) {
+                    this.setState({emailError:true})
+                    this.setState({emailErrorMsg:e.response.data.errors.email[0]})
+                   }
+                   else if (e.response.data.errors.password) {
+                     this.setState({passwordError:true})
+                     this.setState({passwordErrorMsg:e.response.data.errors.password[0]})
+                   }
+               }
+                
+                  else{
+                    console.log(e.response);
                   }
+            }
+        )
+        .then(
+            (e)=>{
+                this.setState({loading:false,submitisClickable:true});
             }
         ) 
     }
     
 
-    onUsernameTextChange(event){
-        this.setState({username:event.target.value});
+    onEmailTextChange(event){
+        this.setState({email:event.target.value});
       }
 
       onPasswordTextChange(event){

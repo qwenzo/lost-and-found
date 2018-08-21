@@ -12,12 +12,12 @@ class Carousel extends Component{
     }
     
     render(){
-        const {width,paddingWidth,className,style} = this.props;
+        const {width,className,style} = this.props;
         return (<div style={style} className={className}>
             <div style={{...styles.containerStyle,width:width+'px'}} className="d-flex flex-row" ref='viewPort' >
             {this.props.children}
             </div>
-            <button onClickCapture={this.handleLeft}>lefty</button>
+            <button  onClickCapture={this.handleLeft}>lefty</button>
              <button onClickCapture={this.handleRight}>right</button>
              </div>
         )
@@ -69,7 +69,12 @@ const styles={
         overflowY:'hidden',
         overflowX:'hidden',
         width:"650px",
+    },
+    leftArrowStyle:{
+        zIndex:1,
+        position:'abs'
     }
+    
 }
 
 function scrollTo (element, to, duration)   {
