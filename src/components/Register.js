@@ -115,10 +115,10 @@ class RegisterComp extends Component{
 
 const style={
     containerStyle:{
-         marginTop:'10%',
+          marginTop:'10%',
         marginBottom:'3%',
         marginLeft:'35%',
-        marginRight:'35%', 
+        marginRight:'35%',  
         padding:'2%',
         boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
     },

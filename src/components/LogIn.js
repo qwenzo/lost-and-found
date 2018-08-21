@@ -20,6 +20,7 @@ class LogIn extends Component{
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
         return(
             <form style={containerStyle} className="">
+                  <style>{'body { background-color: #F8F9F9}'}</style>
                 <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.state.emailError} invalidText={this.state.emailErrorMsg} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
                 <InputField 
@@ -30,7 +31,7 @@ class LogIn extends Component{
                 /> 
                  { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
                 <div style={submitBtnStyle}>
-             {   <Button isLoading={this.state.loading} className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
+             {   <Button isLoading={this.state.loading} className=" d-flex d-flex align-self-start " onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'  text='LOGIN'/>  }
                </div>
             </form>
         )
@@ -97,10 +98,11 @@ const style={
     containerStyle:{
          marginTop:'10%',
         marginBottom:'3%',
-        marginLeft:'35%',
-        marginRight:'35%', 
+        marginLeft:'38%',
+        marginRight:'38%', 
         padding:'2%',
-        boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
+        boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
+        backgroundColor:'#FFFF'
     },
     usernameNoteStyle:{
         borderLeft: '1px solid #ddd',

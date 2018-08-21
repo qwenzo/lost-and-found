@@ -7,7 +7,7 @@ class InputField extends Component{
         const {value,onTextChange,input,placeholder,isInvalidCond, height,row,element,className,style,invalidText} = this.props;
         {(height) ? styles.inputStyle = {...styles.inputStyle,height:height}:styles.inputStyle = {...styles.inputStyle,height:'30px'}}
         /* {(isInvalidCond) ? styles.inputContainerStyle = {...styles.inputContainerStyle,border:'1px solid #dc3545'}:''} */
-        const isInvalidProps  = isInvalidCond ? {border:'1px solid #dc3545'} : {border:''}
+        const isInvalidProps  = isInvalidCond ? {border:'1px solid #FF0000'} : {border:''}
         return(
             <div>
                 <div style={style} className={`d-flex flex-column`} > 
