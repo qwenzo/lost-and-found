@@ -1,6 +1,15 @@
 import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 
 class Carousel extends Component{
+  state = {children:[],currIndex:0}
+    componentDidMount(){
+         let myArray = Array.from(this.refs.viewPort.childNodes)
+        this.setState({children:myArray});
+        
+
+       
+    }
     
     render(){
         const {width,paddingWidth,className,style} = this.props;
@@ -16,27 +25,40 @@ class Carousel extends Component{
     }
 
     handleRight = (e) =>{
-        const {viewPort} = this.refs;
-       var newPos= viewPort.scrollLeft+ this.props.width+(+this.props.paddingWidth?this.props.paddingWidth:0);
-      // viewPort.scrollLeft = newPos;
-      /*  scrollTo(viewPort,newPos,200); */
-      viewPort.scroll({
-        top: 0, 
-        left: newPos,
+       
+     this.setState({currIndex:this.state.currIndex+=1});
+     if(this.state.currIndex>=this.state.children.length-1){
+        this.setState({currIndex:0});
+      }
+      this.state.children[this.state.currIndex].scrollIntoView({
+
         behavior: 'smooth' 
       });
+     
      }
      handleLeft = (e) =>{
-        const {viewPort} = this.refs;
-        var newPos = viewPort.scrollLeft- this.props.width+(-this.props.paddingWidth?this.props.paddingWidth:0);
-       // scrollTo(viewPort,newPos,200);
-
-       viewPort.scroll({
-        top: 0, 
-        left: newPos,
+       const childrenLength = this.state.children.length-1;
+       const index = this.state.currIndex-1;
+        if(index>0){
+            this.setState({currIndex:this.state.currIndex-=1});
+         }
+        /*  else{
+           
+         } */
+       
+       this.state.children[this.state.currIndex].scrollIntoView({
         behavior: 'smooth' 
       });
      }
+
+      test = () =>{
+        React.Children.map(this.props.children, (element, idx) => {
+            console.log( this.refs);
+            return React.cloneElement(element, { ref: idx });
+          })
+      
+     }
+    
 }
 
 
