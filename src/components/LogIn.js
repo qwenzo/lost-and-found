@@ -28,7 +28,7 @@ class LogIn extends Component{
                 value={this.state.password} height='40px' type="text" className="shadow-sm" placeholder="Password"
                 isInvalidCond={this.state.passwordError} invalidText={this.state.passwordErrorMsg}
                 /> 
-                 { this.state.otherErrors  ?  <span style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
+                 { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
                 <div style={submitBtnStyle}>
              {   <Button isLoading={this.state.loading} className="shadow-sm" onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'   className=" d-flex d-flex align-self-start " text='LOGIN'/>  }
                </div>
@@ -52,6 +52,7 @@ class LogIn extends Component{
     ).catch(
             (e)=>{
                if(e.response.data.errors){
+                this.setState({otherErrors:false});
                 if (e.response.data.errors.email) {
                     this.setState({emailError:true})
                     this.setState({emailError:true,emailErrorMsg:e.response.data.errors.email[0]})
@@ -62,7 +63,14 @@ class LogIn extends Component{
                }
                 
                   else{
-                    this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data});
+                      console.log(e.response);
+                      if(e.response.data.error){
+                        this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data.error});
+                      }
+                      else{
+                        this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data});
+                      }
+                  
                   }
             }
         )
@@ -114,7 +122,7 @@ const style={
       },
       errorStyle:{
         color: '#dc3545',
-        margin:'5%'
+        fontFamily:'Lato, Calibri, Arial, sans-serif'
       }
 }
 

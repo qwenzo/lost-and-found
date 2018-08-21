@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../assets/Rolling-1s-200px.gif'
+import Loading from '../assets/Rolling-1s-200px.svg'
 
 
 
@@ -49,9 +49,10 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             }   
           }
           }
-         
+       
           style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className={` ${className} `}>
-          {text?isLoading ?<i style={{fontSize:'24px',color:'#FFFF'}} className="fa fa-cog fa-pulse"></i> : <font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
+          
+          {text?isLoading ? <img style={{width:'24px',height:'24px',fill:'#FFFF'}} src={Loading} /> : <font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>:img?img:''}
           </div>
            
         </div>
