@@ -6,17 +6,17 @@ class ItemCard extends Component {
      render(){
          return(
              <div style ={styles.containerStyle} className = "shadow-sm  ">
-                  <Carousel width={250} paddingWidth={7.5}>
+                  <Carousel width={350} paddingWidth={7.5}>
                 <div>
                 <Image style={styles.imageStyle}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="250" height="200" />
+                    alt="Trulli" />
                    
                 </div>
                 <div>
                 <Image style={styles.imageStyle}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
-                    alt="Trulli" width="250" height="200" />
+                    alt="Trulli"  />
                    
                 </div>
             </Carousel> 
