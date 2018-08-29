@@ -1,51 +1,47 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+import leftArrow from '../../src/assets/leftArrow.png';
+import rightArrow from '../../src/assets/rightArrow.png';
 
 class Carousel extends Component{
-  state = {children:[],currIndex:0}
+  state = {children:[],currIndex:1}
     componentDidMount(){
-         let myArray = Array.from(this.refs.viewPort.childNodes)
-        this.setState({children:myArray});
-        
-
-       
+         let childNodes = Array.from(this.refs.viewPort.childNodes);
+        this.setState({children:childNodes});
     }
     
     render(){
         const {width,className,style} = this.props;
         return (<div style={style} className={className}>
-            <div style={{...styles.containerStyle,width:width+'px'}} className="d-flex flex-row" ref='viewPort' >
+            <div style={{...styles.containerStyle,width:width+'px'}} className="align-items-center d-flex flex-row" ref='viewPort' >
+            <div className="d-flex justify-content-between" style={{...styles.buttonsContainer,width:width+'px'}}>
+                <i style={styles.arrowStyle} onClickCapture={this.handleLeft} className="fa fa-arrow-left"></i>
+                <i style={styles.arrowStyle} onClickCapture={this.handleRight} className="fa fa-arrow-right"></i>
+            </div>
             {this.props.children}
             </div>
-            <button  onClickCapture={this.handleLeft}>lefty</button>
-             <button onClickCapture={this.handleRight}>right</button>
              </div>
         )
     
     }
 
     handleRight = (e) =>{
-       
+        console.log(this.state.children[0]);
      this.setState({currIndex:this.state.currIndex+=1});
      if(this.state.currIndex>=this.state.children.length-1){
-        this.setState({currIndex:0});
+        this.setState({currIndex:1});
       }
+      
+      console.log(this.state.children[this.state.currIndex]);
       this.state.children[this.state.currIndex].scrollIntoView({
-
         behavior: 'smooth' 
       });
      
      }
      handleLeft = (e) =>{
-       const childrenLength = this.state.children.length-1;
-       const index = this.state.currIndex-1;
-        if(index>0){
+        if( this.state.currIndex>1){
             this.setState({currIndex:this.state.currIndex-=1});
          }
-        /*  else{
-           
-         } */
-       
        this.state.children[this.state.currIndex].scrollIntoView({
         behavior: 'smooth' 
       });
@@ -70,9 +66,13 @@ const styles={
         overflowX:'hidden',
         width:"650px",
     },
-    leftArrowStyle:{
+    arrowStyle:{
+        fontSize:"48px",
+        color:"black",
+    },
+    buttonsContainer:{
         zIndex:1,
-        position:'abs'
+        position:'absolute',
     }
     
 }

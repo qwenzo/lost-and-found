@@ -12,7 +12,7 @@ class Image extends Component {
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
          {this.state.showPreviewImage ? <div className="justify-self-center align-items-center justify-content-center align-self-center d-flex shadow " style={styles.previewImageContainer}>
-         <style>{'body { background-color: #F8F9F9}'}</style>
+        {/*  <style>{'body { background-color: #F8F9F9}'}</style> */}
            <div  className=" d-flex">
            <button onClick={this.onImageClose}  style={styles.closeImage} className="m-2 d-flex align-self-start">EXIT</button>
             <img  style={styles.previewImage}
@@ -23,7 +23,7 @@ class Image extends Component {
       <div className="d-flex flex-row-reverse">
          {isDeleteable?<div className=" p-2 d-flex align-self-start" style={styles.closeSmallImage}><i onClickCapture={(e) =>{this.setState({show:false});onDelete(source)}}
           style={styles.closeImageIcon} className=" shadow-sm fa fa-times"></i> </div>:null} 
-          {images?'this.renderImages':<div onClickCapture={this.omImageClick}> <img  onClickCapture={() => {this.omImageClick;onClick}} style={styles.imageStyle} onClick={this.props.onClick}  className="m-1" height={height} width={width} src ={source}  /></div> }
+          {images?'this.renderImages':<div onClickCapture={this.omImageClick}> <img  onClickCapture={() => {this.omImageClick;onClick}} style={styles.imageStyle} onClick={this.props.onClick}  height={height} width={width} src ={source}  /></div> }
     
       </div>
       </div> : null
