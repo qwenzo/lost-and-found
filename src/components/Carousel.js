@@ -26,13 +26,11 @@ class Carousel extends Component{
     }
 
     handleRight = (e) =>{
-        console.log(this.state.children[0]);
      this.setState({currIndex:this.state.currIndex+=1});
      if(this.state.currIndex>=this.state.children.length-1){
         this.setState({currIndex:1});
       }
       
-      console.log(this.state.children[this.state.currIndex]);
       this.state.children[this.state.currIndex].scrollIntoView({
         behavior: 'smooth' 
       });
@@ -47,13 +45,6 @@ class Carousel extends Component{
       });
      }
 
-      test = () =>{
-        React.Children.map(this.props.children, (element, idx) => {
-            console.log( this.refs);
-            return React.cloneElement(element, { ref: idx });
-          })
-      
-     }
     
 }
 
@@ -76,36 +67,6 @@ const styles={
     }
     
 }
-
-function scrollTo (element, to, duration)   {
-    var start = element.scrollLeft,
-        change = to - start,
-        increment = 20;
-
-    var animateScroll = function(elapsedTime) {        
-        elapsedTime += increment;
-        var position = easeInOut(elapsedTime, start, change, duration);                        
-        element.scrollLeft = position; 
-        if (elapsedTime < duration) {
-            setTimeout(function() {
-                animateScroll(elapsedTime);
-            }, increment);
-        }
-    };
-
-    animateScroll(0);
-}
-
-function easeInOut (currentTime, start, change, duration) {
-    currentTime /= duration / 2;
-    if (currentTime < 1) {
-        return change / 2 * currentTime * currentTime + start;
-    }
-    currentTime -= 1;
-    return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
-}
-
-
 
 
 export default Carousel;
