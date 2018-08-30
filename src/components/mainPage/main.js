@@ -32,25 +32,18 @@ class Main extends Component {
     }
 
     render (){
-        return (<div >
-           
-            <div style={styles.containerStyle} className = " d-flex justify-content-center  flex-column  ">
-        <div className="align-self-center m-2">
-        <h1> lost your shit ? </h1>
-         <h3> you may find it here </h3>
-         </div>
-        
-         <div id="searchBox" style={styles.searchBoxStyle} className=" align-self-center ">
-         <InputField element={
-             <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
-         } row='flex-row-reverse' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text" className="d-flex justify-content-center align-self-center" placeholder="Search a lost item"  />    
-        {/*  <div className="input-group-append">
-    <button className="btn btn-outline-secondary" type="button">Search</button>
-        </div> */}
-          </div>
+        return (
+        <div >
+            <div style={styles.containerStyle} className = " d-flex align-items-center justify-content-center  flex-column  ">
+                <div className="align-self-center m-2">
+                    <h1> lost your shit ? </h1>
+                    <h3> you may find it here </h3>
+                </div>
+            <InputField className="shadow-sm"  style={styles.inutFieldStyle} element=
+            {<Button text='Search'/>} row='flex-row' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text"  placeholder="Search a lost item"  />    
         </div >
        
-      <NewestItems /> 
+     {/*  <NewestItems />  */}
         </div>)
     }
 
@@ -60,12 +53,19 @@ class Main extends Component {
 const styles = {
     containerStyle: {
         height:'450px',
-        position:'relative',
     },
     searchBoxStyle: {
     },
     briefResultsStyle:{
       zIndex:'1'
+    },
+    inutFieldStyle:{
+        border: '1px solid #ddd',
+        width:'50%',
+        minWidth:'300px',
+        borderRadius:'5px',
+        overflow:'hidden'
+
     }
   }
 

@@ -6,15 +6,14 @@ class InputField extends Component{
     render(){
         const {value,onTextChange,input,placeholder,isInvalidCond, height,row,element,className,style,invalidText} = this.props;
         {(height) ? styles.inputStyle = {...styles.inputStyle,height:height}:styles.inputStyle = {...styles.inputStyle,height:'30px'}}
-        /* {(isInvalidCond) ? styles.inputContainerStyle = {...styles.inputContainerStyle,border:'1px solid #dc3545'}:''} */
         const isInvalidProps  = isInvalidCond ? {border:'1px solid #dc3545'} : {border:''}
         return(
-            <div>
-                <div style={style} className={`d-flex flex-column`} > 
+            <div className={`${className} `} style={style}>
+                <div  className={`d-flex flex-column`} > 
                     <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps}} className={`d-flex ${row} ${className} `}>
                         <input  onFocusCapture={()=> console.log('work')} {...input||''} placeholder={placeholder||''} value={value}  onChangeCapture={ onTextChange} onPointerCancel={()=>{console.log('test')}}  /* onClickCapture={(e)=>{
                             e.target.className = 'w-100 p-1'
-                        }} */ autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`  align-self-stretch w-100 d-flex  `}    />
+                        }} */ autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle} className={`w-100 d-flex `}    />
                         <div style={{/* zIndex:'5',position:'absolute', */}} className="d-flex ">{element}</div>
                         </div>
                     </div>

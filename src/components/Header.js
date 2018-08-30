@@ -29,11 +29,9 @@ class Header extends Component {
 
     renderSearchBox(){
      return(
-        <div id="searchBoxHeader" style={styles.searchBoxStyle} className="shadow-sm ">
-        <InputField style={{ border: '1px solid #ddd'}} className='shadow-sm' element={
-             <Button hasborder={true} clickable={true} className='d-flex' style={{border: '1px solid #eee'}} text='Search'/>
-         } row='flex-row' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
-      </div>
+        <InputField  style={styles.searchBoxStyle} className='shadow-sm' element={
+             <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ text='Search'/>
+         } row='flex-row' height='40px'  type="text" placeholder="Search a lost item"  />    
      );
     }
 
@@ -68,7 +66,7 @@ const styles = {
     
     },
     searchBoxStyle:{
-      marginLeft:'2%',
+      marginLeft:'1%',
       width:'25%',
       minWidth:'190px'
     },
