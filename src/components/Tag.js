@@ -10,7 +10,12 @@ const Tag = (props) =>{
 const styles = {
     TagStyle :{
         marginLeft:'2px',
-        border: '1px solid #eee'
+        border: '1px solid #eee',
+        borderRadius:'3px',
+        fontFamily: 'Lato, Calibri, Arial, sans-serif',
+        userSelect: 'none',
+        fontWeight:'500'
+
     }
 }
 

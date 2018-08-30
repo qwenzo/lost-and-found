@@ -62,7 +62,6 @@ class LogIn extends Component{
                }
                 
                   else{
-                      console.log(e.response);
                       if(e.response.data.error){
                         this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data.error});
                       }

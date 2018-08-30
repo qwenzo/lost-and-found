@@ -45,7 +45,8 @@ class ItemCard extends Component {
 const styles = {
     containerStyle :{
         margin:'20px',
-        border: '1px solid #ddd'
+        border: '1px solid #ddd',
+        backgroundColor:'white'
       
        
     },

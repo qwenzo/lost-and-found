@@ -35,19 +35,27 @@ class Header extends Component {
      );
     }
 
+    redirectLogin = () =>{
+      this.context.router.push('/login');
+    }
+
+    redirectSignup = () =>{
+      this.context.router.push('/signup');
+    }
+
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-        <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
-        
+      <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
         {pathname=="/" ? '' : this.renderSearchBox()}  
-      {!isAuth()?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-     <Link to="/login"> <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> </Link>
-      <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
-      </div>: <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-      <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/>
-      </div> }  
-      </div>
+          {!isAuth()?
+          <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+            <Button onClick={this.redirectLogin} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
+            <Button onClick={this.redirectSignup} clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
+          </div>:
+           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+          <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
+    </div>
     );
   }
 
