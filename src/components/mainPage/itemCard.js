@@ -8,19 +8,19 @@ class ItemCard extends Component {
              <div style ={styles.containerStyle} className = "shadow-sm  ">
                   <Carousel width={250} paddingWidth={7.5}>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="250" height="200" />
                    
                 </div>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="250" height="200" />
                    
                 </div>
             </Carousel> 
-                <div>
+                <div style={styles.detailsStyle}>
                     <h6>Name:Laptop Lenevo</h6>
                     <h6>Last Seen At:B1</h6>
                     
@@ -29,6 +29,10 @@ class ItemCard extends Component {
                   <Tag text="B1" />
                   <Tag text="Lenvo" />
                   <Tag text="Laptop" />  
+                  <Tag text="B1" />
+                  <Tag text="Lenvo" />
+                  <Tag text="Laptop" />  
+                  
                       
                  </div>
                  <div className="d-flex flex-row align-items-end  bg-white  justify-content-center">
@@ -46,12 +50,17 @@ const styles = {
     containerStyle :{
         margin:'20px',
         border: '1px solid #ddd',
-        backgroundColor:'white'
+        backgroundColor:'white',
+        borderRadius: '10px',
+        overflow:'hidden'
       
        
     },
     TagContainerStyle :{
-       marginRigh:'5px'
+       width:'250px'
+    },
+    detailsStyle:{
+        margin:'5%'
     }
 }
 
