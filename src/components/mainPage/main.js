@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import NewestItems from './newestItems';
 import InputField from '../InputField';
 import Button from '../Button';
+import searchIcon from '../../assets/Orion_search.png'
 class Main extends Component {
   
 
@@ -39,8 +40,11 @@ class Main extends Component {
                     <h1> lost your shit ? </h1>
                     <h3> you may find it here </h3>
                 </div>
-            <InputField className=" shadow-sm"  style={styles.inutFieldStyle} element=
-            {<Button text='Search'/>} row='flex-row' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text"  placeholder="Search a lost item"  />    
+                <InputField   style={styles.searchBoxStyle} className='shadow-sm' element={
+                    <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ 
+                    img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+                     <img width="24px" height="24px" style={{}} src={searchIcon} /></div>}/>
+                } row='flex-row' height='40px' width="50%" type="text" placeholder="Search a lost item"  />    
         </div >
        
      {/*  <NewestItems />  */}
@@ -55,14 +59,22 @@ const styles = {
         height:'450px',
     },
     searchBoxStyle: {
+        width:'100%',
+        minWidth:'190px',
+        border: '1px solid #ddd',
+       // borderRadius:'50px' ,
+       borderBottomRightRadius:'50px' ,
+        borderTopRightRadius:'50px' ,
+        overflow:'hidden'
     },
     briefResultsStyle:{
       zIndex:'1'
     },
     inutFieldStyle:{
         border: '1px solid #ddd',
-         width:'100%',
-         minWidth:'250px', 
+        /* width:'100%' */
+      /*   maxWidth:'600px',
+        minWidth:'150px',  */
         borderRadius:'5px',
         overflow:'hidden',
      

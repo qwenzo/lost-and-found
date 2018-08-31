@@ -4,6 +4,7 @@ import Button from './Button';
 import InputField from './InputField';
 import isAuth from '../index';
 import {Link} from 'react-router';
+import searchIcon from '../assets/Orion_search.png'
 class Header extends Component {
     state = {loggedin:false};
     static contextTypes ={
@@ -30,7 +31,8 @@ class Header extends Component {
     renderSearchBox(){
      return(
         <InputField  style={styles.searchBoxStyle} className='shadow-sm' element={
-             <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ text='Search'/>
+          <div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+          <img width="24px" height="24px" style={{}} src={searchIcon} /></div>
          } row='flex-row' height='40px'  type="text" placeholder="Search a lost item"  />    
      );
     }

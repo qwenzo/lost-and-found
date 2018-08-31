@@ -4,12 +4,14 @@ class InputField extends Component{
     state = {isInvalidViewText:false}
 
     render(){
-        const {value,onTextChange,input,placeholder,isInvalidCond, height,row,element,className,style,invalidText,width} = this.props;
+        const {value,onTextChange,input,placeholder,isInvalidCond,width, height,row,element,className,style,invalidText} = this.props;
         const heightCond = height? {height:height} : {height:'30px'}
+        const widthCond = width? {width:width} : {width:'100%'}
         const isInvalidProps  = isInvalidCond ? {border:'1px solid #dc3545'} : {border:''}
         return(
-            <div /* className="d-flex flex-wrap" */   style={{width:"100%"}}    >
-                    <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps,...style}} className={`d-flex ${row} ${className} `}>
+            //fix the width later
+            <div  style={{...widthCond,minWidth:'300px'}}  >
+                    <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps,...style}} className={` d-flex ${row} ${className} `}>
                         <input  onFocusCapture={()=> console.log('work')} {...input||''} placeholder={placeholder||''} value={value}  
                         onChangeCapture={ onTextChange} 
                         onPointerCancel={()=>{console.log('test')}}  
@@ -38,12 +40,14 @@ const styles = {
         height:'30px',
         paddingLeft:'5px',
         width:'100%'
+
     },
     invalidTextStyle:{
         fontSize: '80%',
         color: '#dc3545'
     },
     inputContainerStyle:{
+       
 
     }
 }
