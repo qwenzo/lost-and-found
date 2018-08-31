@@ -49,35 +49,33 @@ class SingleItem extends Component {
          return(
         <div style={styles.containerStyle} className=" justify-content-center align-items-center ">
              <div style={styles.itemBoxStyle} className ="d-flex shadow-sm rounded ">
-                <div className=" d-flex flex-row-reverse">
                 
-            <Carousel paddingWidth={7.5} width={650}>
+                
+            <Carousel  width={650}>
                 <div>
-            <Image ref='test' style={styles.imageStyle}
+            <Image ref='test'
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" />
                    
                 </div>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" />
-                   
                 </div>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" />
-                   
                 </div>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" width="650" height="500" />
                    
                 </div>
                 </Carousel>                 
-                  </div>
+                  
                   <div className="d-flex flex-column " >
                         <div style={styles.TagContainerStyle} className=" d-flex flex-wrap flex-row-reverse"> 
                             <Tag text="B1" />

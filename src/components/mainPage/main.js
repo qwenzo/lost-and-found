@@ -39,7 +39,7 @@ class Main extends Component {
                     <h1> lost your shit ? </h1>
                     <h3> you may find it here </h3>
                 </div>
-            <InputField className="shadow-sm"  style={styles.inutFieldStyle} element=
+            <InputField className=" shadow-sm"  style={styles.inutFieldStyle} element=
             {<Button text='Search'/>} row='flex-row' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text"  placeholder="Search a lost item"  />    
         </div >
        
@@ -61,10 +61,11 @@ const styles = {
     },
     inutFieldStyle:{
         border: '1px solid #ddd',
-        width:'50%',
-        minWidth:'300px',
+         width:'100%',
+         minWidth:'250px', 
         borderRadius:'5px',
-        overflow:'hidden'
+        overflow:'hidden',
+     
 
     }
   }

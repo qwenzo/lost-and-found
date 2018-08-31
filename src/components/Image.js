@@ -80,11 +80,12 @@ const styles = {
       
     },
     previewImage:{
-        margin:'0 auto',
-        //width: '50%',
+        /* margin:'0 auto', */
+        width: '100%',
+        height:'100%',
        // marginLeft:'100%',
       // height:'50%',
-       flex:'1'
+       flex:1
     },
     closeImage:{
         position: 'absolute',

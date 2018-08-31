@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import leftArrow from '../../src/assets/leftArrow.png';
-import rightArrow from '../../src/assets/rightArrow.png';
+import leftArrow from '../../src/assets/leftArrw.png';
+import rightArrow from '../../src/assets/rightArrw.png';
 
 class Carousel extends Component{
   state = {children:[],currIndex:1}
@@ -15,8 +15,8 @@ class Carousel extends Component{
         return (<div style={style} className={className}>
             <div style={{...styles.containerStyle,width:width+'px'}} className="align-items-center d-flex flex-row" ref='viewPort' >
             <div className="d-flex justify-content-between" style={{...styles.buttonsContainer,width:width+'px'}}>
-                <i style={styles.arrowStyle} onClickCapture={this.handleLeft} className="fa fa-arrow-left"></i>
-                <i style={styles.arrowStyle} onClickCapture={this.handleRight} className="fa fa-arrow-right"></i>
+                <img src={leftArrow} style={styles.arrowStyle} onClickCapture={this.handleLeft} />
+                <img src={rightArrow} style={styles.arrowStyle} onClickCapture={this.handleRight}/>
             </div>
             {this.props.children}
             </div>

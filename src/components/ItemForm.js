@@ -403,8 +403,7 @@ const styles={
         borderRadius:'5px 5px 5px 5px',
       // overflow: 'hidden',
         //whiteSpace: 'nowrap'
-       //display:'inline-block'
-       
+       //display:'inline-block'     
        minWidth:'300px'
     },
     inputStyle:{

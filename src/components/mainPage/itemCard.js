@@ -6,7 +6,8 @@ class ItemCard extends Component {
      render(){
          return(
              <div style ={styles.containerStyle} className = "shadow-sm  ">
-                  <Carousel width={250} paddingWidth={7.5}>
+             <div style={styles.nameStyle} className="flex-wrap  d-flex justify-content-center">  Lenevo Lenevo Lenevo Lenevo Lenevo Lenevo   </div>
+                  <Carousel style={styles.borderRadius} width={250} >
                 <div>
                 <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
@@ -61,6 +62,14 @@ const styles = {
     },
     detailsStyle:{
         margin:'5%'
+    },
+    carouselStyle:{
+        borderRadius:'10px',
+        overflow:'hidden'
+    },
+    nameStyle:{
+        textAlign:'center',
+        width:'250px'
     }
 }
 
