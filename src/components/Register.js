@@ -30,10 +30,10 @@ class RegisterComp extends Component{
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
         return(
-            <form style={containerStyle} className="">
+            <form style={containerStyle} className="container">
 
-                    <InputField  style={usernameContainerStyle}  className="shadow-sm" invalidText={this.state.emailErrorMsg} isInvalidCond={this.state.emailError} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle} className='d-flex'  text='@student.guc.edu.eg'/>
-                } row='flex-row' height='40px'  type="text" className="d-flex " value={this.state.email} placeholder="Email"  /> 
+                    <InputField  style={usernameContainerStyle}  className="shadow-sm" invalidText={this.state.emailErrorMsg} isInvalidCond={this.state.emailError} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}  text='@student.guc.edu.eg'/>
+                } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Email"  /> 
 
                 <InputField style={passwordContainerStyle} className="shadow-sm" invalidText={this.state.usernameErrorMsg} isInvalidCond={this.state.usernameError} onTextChange={this.onUsernameTextChange.bind(this)} value={this.state.username} height='40px'  type="text"placeholder="Username"  /> 
                  <InputField style={passwordContainerStyle} className="shadow-sm" invalidText={this.state.passwordErrorMsg} isInvalidCond={this.state.passwordError} onTextChange={this.onPasswordTextChange.bind(this)} value={this.state.password} height='40px'  type="text"  placeholder="Password"  /> 
@@ -115,13 +115,12 @@ class RegisterComp extends Component{
 
 const style={
     containerStyle:{
-          marginTop:'10%',
-        marginBottom:'3%',
-        marginLeft:'35%',
-        marginRight:'35%',  
-        padding:'2%',
-        boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
-    },
+        marginTop:'10%',
+       padding:'2%',
+       boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
+       maxWidth:'30%',
+       minWidth:'300px'
+   },
     usernameNoteStyle:{
         borderLeft: '1px solid #ddd',
     },

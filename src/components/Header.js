@@ -4,6 +4,7 @@ import Button from './Button';
 import InputField from './InputField';
 import isAuth from '../index';
 import {Link} from 'react-router';
+import searchIcon from '../assets/Orion_search.png'
 class Header extends Component {
     state = {loggedin:false};
     static contextTypes ={
@@ -29,27 +30,34 @@ class Header extends Component {
 
     renderSearchBox(){
      return(
-        <div id="searchBoxHeader" style={styles.searchBoxStyle} className="shadow-sm  w-25">
-        <InputField style={{ border: '1px solid #ddd'}} className='shadow-sm' element={
-             <Button hasborder={true} clickable={true} className='d-flex' style={{border: '1px solid #eee'}} text='Search'/>
-         } row='flex-row' height='40px'  type="text" className="d-flex " placeholder="Search a lost item"  />    
-      </div>
+        <InputField  style={styles.searchBoxStyle} className='shadow-sm' element={
+          <div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+          <img width="24px" height="24px" style={{}} src={searchIcon} /></div>
+         } row='flex-row' height='40px'  type="text" placeholder="Search a lost item"  />    
      );
+    }
+
+    redirectLogin = () =>{
+      this.context.router.push('/login');
+    }
+
+    redirectSignup = () =>{
+      this.context.router.push('/signup');
     }
 
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-        <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
-        
+      <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
         {pathname=="/" ? '' : this.renderSearchBox()}  
-      {!isAuth()?<div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-     <Link to="/login"> <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/> </Link>
-      <Button clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
-      </div>: <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-      <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/>
-      </div> }  
-      </div>
+          {!isAuth()?
+          <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+            <Button onClick={this.redirectLogin} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
+            <Button onClick={this.redirectSignup} clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
+          </div>:
+           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+          <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
+    </div>
     );
   }
 
@@ -68,7 +76,9 @@ const styles = {
     
     },
     searchBoxStyle:{
-      marginLeft:'2%'
+      marginLeft:'1%',
+      width:'25%',
+      minWidth:'190px'
     },
     buttonsBoxContainer:{
       marginRight:'1%',

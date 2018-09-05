@@ -61,7 +61,7 @@ class ItemForm extends Component{
         const {handleSubmit} = this.props;
         const {containerStyle,imagesContainerStyle} =styles;
         return(
-        <div className=" d-flex flex-column ">
+        <div className="container d-flex flex-column ">
               <style>{'body { background-color: #F8F9F9}'}</style>
             <div style={containerStyle} className="shadow-sm d-flex flex-column ">
             <form style={{backgroundColor:'#FFFF'}} /* onSubmit={handleSubmit(this.handleSubmitting.bind(this))} */ className="p-5">
@@ -396,15 +396,15 @@ const validate = (values) =>{
 const styles={
     containerStyle:{
         border: '1px solid #ddd',
-       
         marginTop:'3%',
         marginBottom:'3%',
-        marginLeft:'30%',
-        marginRight:'30%',
+       /*  marginLeft:'30%',
+        marginRight:'30%', */
         borderRadius:'5px 5px 5px 5px',
       // overflow: 'hidden',
         //whiteSpace: 'nowrap'
-       //display:'inline-block'
+       //display:'inline-block'     
+       minWidth:'300px'
     },
     inputStyle:{
         flex:1

@@ -19,8 +19,7 @@ class LogIn extends Component{
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
         return(
-            <form style={containerStyle} className="">
-                  <style>{'body { background-color: #F8F9F9}'}</style>
+            <form style={containerStyle} className="justify-self-center container">
                 <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.state.emailError} invalidText={this.state.emailErrorMsg} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
                 <InputField 
@@ -63,7 +62,6 @@ class LogIn extends Component{
                }
                 
                   else{
-                      console.log(e.response);
                       if(e.response.data.error){
                         this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data.error});
                       }
@@ -97,12 +95,10 @@ class LogIn extends Component{
 const style={
     containerStyle:{
          marginTop:'10%',
-        marginBottom:'3%',
-        marginLeft:'38%',
-        marginRight:'38%', 
         padding:'2%',
         boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
-        backgroundColor:'#FFFF'
+        maxWidth:'30%',
+        minWidth:'300px'
     },
     usernameNoteStyle:{
         borderLeft: '1px solid #ddd',

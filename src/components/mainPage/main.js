@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import NewestItems from './newestItems';
 import InputField from '../InputField';
 import Button from '../Button';
+import searchIcon from '../../assets/Orion_search.png'
 class Main extends Component {
   
 
@@ -32,25 +33,21 @@ class Main extends Component {
     }
 
     render (){
-        return (<div >
-           
-            <div style={styles.containerStyle} className = " d-flex justify-content-center  flex-column  ">
-        <div className="align-self-center m-2">
-        <h1> lost your shit ? </h1>
-         <h3> you may find it here </h3>
-         </div>
-        
-         <div id="searchBox" style={styles.searchBoxStyle} className=" align-self-center ">
-         <InputField element={
-             <Button className='d-flex' style={{marginRight:'0.5rem '}} text='Search'/>
-         } row='flex-row-reverse' height='40px' onTextChange={this.onSearchTextChange.bind(this)} value={this.state.searchText} type="text" className="d-flex justify-content-center align-self-center" placeholder="Search a lost item"  />    
-        {/*  <div className="input-group-append">
-    <button className="btn btn-outline-secondary" type="button">Search</button>
-        </div> */}
-          </div>
+        return (
+        <div >
+            <div style={styles.containerStyle} className = " d-flex align-items-center justify-content-center  flex-column  ">
+                <div className="align-self-center m-2">
+                    <h1> lost your shit ? </h1>
+                    <h3> you may find it here </h3>
+                </div>
+                <InputField   style={styles.searchBoxStyle} className='shadow-sm' element={
+                    <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ 
+                    img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+                     <img width="24px" height="24px" style={{}} src={searchIcon} /></div>}/>
+                } row='flex-row' height='40px' width="50%" type="text" placeholder="Search a lost item"  />    
         </div >
        
-      <NewestItems /> 
+     {/*  <NewestItems />  */}
         </div>)
     }
 
@@ -60,12 +57,28 @@ class Main extends Component {
 const styles = {
     containerStyle: {
         height:'450px',
-        position:'relative',
     },
     searchBoxStyle: {
+        width:'100%',
+        minWidth:'190px',
+        border: '1px solid #ddd',
+       // borderRadius:'50px' ,
+       borderBottomRightRadius:'50px' ,
+        borderTopRightRadius:'50px' ,
+        overflow:'hidden'
     },
     briefResultsStyle:{
       zIndex:'1'
+    },
+    inutFieldStyle:{
+        border: '1px solid #ddd',
+        /* width:'100%' */
+      /*   maxWidth:'600px',
+        minWidth:'150px',  */
+        borderRadius:'5px',
+        overflow:'hidden',
+     
+
     }
   }
 

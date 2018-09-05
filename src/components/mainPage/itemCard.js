@@ -6,21 +6,22 @@ class ItemCard extends Component {
      render(){
          return(
              <div style ={styles.containerStyle} className = "shadow-sm  ">
-                  <Carousel width={350} paddingWidth={7.5}>
+             <div style={styles.nameStyle} className="flex-wrap  d-flex justify-content-center">  Lenevo Lenevo Lenevo Lenevo Lenevo Lenevo   </div>
+                  <Carousel style={styles.borderRadius} width={250} >
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" />
                    
                 </div>
                 <div>
-                <Image style={styles.imageStyle}
+                <Image 
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli"  />
                    
                 </div>
             </Carousel> 
-                <div>
+                <div style={styles.detailsStyle}>
                     <h6>Name:Laptop Lenevo</h6>
                     <h6>Last Seen At:B1</h6>
                     
@@ -29,6 +30,10 @@ class ItemCard extends Component {
                   <Tag text="B1" />
                   <Tag text="Lenvo" />
                   <Tag text="Laptop" />  
+                  <Tag text="B1" />
+                  <Tag text="Lenvo" />
+                  <Tag text="Laptop" />  
+                  
                       
                  </div>
                  <div className="d-flex flex-row align-items-end  bg-white  justify-content-center">
@@ -45,12 +50,26 @@ class ItemCard extends Component {
 const styles = {
     containerStyle :{
         margin:'20px',
-        border: '1px solid #ddd'
+        border: '1px solid #ddd',
+        backgroundColor:'white',
+        borderRadius: '10px',
+        overflow:'hidden'
       
        
     },
     TagContainerStyle :{
-       marginRigh:'5px'
+       width:'250px'
+    },
+    detailsStyle:{
+        margin:'5%'
+    },
+    carouselStyle:{
+        borderRadius:'10px',
+        overflow:'hidden'
+    },
+    nameStyle:{
+        textAlign:'center',
+        width:'250px'
     }
 }
 
