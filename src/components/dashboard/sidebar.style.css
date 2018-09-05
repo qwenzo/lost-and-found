@@ -1,0 +1,31 @@
+.item{
+    border-radius:5px;
+    font-family:Lato, Calibri, Arial, sans-serif;
+    font-weight:700;
+    font-size:18px;
+    text-align:center;
+    padding:3%;
+    background-color:white;
+    color:black;
+}
+
+.item:hover{
+    background-color:#8C9094;
+    color:white;
+    transition: background-color 400ms ease-out;
+}
+
+.item:active{
+    background-color:#5B6167;
+}
+
+.activeItem{
+    border-radius:5px;
+    font-family:Lato, Calibri, Arial, sans-serif;
+    font-weight:700;
+    font-size:18px;
+    text-align:center;
+    padding:3%;
+    background-color:#5B6167;
+    color:white;
+}

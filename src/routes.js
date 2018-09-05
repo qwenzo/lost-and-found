@@ -8,7 +8,7 @@ import ItemForm from './components/ItemForm';
 import LogIn from './components/LogIn';
 import isAth from '../src/index';
 import RegisterComp from './components/Register'
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 
 function requireAuth(e) {
      if (isAth()) {
