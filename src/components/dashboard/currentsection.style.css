@@ -1,0 +1,38 @@
+.currContainer{
+    margin-left: 5%;
+    padding:1%;
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    
+    height:500px;
+    padding:1%;
+    overflow-x:hidden;
+    white-space:nowrap;
+}
+
+::-webkit-scrollbar {
+    margin:5%;
+    width: 8px;
+    right:-100px
+}
+
+/* Track */
+ ::-webkit-scrollbar-track {
+  margin:5%;
+  width:15%
+} 
+
+::-webkit-scrollbar-thumb{
+    background: #8C9094; 
+    border-radius: 25px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb:active {
+    background: #5B6167; 
+    border-radius: 25px;
+    opacity:1;
+}
+
+/* Handle on hover */

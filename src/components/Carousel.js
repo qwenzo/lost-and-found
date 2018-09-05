@@ -16,13 +16,13 @@ class Carousel extends Component{
         return (
         <div style={style} className={`d-flex flex-row ${className}`}>
              <div  className="d-flex justify-content-start align-items-center">
-                <img src={leftArrow}  style={{zIndex:1,position:'absolute'}} onClickCapture={this.handleLeft}  />
+                <img src={leftArrow}  style={{marginRight:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleLeft}  />
             </div>
             <div style={{...styles.containerStyle,width:width+'px'}} className="align-items-center d-flex flex-row" ref='viewPort' >
                 {this.props.children}
             </div>
             <div className="d-flex justify-content-end align-items-center">
-                <img src={rightArrow}  style={{zIndex:1,position:'absolute'}} onClickCapture={this.handleRight}  />
+                <img src={rightArrow}  style={{marginLeft:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleRight}  />
             </div> 
         </div>
         )
@@ -60,10 +60,10 @@ const styles={
         overflowY:'hidden',
         overflowX:'hidden',
         width:"650px",
+        float:"left"
     },
     arrowStyle:{
         fontSize:"48px",
-        color:"black",
     },
     buttonsContainer:{
         zIndex:1,

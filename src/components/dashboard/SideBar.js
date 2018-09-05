@@ -13,9 +13,7 @@ class SideBar extends Component {
         this.setState({currIndex:1})
     }
     handleClick2 = (e) =>{
-        console.log('test');
         this.setState({currIndex:2})
-        console.log(this.state);
     }
     handleClick3 = (e) =>{
         this.setState({currIndex:3})

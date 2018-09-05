@@ -1,0 +1,19 @@
+.itemContainer{
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    font-family:Lato, Calibri, Arial, sans-serif;
+    font-weight:700;
+    font-size:18px;
+    color:black;
+}
+
+.name{
+    font-size:25px;
+}
+
+.carouselStyle{
+    overflow:hidden;
+    margin:1%;
+    border-radius: 4%;
+}
