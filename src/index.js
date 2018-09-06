@@ -11,6 +11,8 @@ import { browserHistory } from 'react-router';
 import routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'react-widgets/dist/css/react-widgets.css';
+import reduxThunk from 'redux-thunk';
+import {AUTH_USER} from './actions/types'
 
   const  isAuth = () => {
      const token = localStorage.getItem('token');
@@ -24,7 +26,12 @@ import 'react-widgets/dist/css/react-widgets.css';
 
 export default isAuth;
 
-const store = createStore(reducers);
+const storeWithMiddleWare = applyMiddleware(reduxThunk)(createStore);
+const store = storeWithMiddleWare(reducers);
+
+if(localStorage.getItem('token')){
+    store.dispatch({type:AUTH_USER})
+}
 
 ReactDOM.render(
 <Provider store={store} >

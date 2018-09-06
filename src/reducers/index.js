@@ -3,7 +3,7 @@ import {reducer as form} from 'redux-form';
 import userReducer from './userReducer';
 const root_reducer = 
     combineReducers(
-        {test:'',form:form,token:userReducer
+        {test:'',form:form,auth:userReducer
     }
     )
 

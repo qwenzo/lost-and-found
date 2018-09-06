@@ -8,7 +8,7 @@ import _ from 'lodash';
 import ProbTypes from 'prop-types';
 
 class LogIn extends Component{
-    state={email:'',password:'',emailError:false,emailErrorMsg:'',passwordError:false,passwordErrorMsg:false,loading:false,submitisClickable:true,otherErrors:false,otherErrorsMsg:''}
+    state={email:'',password:'',passwordError:false,emailError:true,submitisClickable:true,otherErrors:false}
 
     static contextTypes={
         router:ProbTypes.object
@@ -18,29 +18,34 @@ class LogIn extends Component{
     }
     render() {
         const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
+        const props = this.props;
+        console.log(this.props.auth);
         return(
             <form style={containerStyle} className="justify-self-center container">
-                <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.state.emailError} invalidText={this.state.emailErrorMsg} onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
+                <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.props.auth.emailError ? this.props.auth.emailError[0] : ''  }  onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
                 <InputField 
                 style={passwordContainerStyle }
                 onTextChange={this.onPasswordTextChange.bind(this)} 
                 value={this.state.password} height='40px' type="text" className="shadow-sm" placeholder="Password"
-                isInvalidCond={this.state.passwordError} invalidText={this.state.passwordErrorMsg}
+                isInvalidCond={this.props.auth.passwordError ? this.props.auth.passwordError[0] : '' }
                 /> 
                  { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
                 <div style={submitBtnStyle}>
-             {   <Button isLoading={this.state.loading} className=" d-flex d-flex align-self-start " onClick={this.onClickHandle}  hasborder={true} onClickDownColor='#0b51c1' clickable={this.state.submitisClickable}  color='#4286f4' fontColor='#FFFFF'  text='LOGIN'/>  }
+             {   <Button isLoading={this.props.auth.loading}
+              className=" d-flex d-flex align-self-start " 
+              onClick={this.onClickHandle}  
+              hasborder={true} onClickDownColor='#0b51c1' 
+              clickable={!this.props.auth.loading}  
+              color='#4286f4' fontColor='#FFFFF'  text='LOGIN'/>  }
                </div>
             </form>
         )
     }
 
     onClickHandle = () =>{
-     // console.log(this.props.LogInUser({email:this.state.username,password:this.state.password}));  
-     this.setState({loading:true,submitisClickable:false});
-      const promise = this.props.LogInUser({email:this.state.email,password:this.state.password}).payload;
-      promise.then( (e)=>{console.log(e);
+       this.props.LogInUser({email:this.state.email,password:this.state.password});
+    /*   promise.then( (e)=>{console.log(e);
         localStorage.setItem('token', e.data.access_token);
         _.delay(
             ()=>{
@@ -77,7 +82,7 @@ class LogIn extends Component{
 
                 this.setState({loading:false,submitisClickable:true});
             }
-        ) 
+        )  */
     }
     
 
@@ -124,7 +129,9 @@ const style={
 }
 
 
+function mapStateToProps(state){
+    return {auth:state.auth}
+}
 
 
-
-export default connect(null,{LogInUser})(LogIn);
+export default connect(mapStateToProps,{LogInUser})(LogIn);

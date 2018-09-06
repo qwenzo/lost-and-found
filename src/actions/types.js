@@ -1,2 +1,9 @@
 export const LOGIN_TYPE = 'LOGIN';
+export const AUTH_USER = 'AUTH_USER';
+export const DEAUTH_USER = 'DEAUTH_USER';
+export const AUTH_EMAIL_ERR = 'AUTH_EMAIL_ERR';
+export const AUTH_PASSWORD_ERR = 'AUTH_PASSWORD_ERR';
+export const AUTH_ERR = 'AUTH_ERR';
 export const REGISTER_TYPE = 'REGISTER';
+export const LOADING_REQ = 'LOADING_REQ';
+export const FINISHING_REQ = 'FINISHING_REQ';
