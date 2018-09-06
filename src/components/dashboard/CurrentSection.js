@@ -6,7 +6,7 @@ class CurrentSection extends Component {
 
     render(){
         return(
-            <div className=" flex-column currContainer" style={styles.containerStyle}>
+            <div className="flex-column currContainer" style={styles.containerStyle}>
                <NewItem />
                <NewItem />
                <NewItem />

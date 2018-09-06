@@ -29,7 +29,7 @@
 }
  
 /* Handle */
-::-webkit-scrollbar-thumb:active {
+::-webkit-scrollbar-thumb::selection {
     background: #5B6167; 
     border-radius: 25px;
     opacity:1;

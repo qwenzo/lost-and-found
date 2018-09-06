@@ -2,18 +2,18 @@
     width:100%;
     border-radius:10px;
     box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-    font-family:Lato, Calibri, Arial, sans-serif;
-    font-weight:700;
-    font-size:18px;
+    font-family:museo-sans-rounded,sans-serif!important;
     color:black;
+    margin-bottom: 1%
 }
 
 .name{
     font-size:25px;
+    margin:1%;
 }
 
 .carouselStyle{
     overflow:hidden;
     margin:1%;
-    border-radius: 4%;
+    border-radius: 20px;
 }
