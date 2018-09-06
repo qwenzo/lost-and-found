@@ -4,16 +4,68 @@
     box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     font-family:museo-sans-rounded,sans-serif!important;
     color:black;
-    margin-bottom: 1%
+    margin-bottom: 1%;
+    /* -webkit-animation: moveUP 2s ; 
+    animation: moveUP 2s ; */
 }
 
 .name{
-    font-size:25px;
-    margin:1%;
+    font-size:18px;
 }
 
 .carouselStyle{
     overflow:hidden;
-    margin:1%;
-    border-radius: 20px;
+    border-radius: 25px;
+    margin-top: 2%
+}
+
+.descriptionContainer{
+    flex:2;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    font-family:museo-sans-rounded,sans-serif!important;
+    border-radius:7px;
+    white-space: pre-wrap;      /* Webkit */    
+    white-space: -moz-pre-wrap; /* Firefox */     
+    white-space: -pre-wrap;     /* Opera <7 */    
+    white-space: -o-pre-wrap;   /* Opera 7 */     
+    word-wrap: break-word;      /* IE */ 
+}
+
+.descriptionTitle{
+    font-family:museo-sans-rounded,sans-serif!important;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.userInfoTitle{
+    font-family:museo-sans-rounded,sans-serif!important;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.userInfo{
+    flex:1;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    font-family:museo-sans-rounded,sans-serif!important;
+    border-radius:7px;
+    margin-left: 1%;
+}
+
+.detailsTitle{
+    font-size:10px;
+    color: #7B8085;
+    font-family:museo-sans-rounded,sans-serif!important;
+    font-weight: 600;
+}
+
+@-webkit-keyframes moveUP {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes moveUP {
+    from {transform: translate(0, 100px)}
+    to {transform: translate(0, 0)}
 }

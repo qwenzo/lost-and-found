@@ -1,10 +1,14 @@
-import React from 'react';
+import React,{Component} from 'react';
+import closeBtn from '../assets/Orion_close.png'
 
-const Tag = (props) =>{
-    //add margin mb-5
-    return(
-        <div style={styles.TagStyle} className = "m-1 shadow-sm p-1  bg-white  "> {props.text} </div>
-    );
+class Tag extends Component {
+    state={view:true}
+    render(){
+        return(
+           this.state.view ? <div style={styles.TagStyle} className = "m-1 shadow-sm p-1  bg-white  "> {this.props.text} 
+            {this.props.deletable ? <img onClickCapture={()=>{this.setState({view:false})}} width='16px' height='16px' src={closeBtn}></img>:''} </div>:null
+        );
+    }
 }
 
 const styles = {
@@ -14,7 +18,8 @@ const styles = {
         borderRadius:'3px',
         fontFamily: 'Lato, Calibri, Arial, sans-serif',
         userSelect: 'none',
-        fontWeight:'500'
+        fontWeight:'500',
+        height:'32px'
 
     }
 }
