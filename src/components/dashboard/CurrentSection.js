@@ -5,18 +5,24 @@ import NewItem from './NewItem';
 class CurrentSection extends Component {
 
     render(){
+      
         return(
             <div className="flex-column currContainer" style={styles.containerStyle}>
+            {this.props.currSectionIndex==0 ?
+            <div>
                <NewItem />
                <NewItem />
                <NewItem />
                <NewItem />
                <NewItem />
                <NewItem />
+            </div>:null}
 
             </div>
         )
     }
+
+      
 }
 
 const styles={

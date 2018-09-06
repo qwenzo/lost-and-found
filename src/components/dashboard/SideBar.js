@@ -6,27 +6,40 @@ class SideBar extends Component {
     state = {currIndex:null}
 
     handleClick0 = (e) =>{
-        this.setState({currIndex:0})
+        this.setState({currIndex:0} , ()=>{
+            this.props.onChangeIndex(this.state.currIndex);
+        });
     }
 
     handleClick1 = (e) =>{
-        this.setState({currIndex:1})
+        this.setState({currIndex:1} , ()=>{
+            this.props.onChangeIndex(this.state.currIndex);
+        })
     }
     handleClick2 = (e) =>{
-        this.setState({currIndex:2})
+        this.setState({currIndex:2}, ()=>{
+            this.props.onChangeIndex(this.state.currIndex);
+        })
     }
     handleClick3 = (e) =>{
-        this.setState({currIndex:3})
+        this.setState({currIndex:3}, ()=>{
+            this.props.onChangeIndex(this.state.currIndex);
+        })
     }
     handleClick4 = (e) =>{
-        this.setState({currIndex:4})
+        this.setState({currIndex:4}, ()=>{
+            this.props.onChangeIndex(this.state.currIndex);
+        })
     }
+
+
+
 
     render(){
         return(
             <div>
                 <div style={styles.containerStyle} className="">
-                    <div onClickCapture={()=>this.handleClick0()} className={` ${this.state.currIndex==0?'activeItem':'item'}`}  >NEW ITEMS</div>
+                    <div onClickCapture={()=>{this.handleClick0()}} className={` ${this.state.currIndex==0?'activeItem':'item'}`}  >NEW ITEMS</div>
                     <div onClickCapture={()=>this.handleClick1()} className={` ${this.state.currIndex==1?'activeItem':'item'}`} >USERS</div>
                     <div onClickCapture={()=>this.handleClick2()} className={` ${this.state.currIndex==2?'activeItem':'item'}`}  >TAGS</div>
                     <div onClickCapture={()=>this.handleClick3()} className={` ${this.state.currIndex==3?'activeItem':'item'}`}  >xyz</div>
