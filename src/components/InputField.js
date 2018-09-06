@@ -27,7 +27,7 @@ class InputField extends Component{
         return(
             //fix the width later
             <div  style={{...widthCond,...minWidthCond,...maxWidthCond}}  >
-                    <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps,...styleCond}} className={` align-items-center d-flex ${row} ${inputContainerClassName} `}>
+                    <div style={{...styles.inputContainerStyle,...isInvalidProps,...style}} className={` align-items-center d-flex ${row} ${inputContainerClassName} `}>
                         <input  onFocusCapture={()=> console.log('work')} {...input||''} placeholder={placeholder||''} value={value}  
                         onChangeCapture={ onTextChange} 
                         onPointerCancel={()=>{console.log('test')}}  
