@@ -40,7 +40,7 @@ class Main extends Component {
                     <h1> lost your shit ? </h1>
                     <h3> you may find it here </h3>
                 </div>
-                <InputField   style={styles.searchBoxStyle} className='shadow-sm' element={
+                <InputField minWidth="300px"  width="800px"  style={styles.searchBoxStyle} className='shadow-sm' element={
                     <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ 
                     img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
                      <img width="24px" height="24px" style={{}} src={searchIcon} /></div>}/>
@@ -59,8 +59,8 @@ const styles = {
         height:'450px',
     },
     searchBoxStyle: {
-        width:'100%',
-        minWidth:'190px',
+      /*   width:'100%',
+        minWidth:'190px', */
         border: '1px solid #ddd',
        // borderRadius:'50px' ,
        borderBottomRightRadius:'50px' ,

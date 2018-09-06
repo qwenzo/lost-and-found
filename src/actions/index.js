@@ -1,7 +1,8 @@
 import axios from 'axios';
+import {LOGIN_TYPE} from './types';
+import {REGISTER_TYPE} from './types';
 
-export const LOGIN_TYPE = 'LOGIN';
-export const REGISTER_TYPE = 'REGISTER';
+
 const BASE_URL = 'https://mylostfound.herokuapp.com/api';
 const token = localStorage.getItem('token');
 

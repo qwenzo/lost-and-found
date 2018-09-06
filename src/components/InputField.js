@@ -4,19 +4,35 @@ class InputField extends Component{
     state = {isInvalidViewText:false}
 
     render(){
-        const {value,onTextChange,input,placeholder,isInvalidCond,width, height,row,element,className,style,invalidText} = this.props;
+        const {value,
+            onTextChange,
+            input,
+            placeholder,
+            isInvalidCond,width,
+             height,row,
+             element,
+             inputContainerClassName,
+             inputClassName,
+             style,
+             invalidText,
+             minWidth,maxWidth} = this.props;
+
         const heightCond = height? {height:height} : {height:'30px'}
         const widthCond = width? {width:width} : {width:'100%'}
+        const minWidthCond = minWidth? {minWidth:minWidth} : {minWidth:'100%'}
+        const maxWidthCond = maxWidth? {maxWidth:width} : {maxWidth:'100%'}
         const isInvalidProps  = isInvalidCond ? {border:'1px solid #dc3545'} : {border:''}
+        const styleCond = style ? style : null;
+        console.log(style);
         return(
             //fix the width later
-            <div  style={{...widthCond,minWidth:'300px'}}  >
-                    <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps,...style}} className={` d-flex ${row} ${className} `}>
+            <div  style={{...widthCond,...minWidthCond,...maxWidthCond}}  >
+                    <div style={styles.inputContainerStyle={...styles.inputContainerStyle,...isInvalidProps,...styleCond}} className={` align-items-center d-flex ${row} ${inputContainerClassName} `}>
                         <input  onFocusCapture={()=> console.log('work')} {...input||''} placeholder={placeholder||''} value={value}  
                         onChangeCapture={ onTextChange} 
                         onPointerCancel={()=>{console.log('test')}}  
-                        autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle={...styles.inputStyle,...heightCond}} className={`  `} />
-                        {element }
+                        autoSave={'false'} autoComplete={'false'} type="text" style={styles.inputStyle={...styles.inputStyle,...heightCond}} className={`${inputClassName}`} />
+                        {element}
                         {/* <div>lolol</div> */}
                     </div>
           {isInvalidCond && invalidText ? <span style={styles.invalidTextStyle}>{invalidText}</span>:''}

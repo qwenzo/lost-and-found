@@ -30,10 +30,11 @@ class Header extends Component {
 
     renderSearchBox(){
      return(
-        <InputField  style={styles.searchBoxStyle} className='shadow-sm' element={
-          <div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
-          <img width="24px" height="24px" style={{}} src={searchIcon} /></div>
-         } row='flex-row' height='40px'  type="text" placeholder="Search a lost item"  />    
+        <InputField  width="400px" minWidth="100px"  style={styles.searchBoxStyle} inputContainerClassName='shadow-sm' element={
+          <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ 
+          img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+           <img width="24px" height="24px" style={{}} src={searchIcon} /></div>}/>
+      } row='flex-row' height='40px'  type="text" placeholder="Search a lost item"  />    
      );
     }
 
@@ -52,7 +53,7 @@ class Header extends Component {
         {pathname=="/" ? '' : this.renderSearchBox()}  
           {!isAuth()?
           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
-            <Button onClick={this.redirectLogin} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
+            <Button onClick={this.redirectLogin}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
             <Button onClick={this.redirectSignup} clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
           </div>:
            <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
@@ -76,16 +77,18 @@ const styles = {
     
     },
     searchBoxStyle:{
-      marginLeft:'1%',
-      width:'25%',
-      minWidth:'190px'
+      marginLeft:'5%',
+      border: '1px solid #ddd',
+       borderBottomRightRadius:'50px' ,
+        borderTopRightRadius:'50px' ,
+        overflow:'hidden'
     },
     buttonsBoxContainer:{
       marginRight:'1%',
     
     },
     buttonsStyle:{
-    margin:'5% !important',
+    
     }
  
 }
