@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import NewestItems from './newestItems';
 import InputField from '../InputField';
-import Button from '../Button';
+import Button from '../common/button/Button';
 import searchIcon from '../../assets/Orion_search.png'
 class Main extends Component {
   

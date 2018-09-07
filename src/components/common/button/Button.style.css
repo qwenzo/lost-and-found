@@ -1,0 +1,10 @@
+.buttonCstm{
+    cursor:pointer;
+        user-select: 'none';
+        padding-top: '0.5rem ';
+        padding-right: '0.7rem ';
+        padding-bottom: '0.5rem ';
+        padding-left: '0.7rem ';
+        font-weight: '700';
+        font-size:'18';
+}

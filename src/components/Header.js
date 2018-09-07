@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes  from 'prop-types';
-import Button from './Button';
+import Button from './common/button/Button';
 import InputField from './InputField';
 import isAuth from '../index';
 import {Link} from 'react-router';
@@ -51,7 +51,9 @@ class Header extends Component {
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-      <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
+      <div className="d-flex flex-column">
+       <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
+          <Button onClick={this.openSideBar}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
         {pathname=="/" ? '' : this.renderSearchBox()}  
           {!this.props.auth.authnticated?
           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
@@ -61,6 +63,18 @@ class Header extends Component {
            <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
           <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
     </div>
+      <div style = {styles.headerStyle} className=" align-items-center  d-flex flex-row">
+          <Button onClick={this.openSideBar}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
+        {pathname=="/" ? '' : this.renderSearchBox()}  
+          {!this.props.auth.authnticated?
+          <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+            <Button onClick={this.redirectLogin}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
+            <Button onClick={this.redirectSignup} clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
+          </div>:
+           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
+          <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
+    </div>
+    </div>
     );
   }
 
@@ -68,7 +82,13 @@ class Header extends Component {
     localStorage.clear();
     this.setState({loggedin:false});
   }
+
+  openSideBar = () =>{
+    console.log('jjj');
 }
+}
+
+
 
 const styles = {
     headerStyle: {

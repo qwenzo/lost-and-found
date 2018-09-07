@@ -3,7 +3,7 @@ import {reduxForm,Field} from 'redux-form';
 import {connect} from 'react-redux';
 import { DropdownList,Multiselect} from 'react-widgets';
 import Image from './Image';
-import Button from './Button';
+import Button from './common/button/Button';
 import axios from 'axios';
 import Tag from './Tag';
 import InputField from './InputField';

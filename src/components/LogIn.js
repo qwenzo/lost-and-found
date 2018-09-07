@@ -1,11 +1,12 @@
 import React , {Component} from 'react';
 import InputField from './InputField';
-import Button from './Button';
+import Button from './common/button/Button';
 import {LogInUser} from '../actions/index'
 import {connect} from 'react-redux';
 import isAuth from '../index';
 import _ from 'lodash';
 import ProbTypes from 'prop-types';
+import './login.style.css'
 
 class LogIn extends Component{
     state={email:'',password:'',passwordError:false,emailError:true,submitisClickable:true,otherErrors:false}
@@ -17,22 +18,22 @@ class LogIn extends Component{
     componentWillMount(){
     }
     render() {
-        const {containerStyle,usernameNoteStyle,usernameContainerStyle,passwordContainerStyle,submitBtnStyle,errorStyle} = style;
+        const {containerStyle,usernameNoteStyle,emailFieldStyle,passwordFielStyle,submitBtnStyle,errorStyle} = style;
         const props = this.props;
         console.log(this.props.auth);
         return(
-            <form style={containerStyle} className="justify-self-center container">
-                <InputField style={usernameContainerStyle} className="shadow-sm" isInvalidCond={this.props.auth.emailError ? this.props.auth.emailError[0] : ''  }  onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
+            <form  className=" containerStyle justify-self-center  container">
+                <InputField style={emailFieldStyle} className="shadow-sm" isInvalidCond={this.props.auth.emailError ? this.props.auth.emailError[0] : ''  }  onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
                 <InputField 
-                style={passwordContainerStyle }
+                style={passwordFielStyle }
                 onTextChange={this.onPasswordTextChange.bind(this)} 
                 value={this.state.password} height='40px' type="text" className="shadow-sm" placeholder="Password"
                 isInvalidCond={this.props.auth.passwordError ? this.props.auth.passwordError[0] : '' }
                 /> 
                  { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
                 
-             {   <Button style={{width:'100%'}} isLoading={this.props.auth.loading}
+             {   <Button style={submitBtnStyle} isLoading={this.props.auth.loading}
               onClick={this.onClickHandle}  
               hasborder={true} onClickDownColor='#0b51c1' 
               clickable={!this.props.auth.loading}  
@@ -98,27 +99,39 @@ class LogIn extends Component{
 
 const style={
     containerStyle:{
-         marginTop:'10%',
         padding:'2%',
         boxShadow:'0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
         maxWidth:'30%',
-        minWidth:'300px'
+        minWidth:'300px',
+        marginTop:'50%',
     },
     usernameNoteStyle:{
         borderLeft: '1px solid #ddd',
+        
     },
-    usernameContainerStyle:{
-      //  marginTop:'10%',
+    emailFieldStyle:{
       border: '1px solid #ddd',
+      borderTopLeftRadius:'15px' ,
+      borderBottomLeftRadius:'15px' ,
+      borderBottomRightRadius:'50px' ,
+      borderTopRightRadius:'50px' ,
+      overflow:'hidden'
     },
-    passwordContainerStyle:{
+    passwordFielStyle:{
         marginTop:'8%',
         border: '1px solid #ddd',
+        borderBottomRightRadius:'50px' ,
+        borderTopLeftRadius:'15px' ,
+      borderBottomLeftRadius:'15px' ,
+        borderTopRightRadius:'50px' ,
+        overflow:'hidden'
         
 
     },
     submitBtnStyle:{
-       marginTop:'5%'
+       marginTop:'5%',
+       width:'100%',
+       borderRadius:'8px'
         
       },
       errorStyle:{

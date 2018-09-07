@@ -1,6 +1,6 @@
 import React from 'react';
-import Loading from '../assets/Rolling-1s-200px.svg'
-
+import Loading from '../../../assets/Rolling-1s-200px.svg'
+import './Button.style.css'
 
 
 const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasborder,style,clickable,onClickDownColor,isLoading}) =>{
@@ -14,7 +14,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             onTouchStart = {
               (e)=>{
               if(hasborder && clickable){
-                e.currentTarget.className=`${className}`;
+                e.currentTarget.className=` d-flex justify-content-center ${className}`;
                 /* styles.btnStyle={... styles.btnStyle,backgroundColor:'#CACFD2'} */
                 e.currentTarget.style.backgroundColor=onClickDownColor; 
               }
@@ -32,7 +32,7 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             onMouseDownCapture={
                 (e)=>{
                   if(hasborder&& clickable){
-                  e.currentTarget.className=`${className}`;
+                  e.currentTarget.className=`d-flex justify-content-center ${className}`;
                   e.currentTarget.style.backgroundColor=onClickDownColor;
                   }
                 }   

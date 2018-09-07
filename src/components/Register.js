@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import InputField from './InputField';
-import Button from './Button';
+import Button from './common/button/Button';
 import {Register} from '../actions/index'
 import {connect} from 'react-redux';
 import isAuth from '../index';

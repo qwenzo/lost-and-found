@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import Button from './Button';
+import Button from './common/button/Button';
 import Image from './Image';
 import Carousel from './Carousel';
 class Dashboard extends Component{
