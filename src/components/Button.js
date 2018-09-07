@@ -8,9 +8,9 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
   {clickable ? styles.btnStyle={... styles.btnStyle,cursor:'pointer'}:styles.btnStyle={... styles.btnStyle,cursor:' '}}
   let  colorStyle = color ? color : '';
     return(
-        <div style={style} className={className}>
-          <div onClickCapture={onClick}  style={styles.containerStyle} className={`align-items-center align-self-start d-flex flex-wrap`}>
+
             <div
+            onClickCapture={onClick} 
             onTouchStart = {
               (e)=>{
               if(hasborder && clickable){
@@ -49,15 +49,12 @@ const Button = ({text,img,borderRadius,color,fontColor,onClick,className,hasbord
             }
             }
         
-            style={styles.btnStyle={... styles.btnStyle,backgroundColor:color,fontColor:fontColor}} className={`  `}>
+            style={{... styles.btnStyle,backgroundColor:color,fontColor:fontColor,...style}} className={`${className} d-flex justify-content-center`}>
             
             {isLoading ? <img style={{width:'24px',height:'24px',fill:'#FFFF'}} src={Loading} /> : 
             img ?img:
             <font face={'Lato, Calibri, Arial, sans-serif'} size='3' color={fontColor}>{text}</font>}
-            </div>
-            
           </div>
-        </div>
     )
 }
 

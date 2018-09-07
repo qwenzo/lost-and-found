@@ -31,14 +31,13 @@ class LogIn extends Component{
                 isInvalidCond={this.props.auth.passwordError ? this.props.auth.passwordError[0] : '' }
                 /> 
                  { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
-                <div style={submitBtnStyle}>
-             {   <Button isLoading={this.props.auth.loading}
-              className=" d-flex d-flex align-self-start " 
+                
+             {   <Button style={{width:'100%'}} isLoading={this.props.auth.loading}
               onClick={this.onClickHandle}  
               hasborder={true} onClickDownColor='#0b51c1' 
               clickable={!this.props.auth.loading}  
               color='#4286f4' fontColor='#FFFFF'  text='LOGIN'/>  }
-               </div>
+               
             </form>
         )
     }
