@@ -62,9 +62,9 @@ const styles = {
       /*   width:'100%',
         minWidth:'190px', */
         border: '1px solid #ddd',
-       // borderRadius:'50px' ,
-       borderBottomRightRadius:'50px' ,
-        borderTopRightRadius:'50px' ,
+        borderRadius:'50px' ,
+      // borderBottomRightRadius:'50px' ,
+       // borderTopRightRadius:'50px' ,
         overflow:'hidden'
     },
     briefResultsStyle:{
