@@ -18,6 +18,10 @@
 .headerMobile{
    
 }
+.sidebarButton{
+    visibility: hidden !important;
+    display: none !important;
+}
 
 
 
@@ -37,7 +41,13 @@
         width:100% !important;
         margin-top:2%;
     }
+    .sidebarButton{
+        visibility: visible !important;
+        display: flex !important;
+    }
     .headerMobile{
+        opacity:1;
+        transition : opacity 0.5s ease;
       
     }
     .headerMobileHidden{
@@ -47,9 +57,17 @@
     
     
     
-    .sidebarButton{
+    .sidebarButtonDown{
         transform:rotate(90deg);
         -ms-transform:rotate(90deg);
         -webkit-transform:rotate(90deg);
+        transition: transform 0.5s ease;
+    }
+
+    .sidebarButtonUp{
+        transform:rotate(-90deg);
+        -ms-transform:rotate(-90deg);
+        -webkit-transform:rotate(-90deg);
+        transition: transform 0.5s ease;
     }
 }

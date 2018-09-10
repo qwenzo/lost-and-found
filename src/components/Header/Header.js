@@ -8,25 +8,24 @@ import {connect} from 'react-redux';
 import './Header.style.css'
 
 class Header extends Component {
-    state = {loggedin:false,sideBarOpen:false};
+    state = {loggedin:false,sideBarOpen:false,clientWidth:null};
     static contextTypes ={
       router:PropTypes.object
     }
     // console.log(this.context.router.location.pathname);
 
     componentWillMount(){
-      this.props.auth.authnticated ?  this.setState({loggedin:true}):this.setState({loggedin:false})
+      this.props.auth.authnticated ?  this.setState({loggedin:true}):this.setState({loggedin:false});
+      window.addEventListener('resize', this.resizeScreen.bind(this));;
     }
-    componentDidMount() {
-        //  window.addEventListener('resize', this.resizeScreen.bind(this));
-          if(document.documentElement.clientHeight>900) {
-           // document.getElementById("searchBoxHeader").classList+="w-25";
-          }
-          else{
-            //  document.getElementById("searchBoxHeader").classList+="w-100";
-          }
-          
-        
+
+    componentWillUpdate(nextProps){
+      //nextProps.auth.authnticated ?  this.setState({loggedin:true}):this.setState({loggedin:false})
+
+    }
+      resizeScreen(){
+        this.setState({clientWidth:document.documentElement.clientWidth});
+        console.log(document.documentElement.clientWidth);
       }
 
 
@@ -53,19 +52,19 @@ class Header extends Component {
     return (
       <div className="d-flex flex-column">
        
-      <nav /* style = {styles.headerStyle} */ className="header align-items-center  d-flex flex-row">
-          <Button onClick={this.openSideBar} img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
-           <img width="24px" height="24px" style={{}} src={sideBarArrow} /></div>}  clickable={true} hasborder={true} style={styles.buttonsStyle} className={this.state.sideBarOpen?'sidebarButton':''} text='LOGIN'/>
+      <nav className="header align-items-center  d-flex flex-row">
+      {this.state.clientWidth <=600 ?<Button onClick={this.openSideBar} img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
+           <img width="24px" height="24px" src={sideBarArrow} /></div>}  clickable={true} hasborder={true} style={styles.buttonsStyle} className={this.state.sideBarOpen?'sidebarButtonDown':'sidebarButtonUp'} text='LOGIN'/>:null}
         {pathname=="/" ? '' : this.renderSearchBox()}  
           {!this.props.auth.authnticated? 
            <div  style={styles.buttonsBoxContainer}  className='buttonsBoxContainer d-flex flex-row-reverse col-sm'>
             <Button onClick={this.redirectLogin}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
             <Button onClick={this.redirectSignup} clickable={true} hasborder={true} style={styles.buttonsStyle} className=''  text='SIGNUP'/>
           </div> :
-           <div /* style={styles.buttonsBoxContainer} */ className='buttonsBoxContainer d-flex flex-row-reverse col-sm'>
+           <div  className='buttonsBoxContainer d-flex flex-row-reverse col-sm'>
           <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
     </nav>
-    <div  className={`${this.state.sideBarOpen?'headerMobile':'headerMobileHidden'} align-items-center d-flex flex-row`}>
+   {this.state.clientWidth <=600 ? <div  className={`${this.state.sideBarOpen?'headerMobile':'headerMobileHidden'} align-items-center d-flex flex-row`}>
           {!this.props.auth.authnticated?
           <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
             <Button onClick={this.redirectLogin}  clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGIN'/>
@@ -73,7 +72,7 @@ class Header extends Component {
           </div>:
            <div style={styles.buttonsBoxContainer} className='d-flex flex-row-reverse col-sm'>
           <Button onClick={this.logout} clickable={true} hasborder={true} style={styles.buttonsStyle} className='' text='LOGOUT'/></div> }  
-    </div>
+    </div>:null}
     </div>
     );
   }
@@ -112,13 +111,6 @@ const styles = {
     },
  
 }
-
-/*
-   <div>
-           { this.renderSearchBox()}
-        <div class="float-right">Float right on all viewport sizes</div>
-      </div>
-      */
 function mapStateToProps(state){
   return {auth:state.auth}
 }
