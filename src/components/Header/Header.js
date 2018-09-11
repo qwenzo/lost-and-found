@@ -25,7 +25,6 @@ class Header extends Component {
     }
       resizeScreen(){
         this.setState({clientWidth:document.documentElement.clientWidth});
-        console.log(document.documentElement.clientWidth);
       }
 
 
@@ -50,7 +49,7 @@ class Header extends Component {
   render() {
      const {router:{location:{pathname}}}=this.context;
     return (
-      <div className="d-flex flex-column">
+      <div className="headerContainer d-flex flex-column">
        
       <nav className="header align-items-center  d-flex flex-row">
       {this.state.clientWidth <=600 ?<Button onClick={this.openSideBar} img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
