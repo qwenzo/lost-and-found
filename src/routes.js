@@ -5,9 +5,9 @@ import Main from './components/mainPage/main';
 import SearchView from './components/Search';
 import SingleItem from './components/SingleItem';
 import ItemForm from './components/ItemForm';
-import LogIn from './components/LogIn';
+import LogIn from '../src/components/login/LogIn';
 import isAth from '../src/index';
-import RegisterComp from './components/Register'
+import RegisterComp from '../src/components/register/Register'
 import Dashboard from './components/dashboard/Dashboard';
 import rquireAuth from '../src/higherOrderComps/requireAuth';
 

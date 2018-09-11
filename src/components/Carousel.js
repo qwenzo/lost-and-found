@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
 import leftArrow from '../../src/assets/leftArrw.png';
 import rightArrow from '../../src/assets/rightArrw.png';
 
@@ -16,13 +15,13 @@ class Carousel extends Component{
         return (
         <div style={style} className={`d-flex flex-row ${className}`}>
              <div  className="d-flex justify-content-start align-items-center">
-                <img src={leftArrow}  style={{marginRight:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleLeft}  />
+                <img alt='' src={leftArrow}  style={{marginRight:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleLeft}  />
             </div>
             <div style={{...styles.containerStyle,width:width+'px'}} className="align-items-center d-flex flex-row" ref='viewPort' >
                 {this.props.children}
             </div>
             <div className="d-flex justify-content-end align-items-center">
-                <img src={rightArrow}  style={{marginLeft:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleRight}  />
+                <img alt='' src={rightArrow}  style={{marginLeft:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleRight}  />
             </div> 
         </div>
         )

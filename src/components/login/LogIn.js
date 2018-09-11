@@ -1,9 +1,8 @@
 import React , {Component} from 'react';
-import InputField from './InputField';
-import Button from './common/button/Button';
-import {LogInUser} from '../actions/index'
+import InputField from '../InputField';
+import Button from '../common/button/Button';
+import {LogInUser} from '../../actions/index'
 import {connect} from 'react-redux';
-import isAuth from '../index';
 import _ from 'lodash';
 import ProbTypes from 'prop-types';
 import './login.style.css'
@@ -22,7 +21,7 @@ class LogIn extends Component{
         const props = this.props;
         console.log(this.props.auth);
         return(
-            <form  className=" containerStyle justify-self-center  container">
+            <form  className=" containerStyle  container">
                 <InputField style={emailFieldStyle} className="shadow-sm" isInvalidCond={this.props.auth.emailError ? this.props.auth.emailError[0] : ''  }  onTextChange={this.onEmailTextChange.bind(this)}  element={ <Button style={usernameNoteStyle}   text='@student.guc.edu.eg'/>
          } row='flex-row' height='40px'  type="text" value={this.state.email} placeholder="Username"  /> 
                 <InputField 
@@ -31,7 +30,8 @@ class LogIn extends Component{
                 value={this.state.password} height='40px' type="text" className="shadow-sm" placeholder="Password"
                 isInvalidCond={this.props.auth.passwordError ? this.props.auth.passwordError[0] : '' }
                 /> 
-                 { this.state.otherErrors  ?  <span className="align-self-center" style={errorStyle}>{this.state.otherErrorsMsg}</span>:null}
+                 { this.props.auth.otherError  ?  <span className="d-flex
+                 justify-content-center align-self-center" style={errorStyle}>{this.props.auth.otherError}</span>:null}
                 
              {   <Button style={submitBtnStyle} isLoading={this.props.auth.loading}
               onClick={this.onClickHandle}  
@@ -45,44 +45,6 @@ class LogIn extends Component{
 
     onClickHandle = () =>{
        this.props.LogInUser({email:this.state.email,password:this.state.password});
-    /*   promise.then( (e)=>{console.log(e);
-        localStorage.setItem('token', e.data.access_token);
-        _.delay(
-            ()=>{
-                this.context.router.push('/')
-            },1000
-        )
-    }
-    
-    ).catch(
-            (e)=>{
-               if(e.response.data.errors){
-                this.setState({otherErrors:false});
-                if (e.response.data.errors.email) {
-                    this.setState({emailError:true,emailErrorMsg:e.response.data.errors.email[0]})
-                   }
-                    if (e.response.data.errors.password) {
-                     this.setState({passwordError:true,passwordErrorMsg:e.response.data.errors.password[0]})
-                   }
-               }
-                
-                  else{
-                      if(e.response.data.error){
-                        this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data.error});
-                      }
-                      else{
-                        this.setState({emailError:false,passwordError:false,otherErrors:true,otherErrorsMsg:e.response.data});
-                      }
-                  
-                  }
-            }
-        )
-        .then(
-            (e)=>{
-
-                this.setState({loading:false,submitisClickable:true});
-            }
-        )  */
     }
     
 
@@ -110,20 +72,21 @@ const style={
         
     },
     emailFieldStyle:{
-      border: '1px solid #ddd',
       borderTopLeftRadius:'15px' ,
       borderBottomLeftRadius:'15px' ,
       borderBottomRightRadius:'50px' ,
       borderTopRightRadius:'50px' ,
-      overflow:'hidden'
+      boxShadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)' ,
+      overflow:'hidden',
+     
     },
     passwordFielStyle:{
         marginTop:'8%',
-        border: '1px solid #ddd',
         borderBottomRightRadius:'50px' ,
         borderTopLeftRadius:'15px' ,
       borderBottomLeftRadius:'15px' ,
         borderTopRightRadius:'50px' ,
+        boxShadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)' ,
         overflow:'hidden'
         
 
@@ -131,7 +94,7 @@ const style={
     submitBtnStyle:{
        marginTop:'5%',
        width:'100%',
-       borderRadius:'8px'
+       borderRadius:'8px',
         
       },
       errorStyle:{
