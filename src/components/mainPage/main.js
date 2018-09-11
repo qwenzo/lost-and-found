@@ -15,19 +15,6 @@ class Main extends Component {
         console.log(localStorage);
     }
 
-
-    componentDidMount() {
-       // window.addEventListener('resize', this.resizeScreen.bind(this));
-        if(this.state.clientHeighth>900) {
-       //  document.getElementById("searchBox").classList+="w-50";
-        }
-        else{
-          //  document.getElementById("searchBox").classList+="w-75";
-        }
-        
-      
-    }
-
     onSearchTextChange(event){
       this.setState({searchText:event.target.value});
     }
@@ -40,7 +27,7 @@ class Main extends Component {
                     <h1> lost your shit ? </h1>
                     <h3> you may find it here </h3>
                 </div>
-                <InputField minWidth="300px"  width="800px"  style={styles.searchBoxStyle} className='shadow-sm' element={
+                <InputField minWidth="300px"  width="800px"  style={styles.searchBoxStyle} inputContainerClassName='shadow-sm' element={
                     <Button hasborder={true} clickable={true} /* className='d-flex' style={{border: '1px solid #eee'}} */ 
                     img={<div className=" align-items-center justify-content-center d-flex shadow-sm" style={{borderRadius: '50%',width:'30px',height:'30px'}}>
                      <img width="24px" height="24px" style={{}} src={searchIcon} /></div>}/>
@@ -61,7 +48,6 @@ const styles = {
     searchBoxStyle: {
       /*   width:'100%',
         minWidth:'190px', */
-        border: '1px solid #ddd',
         borderRadius:'50px' ,
       // borderBottomRightRadius:'50px' ,
        // borderTopRightRadius:'50px' ,

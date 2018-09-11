@@ -8,11 +8,10 @@ import {connect} from 'react-redux';
 import './Header.style.css'
 
 class Header extends Component {
-    state = {loggedin:false,sideBarOpen:false,clientWidth:null};
+    state = {loggedin:false,sideBarOpen:false,clientWidth:document.documentElement.clientWidth};
     static contextTypes ={
       router:PropTypes.object
     }
-    // console.log(this.context.router.location.pathname);
 
     componentWillMount(){
       this.props.auth.authnticated ?  this.setState({loggedin:true}):this.setState({loggedin:false});
@@ -20,6 +19,7 @@ class Header extends Component {
     }
 
     componentWillUpdate(nextProps){
+      console.log(nextProps);
       //nextProps.auth.authnticated ?  this.setState({loggedin:true}):this.setState({loggedin:false})
 
     }

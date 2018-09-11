@@ -22,7 +22,6 @@ class InputField extends Component{
         const minWidthCond = minWidth? {minWidth:minWidth} : {minWidth:'100%'}
         const maxWidthCond = maxWidth? {maxWidth:width} : {maxWidth:'100%'}
         const isInvalidProps  = isInvalidCond ? {border:'1px solid #dc3545'} : null
-        console.log(isInvalidProps);
         return(
             <div  style={{...widthCond,...minWidthCond,...maxWidthCond}}  >
                     <div style={{...styles.inputContainerStyle,...style,...isInvalidProps}} className={` align-items-center d-flex ${row} ${inputContainerClassName} `}>
