@@ -15,13 +15,13 @@ class Carousel extends Component{
         return (
         <div style={style} className={`d-flex flex-row ${className}`}>
              <div  className="d-flex justify-content-start align-items-center">
-                <img alt='' src={leftArrow}  style={{marginRight:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleLeft}  />
+                <img alt='' src={leftArrow}  style={{marginRight:'-3.2rem',zIndex:'1'}} onClickCapture={this.handleLeft}  />
             </div>
             <div style={{...styles.containerStyle,width:width+'px'}} className="align-items-center d-flex flex-row" ref='viewPort' >
                 {this.props.children}
             </div>
             <div className="d-flex justify-content-end align-items-center">
-                <img alt='' src={rightArrow}  style={{marginLeft:'-2.1rem',zIndex:'1'}} onClickCapture={this.handleRight}  />
+                <img alt='' src={rightArrow}  style={{marginLeft:'-3.2rem'}} onClickCapture={this.handleRight}  />
             </div> 
         </div>
         )

@@ -1,10 +1,12 @@
 import React from 'react';
-import ItemCard from './mainPage/itemCard';
+import ItemCard from '../mainPage/itemCard';
+import './search.style.css';
+
 const SearchView = (props) =>{
     return(
         <div>
              <style>{'body { background-color: #F8F9F9}'}</style>
-        <div style={styles.SearchBoxView}  className="d-flex flex-row  flex-wrap fixed-center">
+        <div className="itemsBox">
           {/* <div  style={styles.SearchView}  className="align-items-center justify-content-center w-50 h-50 shadow white" >lol</div> */}
             <ItemCard />
              <ItemCard /> <ItemCard /> <ItemCard /> <ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard />

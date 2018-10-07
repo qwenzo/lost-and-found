@@ -9,13 +9,13 @@ class ItemCard extends Component {
              <div style={styles.nameStyle} className="flex-wrap  d-flex justify-content-center">  Lenevo Lenevo Lenevo Lenevo Lenevo Lenevo   </div>
                   <Carousel style={styles.borderRadius} width={250} >
                 <div>
-                <Image 
+                <Image width={250}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli" />
                    
                 </div>
                 <div>
-                <Image 
+                <Image width={250}
                    className="" source="http://comparecamp.com/media/uploads/2014/09/asus-1024x682.jpg"
                     alt="Trulli"  />
                    
