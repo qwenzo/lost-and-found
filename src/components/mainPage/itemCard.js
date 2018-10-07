@@ -53,7 +53,8 @@ const styles = {
         border: '1px solid #ddd',
         backgroundColor:'white',
         borderRadius: '10px',
-        overflow:'hidden'
+        overflow:'hidden',
+      // width: "calc(100% * (1/4) - 20px - 2px)"
       
        
     },

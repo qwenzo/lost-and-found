@@ -9,7 +9,7 @@ const SearchView = (props) =>{
         <div className="itemsBox">
           {/* <div  style={styles.SearchView}  className="align-items-center justify-content-center w-50 h-50 shadow white" >lol</div> */}
             <ItemCard />
-             <ItemCard /> <ItemCard /> <ItemCard /> <ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard />
+             <ItemCard /> <ItemCard /> <ItemCard /> <ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard /><ItemCard />
         </div>
         </div>
     );
